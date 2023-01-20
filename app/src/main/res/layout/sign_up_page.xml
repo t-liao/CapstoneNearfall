@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_signup"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/back_button_signup"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:backgroundTint="@color/white"
+        android:text="<"
+        android:textColor="@color/big_word"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:translationX="-125dp"
+        android:translationY="70dp"
+        android:elevation="10dp"
+        android:stateListAnimator="@null"/>
+
+    <TextView
+        android:id="@+id/create_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Create an Account"
+        android:translationY="34dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:translationY="100dp">
+
+        <View
+            android:id="@+id/content_box_signup"
+            android:layout_width="298dp"
+            android:layout_height="494dp"
+            android:background="@drawable/content_box"
+            android:elevation="5dp" />
+
+        <TextView
+            android:id="@+id/signup_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:elevation="6dp"
+            android:text="Sign up"
+            android:textColor="@color/big_word"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:translationY="50dp" />
+
+
+        <EditText
+            android:id="@+id/name_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:drawableLeft="@drawable/person"
+            android:hint=" Full Name"
+            android:layout_gravity="center_horizontal"
+            android:elevation="5dp"
+            android:translationY="100dp"/>
+
+        <EditText
+            android:id="@+id/email_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/email"
+            android:elevation="5dp"
+            android:ems="10"
+            android:hint=" Email"
+            android:inputType="textEmailAddress"
+            android:translationY="150dp" />
+
+        <EditText
+            android:id="@+id/password_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/lock"
+            android:elevation="5dp"
+            android:ems="10"
+            android:hint=" Password"
+            android:inputType="textPassword"
+            android:translationY="200dp" />
+
+        <EditText
+            android:id="@+id/repeat_password_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/lock"
+            android:elevation="5dp"
+            android:ems="10"
+            android:hint=" Repeat Password"
+            android:inputType="textPassword"
+            android:translationY="250dp" />
+
+        <EditText
+            android:id="@+id/date_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/calendar"
+            android:elevation="5dp"
+            android:translationY="300dp"
+            android:hint=" Date of Birth"/>
+
+        <Button
+            android:id="@+id/create_account_button"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/button"
+            android:elevation="5dp"
+            android:stateListAnimator="@null"
+            android:text="Create Account"
+            android:textStyle="bold"
+            android:translationY="400dp" />
+
+
+
+    </FrameLayout>
+
+
+</LinearLayout>
