@@ -8,8 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#D3D3D3</color>
+    <color name="background_grey">#EDEDED</color>
     <color name="button">#3432D1</color>
     <color name="big_word">#5856F5</color>
     <color name="red">#AF1A27</color>
+
 
 </resources>
