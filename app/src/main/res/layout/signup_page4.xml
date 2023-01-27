@@ -158,6 +158,7 @@
             android:layout_weight="0"
             android:backgroundTint="@color/button"
             android:text="Next"
+            android:textStyle="bold"
             android:translationY="150dp" />
 
     </LinearLayout>

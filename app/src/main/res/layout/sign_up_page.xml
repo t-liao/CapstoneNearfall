@@ -36,7 +36,8 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="500dp"
-        android:translationY="100dp">
+        android:translationY="100dp"
+        android:gravity="center">
 
         <View
             android:id="@+id/content_box_signup"
@@ -45,92 +46,89 @@
             android:background="@drawable/content_box"
             android:elevation="5dp" />
 
-        <TextView
-            android:id="@+id/signup_text"
+        <LinearLayout
+            android:id="@+id/personal_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:elevation="6dp"
-            android:text="Sign up"
-            android:textColor="@color/big_word"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:translationY="50dp" />
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:elevation="5dp">
+
+            <TextView
+                android:id="@+id/signup_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Sign up"
+                android:textColor="@color/big_word"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:paddingBottom="25dp"/>
 
 
-        <EditText
-            android:id="@+id/name_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:drawableLeft="@drawable/person"
-            android:hint=" Full Name"
-            android:layout_gravity="center_horizontal"
-            android:elevation="5dp"
-            android:translationY="100dp"/>
+            <EditText
+                android:id="@+id/name_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:drawableLeft="@drawable/person"
+                android:hint=" Full Name"
+                android:layout_gravity="center_horizontal" />
 
-        <EditText
-            android:id="@+id/email_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="center_horizontal"
-            android:drawableLeft="@drawable/email"
-            android:elevation="5dp"
-            android:ems="10"
-            android:hint=" Email"
-            android:inputType="textEmailAddress"
-            android:translationY="150dp" />
+            <EditText
+                android:id="@+id/email_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/email"
+                android:ems="10"
+                android:hint=" Email"
+                android:inputType="textEmailAddress"/>
 
-        <EditText
-            android:id="@+id/password_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="center_horizontal"
-            android:drawableLeft="@drawable/lock"
-            android:elevation="5dp"
-            android:ems="10"
-            android:hint=" Password"
-            android:inputType="textPassword"
-            android:translationY="200dp" />
+            <EditText
+                android:id="@+id/password_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/lock"
+                android:ems="10"
+                android:hint=" Password"
+                android:inputType="textPassword"/>
 
-        <EditText
-            android:id="@+id/repeat_password_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="center_horizontal"
-            android:drawableLeft="@drawable/lock"
-            android:elevation="5dp"
-            android:ems="10"
-            android:hint=" Repeat Password"
-            android:inputType="textPassword"
-            android:translationY="250dp" />
+            <EditText
+                android:id="@+id/repeat_password_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/lock"
+                android:ems="10"
+                android:hint=" Repeat Password"
+                android:inputType="textPassword"/>
 
-        <EditText
-            android:id="@+id/date_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date"
-            android:layout_gravity="center_horizontal"
-            android:drawableLeft="@drawable/calendar"
-            android:elevation="5dp"
-            android:translationY="300dp"
-            android:hint=" Date of Birth"/>
+            <EditText
+                android:id="@+id/date_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/calendar"
+                android:hint=" Date of Birth"/>
 
-        <Button
-            android:id="@+id/create_account_button"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:backgroundTint="@color/button"
-            android:elevation="5dp"
-            android:stateListAnimator="@null"
-            android:text="Create Account"
-            android:textStyle="bold"
-            android:translationY="400dp" />
+            <Button
+                android:id="@+id/create_account_button"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/button"
+                android:stateListAnimator="@null"
+                android:elevation="5dp"
+                android:text="Create Account"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"/>
 
-
+        </LinearLayout>
 
     </FrameLayout>
 

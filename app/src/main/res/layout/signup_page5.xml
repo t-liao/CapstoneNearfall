@@ -70,34 +70,83 @@
             android:textStyle="bold"
             android:textAlignment="center"/>
 
-        <FrameLayout
+        <LinearLayout
+            android:id="@+id/research_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
             android:translationY="50dp">
 
-            <View
-                android:id="@+id/content_box_research"
-                android:layout_width="298dp"
-                android:layout_height="50dp"
-                android:background="@drawable/content_box_grey"
-                />
+            <CheckBox
+                android:id="@+id/checkResearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/content_box_research"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/content_box_purple" />
+
+                <TextView
+                    android:id="@+id/text_research"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Research"
+                    android:textStyle="bold"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="20sp"/>
 
 
-        </FrameLayout>
+            </FrameLayout>
 
-        <FrameLayout
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/personal_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
             android:translationY="70dp">
 
-            <View
-                android:id="@+id/content_box_personal"
-                android:layout_width="298dp"
-                android:layout_height="50dp"
-                android:background="@drawable/content_box_grey"
-                />
+            <CheckBox
+                android:id="@+id/checkPurpose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-        </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/content_box_purpose"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/content_box_purple" />
+
+                <TextView
+                    android:id="@+id/text_purpose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Purpose"
+                    android:textStyle="bold"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="20sp"/>
+
+
+            </FrameLayout>
+
+        </LinearLayout>
 
 
         <Button
@@ -106,6 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:backgroundTint="@color/button"
+            android:textStyle="bold"
             android:text="Next"
             android:translationY="150dp" />
 

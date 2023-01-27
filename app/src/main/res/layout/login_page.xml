@@ -36,93 +36,92 @@
             android:elevation="5dp"
             />
 
-        <TextView
-            android:id="@+id/login_text"
+        <LinearLayout
+            android:id="@+id/personal_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:elevation="6dp"
-            android:text="Login"
-            android:textColor="@color/big_word"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:translationY="50dp" />
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:elevation="5dp">
 
-        <EditText
-            android:id="@+id/email_login"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="center_horizontal"
-            android:drawableLeft="@drawable/email"
-            android:elevation="5dp"
-            android:ems="10"
-            android:hint=" Email"
-            android:inputType="textEmailAddress"
-            android:translationY="100dp" />
+            <TextView
+                android:id="@+id/login_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Login"
+                android:textColor="@color/big_word"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="25dp"
+                 />
 
-        <EditText
-            android:id="@+id/password_login"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="center_horizontal"
-            android:drawableLeft="@drawable/lock"
-            android:elevation="5dp"
-            android:ems="10"
-            android:hint=" Password"
-            android:inputType="textPassword"
-            android:translationY="150dp" />
+            <EditText
+                android:id="@+id/email_login"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/email"
+                android:ems="10"
+                android:hint=" Email"
+                android:inputType="textEmailAddress" />
 
-        <CheckBox
-            android:id="@+id/stayin_checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stay signed in?"
-            android:elevation="5dp"
-            android:textSize="15sp"
-            android:translationX="45dp"
-            android:translationY="195dp" />
+            <EditText
+                android:id="@+id/password_login"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/lock"
+                android:ems="10"
+                android:hint=" Password"
+                android:inputType="textPassword" />
 
-        <Button
-            android:id="@+id/login_button2"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:backgroundTint="@color/button"
-            android:stateListAnimator="@null"
-            android:elevation="5dp"
-            android:text="Login"
-            android:textStyle="bold"
-            android:translationY="280dp" />
+            <CheckBox
+                android:id="@+id/stayin_checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stay signed in?"
+                android:textSize="15sp"
+                android:translationX="45dp" />
 
-        <TextView
-            android:id="@+id/account_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Don't have an Account?"
-            android:elevation="5dp"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:translationY="390dp" />
+            <Button
+                android:id="@+id/login_button2"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/button"
+                android:stateListAnimator="@null"
+                android:elevation="5dp"
+                android:text="Login"
+                android:textStyle="bold"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="25dp" />
 
-        <TextView
-            android:id="@+id/sign_in"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:elevation="5dp"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:translationY="415dp"
-            android:layout_gravity="center_horizontal"
+            <TextView
+                android:id="@+id/account_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Don't have an Account?"
+                android:textSize="15sp"
+                android:textColor="@color/black" />
 
-            android:onClick="onClick"
-            android:clickable="true" />
-        <!--idk if this makes it clickable or if I need
-        to do something else somewhere else -->
+            <TextView
+                android:id="@+id/sign_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
 
+                android:onClick="onClick"
+                android:clickable="true" />
+            <!--idk if this makes it clickable or if I need
+            to do something else somewhere else -->
 
+        </LinearLayout>
 
     </FrameLayout>
 
