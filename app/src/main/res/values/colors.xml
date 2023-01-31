@@ -13,7 +13,11 @@
     <color name="background_grey">#EDEDED</color>
     <color name="button">#3432D1</color>
     <color name="big_word">#5856F5</color>
+    <color name="light_blue">#E9EFFC</color>
+    <color name="bright_blue">#0386D0</color>
     <color name="red">#AF1A27</color>
+    <color name="transparent">#00000000</color>
+
 
 
 </resources>
