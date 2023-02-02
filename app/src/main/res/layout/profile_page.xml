@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
-
-    <TextView
-        android:id="@+id/heat_map_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Heat Map"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginVertical="30dp"
-        android:textSize="20sp" />
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -38,6 +25,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
+
             <ImageView
                 android:id="@+id/home_grey"
                 android:layout_width="wrap_content"
@@ -48,18 +36,39 @@
                 app:srcCompat="@drawable/home_grey"
                 android:layout_marginHorizontal="60dp"/>
 
+
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/map_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/map_icon_grey"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/map_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                app:srcCompat="@drawable/map_grey" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/user_icon_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center"
             android:orientation="vertical">
 
             <View
-                android:id="@+id/content_box_map"
+                android:id="@+id/content_box_user"
                 android:layout_width="100dp"
                 android:layout_height="2dp"
                 android:background="@drawable/content_box_white"
@@ -68,44 +77,25 @@
                 />
 
             <ImageView
-                android:id="@+id/map"
+                android:id="@+id/user_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
+                android:layout_marginVertical="6dp"
                 android:scaleX="1.2"
                 android:scaleY="1.2"
-                app:srcCompat="@drawable/map_blue" />
+                app:srcCompat="@drawable/user_blue"
+                android:layout_marginHorizontal="60dp"/>
 
             <TextView
-                android:id="@+id/map_text"
+                android:id="@+id/profile_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Map"
+                android:text="Profile"
                 android:textSize="16sp"
-                android:textColor="@color/bottom"
-
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/user_icon_grey"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/user_grey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:scaleX="1.2"
-                android:scaleY="1.2"
-                app:srcCompat="@drawable/user_grey"
-                android:layout_marginHorizontal="60dp"/>
+                android:textColor="@color/bottom"/>
 
         </LinearLayout>
 
     </FrameLayout>
+
 </RelativeLayout>

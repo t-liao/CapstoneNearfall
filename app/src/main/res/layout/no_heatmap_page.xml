@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
@@ -17,6 +17,59 @@
         android:layout_marginVertical="30dp"
         android:textSize="20sp" />
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <View
+            android:id="@+id/content_box_heatmap_info"
+            android:layout_width="300dp"
+            android:layout_height="220dp"
+            android:elevation="5dp"
+            android:layout_gravity="center"
+            android:background="@drawable/content_box"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:elevation="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/error_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Error"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="28sp"
+                android:layout_marginVertical="20dp"/>
+
+            <TextView
+                android:id="@+id/this_option_is_non_available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:text="This option is not available\n under research mode." />
+
+            <Button
+                android:id="@+id/change_mode_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginVertical="20dp"
+                android:backgroundTint="@color/red"
+                android:text="Change Mode" />
+        </LinearLayout>
+
+    </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -64,14 +117,13 @@
                 android:layout_height="2dp"
                 android:background="@drawable/content_box_white"
                 android:backgroundTint="@color/bottom"
-                android:layout_marginBottom="10dp"
-                />
+                android:layout_marginBottom="10dp" />
 
             <ImageView
                 android:id="@+id/map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
+                android:layout_marginVertical="6dp"
                 android:scaleX="1.2"
                 android:scaleY="1.2"
                 app:srcCompat="@drawable/map_blue" />
@@ -108,4 +160,5 @@
         </LinearLayout>
 
     </FrameLayout>
+
 </RelativeLayout>
