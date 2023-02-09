@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/login_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_img_login"
-    android:gravity="center_horizontal"
     android:orientation="vertical">
 
 
@@ -12,21 +11,20 @@
         android:id="@+id/back_button_login"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
+        android:layout_gravity="left|top"
+        android:layout_margin="20dp"
         android:backgroundTint="@color/white"
         android:text="<"
         android:textColor="@color/big_word"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:translationX="-125dp"
-        android:translationY="70dp"
         android:elevation="10dp"
         android:stateListAnimator="@null"/>
 
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="500dp"
-        android:translationY="100dp">
+        android:layout_centerInParent="true">
 
         <View
             android:id="@+id/content_box"
@@ -125,4 +123,4 @@
 
     </FrameLayout>
 
-</LinearLayout>
+</RelativeLayout>

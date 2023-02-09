@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_signup"
-    android:gravity="center_horizontal"
     android:orientation="vertical">
-
 
     <Button
         android:id="@+id/back_button_signup"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
+        android:layout_gravity="left|top"
+        android:layout_margin="20dp"
         android:backgroundTint="@color/white"
         android:text="<"
         android:textColor="@color/big_word"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:translationX="-125dp"
-        android:translationY="70dp"
         android:elevation="10dp"
         android:stateListAnimator="@null"/>
 
@@ -26,18 +23,18 @@
         android:id="@+id/create_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
         android:text="Create an Account"
-        android:translationY="34dp"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:elevation="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="50dp"
         android:textStyle="bold"/>
 
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="500dp"
-        android:translationY="100dp"
-        android:gravity="center">
+        android:layout_centerInParent="true">
 
         <View
             android:id="@+id/content_box_signup"
@@ -45,6 +42,8 @@
             android:layout_height="494dp"
             android:background="@drawable/content_box"
             android:elevation="5dp" />
+
+
 
         <LinearLayout
             android:id="@+id/personal_check"
@@ -133,4 +132,4 @@
     </FrameLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

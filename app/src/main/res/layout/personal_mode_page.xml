@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,25 +11,27 @@
         android:id="@+id/back_button_personal_mode"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
+        android:layout_gravity="left|top"
+        android:layout_margin="20dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
         android:backgroundTint="@color/white"
+        android:elevation="10dp"
+        android:stateListAnimator="@null"
         android:text="<"
         android:textColor="@color/big_word"
         android:textSize="20dp"
-        android:textStyle="bold"
-        android:translationX="-125dp"
-        android:translationY="30dp"
-        android:elevation="10dp"
-        android:stateListAnimator="@null"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/currently_personal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:translationY="60dp"
-        android:layout_weight="1">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/currently_text"
@@ -38,7 +40,7 @@
             android:layout_weight="0"
             android:text="You are currently in"
             android:textColor="@color/black"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/personal_mode_text"
@@ -48,13 +50,13 @@
             android:paddingTop="20dp"
             android:text="Personal Mode"
             android:textColor="@color/big_word"
-            android:textStyle="bold"
-            android:textSize="35sp"/>
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/personal_img"
-            android:layout_width="322dp"
-            android:layout_height="331dp"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
             android:layout_weight="0"
             app:srcCompat="@drawable/personal_mode_image" />
 
@@ -62,16 +64,17 @@
             android:id="@+id/personal_change_mode_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_weight="0"
-            android:text="Change Mode"
             android:backgroundTint="@color/red"
-            android:layout_marginTop="20dp"/>
+            android:text="Change Mode" />
 
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
         <View
             android:id="@+id/content_box_bar"
@@ -160,4 +163,4 @@
     </FrameLayout>
 
 
-</LinearLayout>
+</RelativeLayout>
