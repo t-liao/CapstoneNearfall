@@ -6,16 +6,6 @@
     android:background="@drawable/background_img_login"
     android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/back_button_mode_selection"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_gravity="left|top"
-        android:layout_margin="20dp"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/back"
-        android:elevation="10dp"
-        android:stateListAnimator="@null"/>
 
     <FrameLayout
         android:layout_width="match_parent"

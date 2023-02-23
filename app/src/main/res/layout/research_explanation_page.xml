@@ -21,54 +21,51 @@
         android:layout_height="500dp"
         android:layout_centerInParent="true">
 
-
-        <TextView
-            android:id="@+id/welcome_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome!"
-            android:layout_gravity="center_horizontal"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            />
-
-        <TextView
-            android:id="@+id/name_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Bob Martin"
-
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/big_word"
-            android:textSize="35dp"
-            android:textStyle="bold"
-            android:translationY="40dp" />
-
-        <TextView
-            android:id="@+id/instruction_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Please Select a Mode of Operation"
-            android:layout_gravity="center_horizontal"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:translationY="100dp"/>
-
         <LinearLayout
             android:id="@+id/mode_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:orientation="vertical"
             android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:translationY="150dp">
+            android:paddingRight="40dp">
+
+            <TextView
+                android:id="@+id/welcome_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Welcome!"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_horizontal"
+
+                android:layout_marginVertical="20dp"
+                android:text="Bob Martin"
+                android:textColor="@color/big_word"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/instruction_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Please Select a Mode of Operation"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/research_mode_button"
                 android:layout_width="270dp"
                 android:layout_height="67dp"
+                android:layout_marginTop="40dp"
                 android:backgroundTint="@color/big_word"
                 android:text="RESEARCH"
                 android:textSize="20sp"
@@ -78,7 +75,7 @@
                 android:id="@+id/research_explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="40dp"
                 android:text="This mode is purely used for the purpose of data collection."
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -88,64 +85,44 @@
                 android:id="@+id/research_explanation2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="20dp"
+                android:orientation="vertical"
                 android:paddingLeft="20dp"
-                android:orientation="vertical">
+                android:paddingTop="20dp">
 
                 <TextView
                     android:id="@+id/research_data_collection_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="  Data Collection"
-                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/check"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:drawableLeft="@drawable/check"/>
+                    android:text="  Data Collection"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/research_location_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="  Location Tracking"
-                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/x"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:drawableLeft="@drawable/x"/>
+                    android:text="  Location Tracking"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/research_notification_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="  Notification"
-                    android:textColor="@color/black"
+                    android:drawableLeft="@drawable/x"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:drawableLeft="@drawable/x"/>
+                    android:text="  Notification"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/personal_mode_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:translationY="400dp"
-            android:layout_gravity="center_horizontal">
-
-            <Button
-                android:id="@+id/personal_button"
-                android:layout_width="270dp"
-                android:layout_height="67dp"
-                android:text="PERSONAL"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/grey"
-                />
-
-        </LinearLayout>
     </FrameLayout>
 
 </RelativeLayout>

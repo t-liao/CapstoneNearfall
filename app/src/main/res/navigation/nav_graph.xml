@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.capstonefrontendoriginal.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.capstonefrontendoriginal.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.capstonefrontendoriginal.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_modeSelectionFragment"
+            app:destination="@id/modeSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modeSelectionFragment"
+        android:name="com.example.capstonefrontendoriginal.ModeSelectionFragment"
+        android:label="fragment_mode_selection"
+        tools:layout="@layout/fragment_mode_selection" >
+        <action
+            android:id="@+id/action_modeSelectionFragment_to_researchExpFragment"
+            app:destination="@id/researchExpFragment" />
+        <action
+            android:id="@+id/action_modeSelectionFragment_to_personalExpFragment"
+            app:destination="@id/personalExpFragment" />
+        <action
+            android:id="@+id/action_modeSelectionFragment_to_researchModeFragment"
+            app:destination="@id/researchModeFragment" />
+        <action
+            android:id="@+id/action_modeSelectionFragment_to_personalModeFragment"
+            app:destination="@id/personalModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalExpFragment"
+        android:name="com.example.capstonefrontendoriginal.PersonalExpFragment"
+        android:label="fragment_personal_exp"
+        tools:layout="@layout/fragment_personal_exp" >
+        <action
+            android:id="@+id/action_personalExpFragment_to_modeSelectionFragment"
+            app:destination="@id/modeSelectionFragment" />
+        <action
+            android:id="@+id/action_personalExpFragment_to_personalModeFragment"
+            app:destination="@id/personalModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/researchExpFragment"
+        android:name="com.example.capstonefrontendoriginal.ResearchExpFragment"
+        android:label="fragment_research_exp"
+        tools:layout="@layout/fragment_research_exp" >
+        <action
+            android:id="@+id/action_researchExpFragment_to_modeSelectionFragment"
+            app:destination="@id/modeSelectionFragment" />
+        <action
+            android:id="@+id/action_researchExpFragment_to_researchModeFragment"
+            app:destination="@id/researchModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalModeFragment"
+        android:name="com.example.capstonefrontendoriginal.PersonalModeFragment"
+        android:label="fragment_personal_mode"
+        tools:layout="@layout/fragment_personal_mode" >
+        <action
+            android:id="@+id/action_personalModeFragment_to_modeSelectionFragment"
+            app:destination="@id/modeSelectionFragment" />
+        <action
+            android:id="@+id/action_personalModeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/researchModeFragment"
+        android:name="com.example.capstonefrontendoriginal.ResearchModeFragment"
+        android:label="fragment_research_mode"
+        tools:layout="@layout/fragment_research_mode" >
+        <action
+            android:id="@+id/action_researchModeFragment_to_modeSelectionFragment"
+            app:destination="@id/modeSelectionFragment" />
+        <action
+            android:id="@+id/action_researchModeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.capstonefrontendoriginal.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
