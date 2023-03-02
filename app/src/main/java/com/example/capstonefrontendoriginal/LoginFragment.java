@@ -27,7 +27,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_welcomeFragment);
+                //Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_welcomeFragment);
             }
         });
 

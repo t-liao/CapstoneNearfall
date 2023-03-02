@@ -10,17 +10,17 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_welcomeFragment_to_loginV2Fragment"
+            app:destination="@id/loginV2Fragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_signUp1Fragment"
+            app:destination="@id/signUp1Fragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.capstonefrontendoriginal.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
@@ -33,9 +33,6 @@
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_signUpFragment_to_modeSelectionFragment"
-            app:destination="@id/modeSelectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/modeSelectionFragment"
@@ -90,6 +87,9 @@
         <action
             android:id="@+id/action_personalModeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_personalModeFragment_to_noHeatmapFragment"
+            app:destination="@id/noHeatmapFragment" />
     </fragment>
     <fragment
         android:id="@+id/researchModeFragment"
@@ -102,10 +102,119 @@
         <action
             android:id="@+id/action_researchModeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_researchModeFragment_to_noHeatmapFragment"
+            app:destination="@id/noHeatmapFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.capstonefrontendoriginal.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_personalModeFragment"
+            app:destination="@id/personalModeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_researchModeFragment"
+            app:destination="@id/researchModeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_noHeatmapFragment"
+            app:destination="@id/noHeatmapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginV2Fragment"
+        android:name="com.example.capstonefrontendoriginal.LoginV2Fragment"
+        android:label="fragment_login_v2"
+        tools:layout="@layout/fragment_login_v2" >
+        <action
+            android:id="@+id/action_loginV2Fragment_to_signUp1Fragment"
+            app:destination="@id/signUp1Fragment" />
+        <action
+            android:id="@+id/action_loginV2Fragment_to_researchModeFragment"
+            app:destination="@id/researchModeFragment" />
+        <action
+            android:id="@+id/action_loginV2Fragment_to_personalModeFragment"
+            app:destination="@id/personalModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp1Fragment"
+        android:name="com.example.capstonefrontendoriginal.SignUp1Fragment"
+        android:label="fragment_sign_up1"
+        tools:layout="@layout/fragment_sign_up1" >
+        <action
+            android:id="@+id/action_signUp1Fragment_to_signUp2Fragment"
+            app:destination="@id/signUp2Fragment" />
+        <action
+            android:id="@+id/action_signUp1Fragment_to_loginV2Fragment"
+            app:destination="@id/loginV2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp2Fragment"
+        android:name="com.example.capstonefrontendoriginal.SignUp2Fragment"
+        android:label="fragment_sign_up2"
+        tools:layout="@layout/fragment_sign_up2" >
+        <action
+            android:id="@+id/action_signUp2Fragment_to_signUp3Fragment"
+            app:destination="@id/signUp3Fragment" />
+        <action
+            android:id="@+id/action_signUp2Fragment_to_signUp1Fragment"
+            app:destination="@id/signUp1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp3Fragment"
+        android:name="com.example.capstonefrontendoriginal.SignUp3Fragment"
+        android:label="fragment_sign_up3"
+        tools:layout="@layout/fragment_sign_up3" >
+        <action
+            android:id="@+id/action_signUp3Fragment_to_signUp4Fragment"
+            app:destination="@id/signUp4Fragment" />
+        <action
+            android:id="@+id/action_signUp3Fragment_to_signUp2Fragment"
+            app:destination="@id/signUp2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp4Fragment"
+        android:name="com.example.capstonefrontendoriginal.SignUp4Fragment"
+        android:label="fragment_sign_up4"
+        tools:layout="@layout/fragment_sign_up4" >
+        <action
+            android:id="@+id/action_signUp4Fragment_to_signUp5Fragment"
+            app:destination="@id/signUp5Fragment" />
+        <action
+            android:id="@+id/action_signUp4Fragment_to_signUp3Fragment"
+            app:destination="@id/signUp3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp5Fragment"
+        android:name="com.example.capstonefrontendoriginal.SignUp5Fragment"
+        android:label="fragment_sign_up5"
+        tools:layout="@layout/fragment_sign_up5" >
+        <action
+            android:id="@+id/action_signUp5Fragment_to_signUp4Fragment"
+            app:destination="@id/signUp4Fragment" />
+        <action
+            android:id="@+id/action_signUp5Fragment_to_researchModeFragment"
+            app:destination="@id/researchModeFragment" />
+        <action
+            android:id="@+id/action_signUp5Fragment_to_personalModeFragment"
+            app:destination="@id/personalModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noHeatmapFragment"
+        android:name="com.example.capstonefrontendoriginal.NoHeatmapFragment"
+        android:label="fragment_no_heatmap"
+        tools:layout="@layout/fragment_no_heatmap" >
+        <action
+            android:id="@+id/action_noHeatmapFragment_to_researchModeFragment"
+            app:destination="@id/researchModeFragment" />
+        <action
+            android:id="@+id/action_noHeatmapFragment_to_personalModeFragment"
+            app:destination="@id/personalModeFragment" />
+        <action
+            android:id="@+id/action_noHeatmapFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

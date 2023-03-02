@@ -22,8 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:translationY="0dp">
+        android:orientation="vertical">
 
 
         <ImageView
@@ -51,7 +50,7 @@
             android:layout_weight="0"
             android:scaleX="1.1"
             android:scaleY="1.1"
-            android:translationY="10dp"
+            android:layout_marginTop="10dp"
             app:srcCompat="@drawable/progress_bar5" />
 
         <TextView
@@ -59,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:translationY="25dp"
+            android:layout_marginTop="15dp"
             android:text="Select your primary purpose"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -71,79 +70,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:translationY="50dp">
+            android:orientation="vertical"
+            android:layout_marginTop="50dp">
 
-            <CheckBox
-                android:id="@+id/checkResearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <FrameLayout
+            <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <View
-                    android:id="@+id/content_box_research"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/content_box_purple" />
-
-                <TextView
-                    android:id="@+id/text_research"
-                    android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/researchRadioButton"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_weight="0"
                     android:text="Research"
-                    android:textStyle="bold"
+                    android:background="@drawable/content_box_purple"
                     android:textColor="@color/dark_grey"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:paddingHorizontal="30dp"
+                    android:paddingVertical="10dp"
+                    android:checked="true"/>
 
-
-            </FrameLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/personal_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:translationY="70dp">
-
-            <CheckBox
-                android:id="@+id/checkPurpose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <View
-                    android:id="@+id/content_box_purpose"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/content_box_purple" />
-
-                <TextView
-                    android:id="@+id/text_purpose"
-                    android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/personalRadioButton"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Purpose"
-                    android:textStyle="bold"
+                    android:layout_weight="0"
+                    android:background="@drawable/content_box_purple"
+                    android:text="Personal"
                     android:textColor="@color/dark_grey"
-                    android:textSize="20sp"/>
-
-
-            </FrameLayout>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="30dp"/>
+            </RadioGroup>
 
         </LinearLayout>
-
 
         <Button
             android:id="@+id/next_button_signup5"
@@ -153,7 +117,7 @@
             android:backgroundTint="@color/button"
             android:textStyle="bold"
             android:text="Next"
-            android:translationY="150dp" />
+            android:layout_marginTop="50dp" />
 
     </LinearLayout>
 

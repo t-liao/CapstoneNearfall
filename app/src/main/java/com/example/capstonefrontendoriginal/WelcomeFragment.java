@@ -23,7 +23,20 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_welcome, container, false);
 
         Button Login = view.findViewById(R.id.login_button);
-        Login.setOnClickListener(this);
+        Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_loginV2Fragment);
+            }
+        });
+
+        Button createAccount = view.findViewById(R.id.create_account_wel_button);
+        createAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_signUp1Fragment);
+            }
+        });
 
         return view;
     }
@@ -31,6 +44,6 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_loginFragment);
+
     }
 }

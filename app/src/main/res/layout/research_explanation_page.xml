@@ -47,7 +47,7 @@
                 android:layout_gravity="center_horizontal"
 
                 android:layout_marginVertical="20dp"
-                android:text="Bob Martin"
+                android:text=""
                 android:textColor="@color/big_word"
                 android:textSize="35dp"
                 android:textStyle="bold" />

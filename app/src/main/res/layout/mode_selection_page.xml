@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Bob Martin"
+            android:text=""
 
             android:layout_gravity="center_horizontal"
             android:textColor="@color/big_word"
@@ -59,7 +59,7 @@
                 android:id="@+id/research_button"
                 android:layout_width="270dp"
                 android:layout_height="67dp"
-                android:text="RESEARCH"
+                android:text="Research"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:backgroundTint="@color/big_word"/>
@@ -89,7 +89,7 @@
                 android:id="@+id/personal_button"
                 android:layout_width="270dp"
                 android:layout_height="67dp"
-                android:text="PERSONAL"
+                android:text="Personal"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:backgroundTint="@color/big_word"

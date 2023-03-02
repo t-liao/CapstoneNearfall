@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:translationY="0dp">
+        >
 
 
         <ImageView
@@ -51,7 +51,7 @@
             android:layout_weight="0"
             android:scaleX="1.1"
             android:scaleY="1.1"
-            android:translationY="10dp"
+            android:layout_marginTop="10dp"
             app:srcCompat="@drawable/progress_bar2" />
 
         <TextView
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:translationY="25dp"
+            android:layout_marginTop="15dp"
             android:text="Please enter your Full Name"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -69,7 +69,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:translationY="100dp">
+            android:layout_marginTop="60dp">
 
             <View
                 android:id="@+id/content_box_name"
@@ -101,7 +101,7 @@
             android:backgroundTint="@color/button"
             android:text="Next"
             android:textStyle="bold"
-            android:translationY="150dp" />
+            android:layout_marginTop="50dp" />
 
     </LinearLayout>
 

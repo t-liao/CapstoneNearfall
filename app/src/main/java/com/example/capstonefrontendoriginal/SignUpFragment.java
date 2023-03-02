@@ -34,7 +34,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_signUpFragment_to_modeSelectionFragment);
+                //Navigation.findNavController(view).navigate(R.id.action_signUpFragment_to_modeSelectionFragment);
             }
         });
 
