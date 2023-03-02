@@ -46,7 +46,9 @@ public class SignUp1Fragment extends Fragment implements View.OnClickListener {
 
                 if(email.length()==0){
                     email.setError("Enter Email Address");
-                } else {
+                } else if (!isEmailValid(email.getText().toString())) {
+                    email.setError("Email Address Is Invalid");
+                }else {
                     String e  = email.getText().toString();
 
                     SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -55,6 +57,9 @@ public class SignUp1Fragment extends Fragment implements View.OnClickListener {
 
                     Navigation.findNavController(view).navigate(R.id.action_signUp1Fragment_to_signUp2Fragment);
                 }
+            }
+            boolean isEmailValid(CharSequence email) {
+                return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
             }
         });
 
