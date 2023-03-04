@@ -10,11 +10,9 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-public class NoHeatmapFragment extends Fragment implements View.OnClickListener{
+public class HeatmapFragment extends Fragment implements View.OnClickListener {
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String Purpose = "purposeKey";
     SharedPreferences sharedpreferences;
@@ -27,7 +25,7 @@ public class NoHeatmapFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_no_heatmap, container, false);
+        View view = inflater.inflate(R.layout.fragment_heatmap, container, false);
 
         sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String purpose = sharedpreferences.getString(Purpose,"DEFAULT");
@@ -36,7 +34,7 @@ public class NoHeatmapFragment extends Fragment implements View.OnClickListener{
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_noHeatmapFragment_to_profileFragment);
+                Navigation.findNavController(view).navigate(R.id.action_heatmapFragment_to_profileFragment);
             }
         });
 
@@ -44,11 +42,9 @@ public class NoHeatmapFragment extends Fragment implements View.OnClickListener{
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_noHeatmapFragment_to_homeFragment);
+                Navigation.findNavController(view).navigate(R.id.action_heatmapFragment_to_homeFragment);
             }
         });
-
-
 
         return view;
     }

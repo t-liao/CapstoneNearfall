@@ -82,7 +82,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_noHeatmapFragment);
+                if (purpose.equals("Research")){
+                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_noHeatmapFragment);
+                } else if (purpose.equals("Personal")) {
+                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_heatmapFragment);
+                }
+
+
             }
         });
 

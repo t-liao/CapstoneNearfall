@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_homeFragment_to_noHeatmapFragment"
             app:destination="@id/noHeatmapFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_heatmapFragment"
+            app:destination="@id/heatmapFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -112,6 +115,9 @@
         <action
             android:id="@+id/action_profileFragment_to_noHeatmapFragment"
             app:destination="@id/noHeatmapFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_heatmapFragment"
+            app:destination="@id/heatmapFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginV2Fragment"
@@ -200,5 +206,17 @@
         <action
             android:id="@+id/action_tutorialOptionFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heatmapFragment"
+        android:name="com.example.capstonefrontendoriginal.HeatmapFragment"
+        android:label="fragment_heatmap"
+        tools:layout="@layout/fragment_heatmap" >
+        <action
+            android:id="@+id/action_heatmapFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_heatmapFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>
