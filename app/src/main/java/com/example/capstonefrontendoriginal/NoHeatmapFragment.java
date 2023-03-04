@@ -44,16 +44,13 @@ public class NoHeatmapFragment extends Fragment implements View.OnClickListener{
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_noHeatmapFragment_to_homeFragment);
 
-                if(purpose.equals("Research")){
-                    Navigation.findNavController(view).navigate(R.id.action_noHeatmapFragment_to_researchModeFragment);
-                } else if (purpose.equals("Personal")){
-                    Navigation.findNavController(view).navigate(R.id.action_noHeatmapFragment_to_personalModeFragment);
-                }
-
-
-
-
+//                if(purpose.equals("Research")){
+//                    Navigation.findNavController(view).navigate(R.id.action_noHeatmapFragment_to_homeFragment);
+//                } else if (purpose.equals("Personal")){
+//                    Navigation.findNavController(view).navigate(R.id.action_noHeatmapFragment_to_personalModeFragment);
+//                }
             }
         });
 

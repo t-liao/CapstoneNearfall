@@ -7,4 +7,6 @@
 
     <include layout="@layout/personal_mode_page"/>
 
+<!--    Can be deleted-->
+
 </FrameLayout>

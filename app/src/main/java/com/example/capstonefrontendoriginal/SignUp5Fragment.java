@@ -45,14 +45,14 @@ public class SignUp5Fragment extends Fragment implements View.OnClickListener {
                     editor.putString(Purpose, p);
                     editor.commit();
 
-                    Navigation.findNavController(view).navigate(R.id.action_signUp5Fragment_to_researchModeFragment);
+                    //Navigation.findNavController(view).navigate(R.id.action_signUp5Fragment_to_researchModeFragment);
                 } else if (personalRadioButton.isChecked()){
                     String p  = personalRadioButton.getText().toString();
                     SharedPreferences.Editor editor = sharedpreferences.edit();
                     editor.putString(Purpose, p);
                     editor.commit();
 
-                    Navigation.findNavController(view).navigate(R.id.action_signUp5Fragment_to_personalModeFragment);
+                    //Navigation.findNavController(view).navigate(R.id.action_signUp5Fragment_to_personalModeFragment);
                 }
 
             }

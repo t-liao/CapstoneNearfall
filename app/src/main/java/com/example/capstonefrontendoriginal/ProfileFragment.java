@@ -54,15 +54,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
 
-                if(purpose.equals("Research")){
-                    Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_researchModeFragment);
-                } else if (purpose.equals("Personal")){
-                    Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_personalModeFragment);
-                }
+                Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_homeFragment);
 
-
-
-
+//                if(purpose.equals("Research")){
+//                    Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_researchModeFragment);
+//                } else if (purpose.equals("Personal")){
+//                    Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_personalModeFragment);
+//                }
             }
         });
 

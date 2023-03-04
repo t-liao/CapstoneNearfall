@@ -17,40 +17,64 @@
         android:orientation="vertical"
         android:translationY="-30dp">
 
-        <TextView
-            android:id="@+id/currently_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="You are currently in"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/currently_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="0"-->
+<!--            android:text="You are currently in"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="18sp" />-->
 
         <TextView
             android:id="@+id/personal_mode_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:paddingTop="20dp"
+            android:paddingTop="0dp"
             android:text="Personal Mode"
             android:textColor="@color/big_word"
             android:textSize="35sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/personal_img"
-            android:layout_width="320dp"
-            android:layout_height="320dp"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/personal_mode_image" />
+<!--        <ImageView-->
+<!--            android:id="@+id/personal_img"-->
+<!--            android:layout_width="320dp"-->
+<!--            android:layout_height="320dp"-->
+<!--            android:layout_weight="0"-->
+<!--            app:srcCompat="@drawable/personal_mode_image" />-->
+        <TextView
+            android:id="@+id/detection_on_off_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detection Off"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/start_stop_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="START"
+            android:textColor="@color/white"
+            android:background="@drawable/content_circle_green"
+            android:textSize="60sp"
+            android:textStyle="bold" />
+
 
         <Button
             android:id="@+id/personal_change_mode_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="60dp"
             android:layout_weight="0"
-            android:backgroundTint="@color/red"
+            android:backgroundTint="@color/dark_grey"
             android:text="Change Mode" />
 
     </LinearLayout>

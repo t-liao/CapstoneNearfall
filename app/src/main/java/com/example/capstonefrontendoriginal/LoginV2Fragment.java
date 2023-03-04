@@ -65,9 +65,9 @@ public class LoginV2Fragment extends Fragment implements View.OnClickListener {
                 } else if (password.getText().toString().equals(savedPassword) && email.getText().toString().equals(savedEmail)){
 
                     if(purpose.equals("Research")){
-                        Navigation.findNavController(view).navigate(R.id.action_loginV2Fragment_to_researchModeFragment);
+                        //Navigation.findNavController(view).navigate(R.id.action_loginV2Fragment_to_researchModeFragment);
                     } else if (purpose.equals("Personal")){
-                        Navigation.findNavController(view).navigate(R.id.action_loginV2Fragment_to_personalModeFragment);
+                        //Navigation.findNavController(view).navigate(R.id.action_loginV2Fragment_to_personalModeFragment);
                     }
 
 

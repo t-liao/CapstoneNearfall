@@ -45,7 +45,7 @@ public class PersonalExpFragment extends Fragment implements View.OnClickListene
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString(Purpose, "Personal");
                 editor.commit();
-                Navigation.findNavController(view).navigate(R.id.action_personalExpFragment_to_personalModeFragment);
+                Navigation.findNavController(view).navigate(R.id.action_personalExpFragment_to_homeFragment);
             }
         });
 

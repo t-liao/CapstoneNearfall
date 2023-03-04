@@ -69,8 +69,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:drawableLeft="@drawable/person"
-                android:hint=" Full Name"
+                android:drawableRight="@drawable/person"
+                android:hint="Full Name"
                 android:layout_gravity="center_horizontal" />
 
             <EditText
@@ -78,9 +78,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
-                android:drawableLeft="@drawable/email"
+                android:drawableRight="@drawable/email"
                 android:ems="10"
-                android:hint=" Email"
+                android:hint="Email"
                 android:inputType="textEmailAddress"/>
 
             <EditText
@@ -88,9 +88,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
-                android:drawableLeft="@drawable/lock"
+                android:drawableRight="@drawable/lock"
                 android:ems="10"
-                android:hint=" Password"
+                android:hint="Password"
                 android:inputType="textPassword"/>
 
             <EditText
@@ -98,9 +98,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
-                android:drawableLeft="@drawable/lock"
+                android:drawableRight="@drawable/lock"
                 android:ems="10"
-                android:hint=" Repeat Password"
+                android:hint="Repeat Password"
                 android:inputType="textPassword"/>
 
             <EditText
@@ -110,8 +110,44 @@
                 android:ems="10"
                 android:inputType="date"
                 android:layout_gravity="center_horizontal"
-                android:drawableLeft="@drawable/calendar"
-                android:hint=" Date of Birth"/>
+                android:drawableRight="@drawable/calendar"
+                android:hint="Date of Birth"
+                android:focusableInTouchMode="false"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/researchRadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="Research"
+                    android:background="@drawable/content_box_profile"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="0dp"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/personalRadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:background="@drawable/content_box_profile"
+                    android:text="Personal"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:paddingVertical="0dp"
+                    android:paddingHorizontal="10dp"/>
+            </RadioGroup>
 
             <Button
                 android:id="@+id/create_account_button"

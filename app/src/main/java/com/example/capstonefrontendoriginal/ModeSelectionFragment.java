@@ -55,7 +55,7 @@ public class ModeSelectionFragment extends Fragment implements View.OnClickListe
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString(Purpose, "Research");
                 editor.commit();
-                Navigation.findNavController(view).navigate(R.id.action_modeSelectionFragment_to_researchModeFragment);
+                Navigation.findNavController(view).navigate(R.id.action_modeSelectionFragment_to_homeFragment);
             }
         });
 
@@ -66,7 +66,7 @@ public class ModeSelectionFragment extends Fragment implements View.OnClickListe
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString(Purpose, "Personal");
                 editor.commit();
-                Navigation.findNavController(view).navigate(R.id.action_modeSelectionFragment_to_personalModeFragment);
+                Navigation.findNavController(view).navigate(R.id.action_modeSelectionFragment_to_homeFragment);
             }
         });
 

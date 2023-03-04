@@ -10,11 +10,11 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_loginV2Fragment"
-            app:destination="@id/loginV2Fragment" />
+            android:id="@+id/action_welcomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
         <action
-            android:id="@+id/action_welcomeFragment_to_signUp1Fragment"
-            app:destination="@id/signUp1Fragment" />
+            android:id="@+id/action_welcomeFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -24,6 +24,13 @@
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -33,6 +40,9 @@
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_tutorialOptionFragment"
+            app:destination="@id/tutorialOptionFragment" />
     </fragment>
     <fragment
         android:id="@+id/modeSelectionFragment"
@@ -46,11 +56,8 @@
             android:id="@+id/action_modeSelectionFragment_to_personalExpFragment"
             app:destination="@id/personalExpFragment" />
         <action
-            android:id="@+id/action_modeSelectionFragment_to_researchModeFragment"
-            app:destination="@id/researchModeFragment" />
-        <action
-            android:id="@+id/action_modeSelectionFragment_to_personalModeFragment"
-            app:destination="@id/personalModeFragment" />
+            android:id="@+id/action_modeSelectionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalExpFragment"
@@ -61,8 +68,8 @@
             android:id="@+id/action_personalExpFragment_to_modeSelectionFragment"
             app:destination="@id/modeSelectionFragment" />
         <action
-            android:id="@+id/action_personalExpFragment_to_personalModeFragment"
-            app:destination="@id/personalModeFragment" />
+            android:id="@+id/action_personalExpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/researchExpFragment"
@@ -73,37 +80,22 @@
             android:id="@+id/action_researchExpFragment_to_modeSelectionFragment"
             app:destination="@id/modeSelectionFragment" />
         <action
-            android:id="@+id/action_researchExpFragment_to_researchModeFragment"
-            app:destination="@id/researchModeFragment" />
+            android:id="@+id/action_researchExpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/personalModeFragment"
-        android:name="com.example.capstonefrontendoriginal.PersonalModeFragment"
-        android:label="fragment_personal_mode"
-        tools:layout="@layout/fragment_personal_mode" >
-        <action
-            android:id="@+id/action_personalModeFragment_to_modeSelectionFragment"
-            app:destination="@id/modeSelectionFragment" />
-        <action
-            android:id="@+id/action_personalModeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_personalModeFragment_to_noHeatmapFragment"
-            app:destination="@id/noHeatmapFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/researchModeFragment"
-        android:name="com.example.capstonefrontendoriginal.ResearchModeFragment"
+        android:id="@+id/homeFragment"
+        android:name="com.example.capstonefrontendoriginal.HomeFragment"
         android:label="fragment_research_mode"
-        tools:layout="@layout/fragment_research_mode" >
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_researchModeFragment_to_modeSelectionFragment"
+            android:id="@+id/action_homeFragment_to_modeSelectionFragment"
             app:destination="@id/modeSelectionFragment" />
         <action
-            android:id="@+id/action_researchModeFragment_to_profileFragment"
+            android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_researchModeFragment_to_noHeatmapFragment"
+            android:id="@+id/action_homeFragment_to_noHeatmapFragment"
             app:destination="@id/noHeatmapFragment" />
     </fragment>
     <fragment
@@ -115,11 +107,8 @@
             android:id="@+id/action_profileFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
         <action
-            android:id="@+id/action_profileFragment_to_personalModeFragment"
-            app:destination="@id/personalModeFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_researchModeFragment"
-            app:destination="@id/researchModeFragment" />
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_profileFragment_to_noHeatmapFragment"
             app:destination="@id/noHeatmapFragment" />
@@ -132,12 +121,6 @@
         <action
             android:id="@+id/action_loginV2Fragment_to_signUp1Fragment"
             app:destination="@id/signUp1Fragment" />
-        <action
-            android:id="@+id/action_loginV2Fragment_to_researchModeFragment"
-            app:destination="@id/researchModeFragment" />
-        <action
-            android:id="@+id/action_loginV2Fragment_to_personalModeFragment"
-            app:destination="@id/personalModeFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUp1Fragment"
@@ -195,12 +178,6 @@
         <action
             android:id="@+id/action_signUp5Fragment_to_signUp4Fragment"
             app:destination="@id/signUp4Fragment" />
-        <action
-            android:id="@+id/action_signUp5Fragment_to_researchModeFragment"
-            app:destination="@id/researchModeFragment" />
-        <action
-            android:id="@+id/action_signUp5Fragment_to_personalModeFragment"
-            app:destination="@id/personalModeFragment" />
     </fragment>
     <fragment
         android:id="@+id/noHeatmapFragment"
@@ -208,13 +185,20 @@
         android:label="fragment_no_heatmap"
         tools:layout="@layout/fragment_no_heatmap" >
         <action
-            android:id="@+id/action_noHeatmapFragment_to_researchModeFragment"
-            app:destination="@id/researchModeFragment" />
-        <action
-            android:id="@+id/action_noHeatmapFragment_to_personalModeFragment"
-            app:destination="@id/personalModeFragment" />
+            android:id="@+id/action_noHeatmapFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+
         <action
             android:id="@+id/action_noHeatmapFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorialOptionFragment"
+        android:name="com.example.capstonefrontendoriginal.TutorialOptionFragment"
+        android:label="fragment_tutorial_option"
+        tools:layout="@layout/fragment_tutorial_option" >
+        <action
+            android:id="@+id/action_tutorialOptionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

@@ -26,7 +26,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_loginV2Fragment);
+                Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_loginFragment);
             }
         });
 
@@ -34,7 +34,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_signUp1Fragment);
+                Navigation.findNavController(view).navigate(R.id.action_welcomeFragment_to_signUpFragment);
             }
         });
 

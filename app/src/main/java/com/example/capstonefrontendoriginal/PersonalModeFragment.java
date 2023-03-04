@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 
 
 public class PersonalModeFragment extends Fragment implements View.OnClickListener {
+    // Can be deleted
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,7 @@ public class PersonalModeFragment extends Fragment implements View.OnClickListen
         changeModeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_personalModeFragment_to_modeSelectionFragment);
+                //Navigation.findNavController(view).navigate(R.id.action_personalModeFragment_to_modeSelectionFragment);
             }
         });
 
@@ -36,7 +38,7 @@ public class PersonalModeFragment extends Fragment implements View.OnClickListen
         Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_personalModeFragment_to_profileFragment);
+                //Navigation.findNavController(view).navigate(R.id.action_personalModeFragment_to_profileFragment);
             }
         });
 
@@ -44,7 +46,7 @@ public class PersonalModeFragment extends Fragment implements View.OnClickListen
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_personalModeFragment_to_noHeatmapFragment);
+                //Navigation.findNavController(view).navigate(R.id.action_personalModeFragment_to_noHeatmapFragment);
             }
         });
 

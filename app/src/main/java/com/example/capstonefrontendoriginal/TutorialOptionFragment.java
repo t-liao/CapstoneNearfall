@@ -14,15 +14,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class ResearchExpFragment extends Fragment implements View.OnClickListener{
+public class TutorialOptionFragment extends Fragment implements View.OnClickListener {
     public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Purpose = "purposeKey";
     public static final String Name = "nameKey";
     SharedPreferences sharedpreferences;
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_research_exp, container, false);
+        View view = inflater.inflate(R.layout.fragment_tutorial_option, container, false);
 
         sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String name = sharedpreferences.getString(Name,"DEFAULT");
@@ -30,22 +29,20 @@ public class ResearchExpFragment extends Fragment implements View.OnClickListene
         TextView text = (TextView) view.findViewById(R.id.name_text);
         text.setText(name);
 
-        ImageButton backButton = view.findViewById(R.id.back_button_research_exp);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        Button yesTutorialButton = view.findViewById(R.id.yes_tutorial_button);
+        yesTutorialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_researchExpFragment_to_modeSelectionFragment);
+
+                //Navigation.findNavController(view).navigate(R.id.action_modeSelectionFragment_to_homeFragment);
             }
         });
 
-        Button researchButton = view.findViewById(R.id.research_mode_button);
-        researchButton.setOnClickListener(new View.OnClickListener() {
+        Button skipTutorialButton = view.findViewById(R.id.skip_tutorial_button);
+        skipTutorialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString(Purpose, "Research");
-                editor.commit();
-                Navigation.findNavController(view).navigate(R.id.action_researchExpFragment_to_homeFragment);
+                Navigation.findNavController(view).navigate(R.id.action_tutorialOptionFragment_to_homeFragment);
             }
         });
 

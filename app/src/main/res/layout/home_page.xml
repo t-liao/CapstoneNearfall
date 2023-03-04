@@ -9,7 +9,7 @@
 
 
     <LinearLayout
-        android:id="@+id/currently_research"
+        android:id="@+id/home_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -17,41 +17,64 @@
         android:orientation="vertical"
         android:translationY="-30dp">
 
-        <TextView
-            android:id="@+id/currently_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="You are currently in"
-            android:textColor="@color/black"
-            android:textSize="18sp"/>
+<!--        <TextView-->
+<!--            android:id="@+id/currently_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="0"-->
+<!--            android:text="You are currently in"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="18sp" />-->
 
         <TextView
-            android:id="@+id/research_mode_text"
+            android:id="@+id/home_mode_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:paddingTop="20dp"
-            android:text="Research Mode"
+            android:paddingTop="0dp"
+            android:text=""
             android:textColor="@color/big_word"
-            android:textStyle="bold"
-            android:textSize="35sp"/>
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/research_img"
-            android:layout_width="320dp"
-            android:layout_height="320dp"
-            android:layout_weight="0"
-            app:srcCompat="@drawable/research_mode_image" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/research_img"-->
+        <!--            android:layout_width="320dp"-->
+        <!--            android:layout_height="320dp"-->
+        <!--            android:layout_weight="0"-->
+        <!--            app:srcCompat="@drawable/research_mode_image" />-->
+
+        <TextView
+            android:id="@+id/detection_on_off_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detection Off"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/start_stop_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/content_circle_green"
+            android:gravity="center"
+            android:text="START"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            android:textStyle="bold" />
 
         <Button
-            android:id="@+id/research_change_mode_button"
+            android:id="@+id/change_mode_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="20dp"
             android:layout_weight="0"
-            android:text="Change Mode"
-            android:backgroundTint="@color/red"
-            android:layout_marginTop="20dp"/>
+            android:backgroundTint="@color/dark_grey"
+            android:text="Change Mode" />
 
     </LinearLayout>
 
@@ -88,7 +111,7 @@
                 android:id="@+id/home_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
+                android:layout_marginVertical="6dp"
                 android:scaleX="1.2"
                 android:scaleY="1.2"
                 app:srcCompat="@drawable/home_blue"
@@ -125,7 +148,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/research_user_icon_grey"
+            android:id="@+id/user_icon_grey"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="right"
@@ -133,7 +156,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/research_user_grey"
+                android:id="@+id/user_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
