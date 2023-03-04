@@ -1,5 +1,6 @@
 package com.example.capstonefrontendoriginal;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -66,7 +67,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                 int month = c.get(Calendar.MONTH);
                 int year = c.get(Calendar.YEAR);
 
-                dp = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                dp = new DatePickerDialog(getActivity(),
+                        AlertDialog.THEME_HOLO_DARK, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         dateOfBirth.setText(day + "/" + (month + 1) + "/" + year);

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Tutorial4Fragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_img_login"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_centerInParent="true">
+
+
+            <TextView
+                android:id="@+id/welcome_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Hello!"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_horizontal"
+
+                android:text="Place Holder"
+                android:textColor="@color/big_word"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                android:translationY="40dp" />
+
+            <TextView
+                android:id="@+id/instruction_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Please Select a Mode of Operation"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:translationY="100dp" />
+
+            <LinearLayout
+                android:id="@+id/research_mode_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:translationY="150dp">
+
+                <Button
+                    android:id="@+id/research_button"
+                    android:layout_width="270dp"
+                    android:layout_height="67dp"
+                    android:backgroundTint="@color/big_word"
+                    android:textColor="@color/white"
+                    android:enabled="false"
+                    android:text="Research"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_research"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="research_info"
+                    app:srcCompat="@drawable/information" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personal_mode_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:translationY="250dp">
+
+                <Button
+                    android:id="@+id/personal_button"
+                    android:layout_width="270dp"
+                    android:layout_height="67dp"
+                    android:backgroundTint="@color/big_word"
+                    android:text="Personal"
+                    android:textColor="@color/white"
+                    android:enabled="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_personal"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="personal_info"
+                    app:srcCompat="@drawable/information" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_grey"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center"
+        android:layout_marginBottom="100dp"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:text="You can tap on the icon next to the button to learn more about the mode."
+            />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:src="@drawable/hand_point_up"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_centerInParent="true">
+
+
+            <LinearLayout
+                android:id="@+id/research_mode_button_overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:translationY="150dp">
+
+                <Button
+                    android:id="@+id/research_button_overlay"
+                    android:layout_width="270dp"
+                    android:layout_height="67dp"
+                    android:background="@color/transparent"
+                    android:backgroundTint="@color/big_word"
+                    android:text="Research"
+                    android:enabled="false"
+                    android:textColor="@color/transparent"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_research_overlay"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@android:color/white"
+                    android:contentDescription="research_info"
+                    app:srcCompat="@drawable/information" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personal_mode_button_overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:translationY="250dp">
+
+                <Button
+                    android:id="@+id/personal_button_overlay"
+                    android:layout_width="270dp"
+                    android:layout_height="67dp"
+                    android:background="@color/transparent"
+                    android:backgroundTint="@color/big_word"
+                    android:text="Personal"
+                    android:enabled="false"
+                    android:textColor="@color/transparent"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_personal_overlay"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@android:color/white"
+                    android:contentDescription="personal_info"
+                    app:srcCompat="@drawable/information" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/home_page"
+        android:background="@color/transparent"/>
+
+</FrameLayout>

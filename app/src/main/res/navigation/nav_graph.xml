@@ -206,6 +206,9 @@
         <action
             android:id="@+id/action_tutorialOptionFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_tutorialOptionFragment_to_tutorial1Fragment"
+            app:destination="@id/tutorial1Fragment" />
     </fragment>
     <fragment
         android:id="@+id/heatmapFragment"
@@ -218,5 +221,86 @@
         <action
             android:id="@+id/action_heatmapFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorial1Fragment"
+        android:name="com.example.capstonefrontendoriginal.Tutorial1Fragment"
+        android:label="fragment_tutorial1"
+        tools:layout="@layout/fragment_tutorial1" >
+        <action
+            android:id="@+id/action_tutorial1Fragment_to_tutorial2Fragment"
+            app:destination="@id/tutorial2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorial2Fragment"
+        android:name="com.example.capstonefrontendoriginal.Tutorial2Fragment"
+        android:label="fragment_tutorial2"
+        tools:layout="@layout/fragment_tutorial2" >
+        <action
+            android:id="@+id/action_tutorial2Fragment_to_tutorial3Fragment"
+            app:destination="@id/tutorial3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorial3Fragment"
+        android:name="com.example.capstonefrontendoriginal.Tutorial3Fragment"
+        android:label="fragment_tutorial3"
+        tools:layout="@layout/fragment_tutorial3" >
+        <action
+            android:id="@+id/action_tutorial3Fragment_to_tutorial4Fragment"
+            app:destination="@id/tutorial4Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorial4Fragment"
+        android:name="com.example.capstonefrontendoriginal.Tutorial4Fragment"
+        android:label="fragment_tutorial4"
+        tools:layout="@layout/fragment_tutorial4" >
+        <action
+            android:id="@+id/action_tutorial4Fragment_to_tutorial5Fragment"
+            app:destination="@id/tutorial5Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorial5Fragment"
+        android:name="com.example.capstonefrontendoriginal.Tutorial5Fragment"
+        android:label="fragment_tutorial5"
+        tools:layout="@layout/fragment_tutorial5" >
+        <action
+            android:id="@+id/action_tutorial5Fragment_to_tutorial6Fragment"
+            app:destination="@id/tutorial6Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorial6Fragment"
+        android:name="com.example.capstonefrontendoriginal.Tutorial6Fragment"
+        android:label="fragment_tutorial6"
+        tools:layout="@layout/fragment_tutorial6" >
+        <action
+            android:id="@+id/action_tutorial6Fragment_to_tutorial7Fragment"
+            app:destination="@id/tutorial7Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorial7Fragment"
+        android:name="com.example.capstonefrontendoriginal.Tutorial7Fragment"
+        android:label="fragment_tutorial7"
+        tools:layout="@layout/fragment_tutorial7" >
+        <action
+            android:id="@+id/action_tutorial7Fragment_to_tutorial8Fragment"
+            app:destination="@id/tutorial8Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorial8Fragment"
+        android:name="com.example.capstonefrontendoriginal.Tutorial8Fragment"
+        android:label="fragment_tutorial8"
+        tools:layout="@layout/fragment_tutorial8" >
+        <action
+            android:id="@+id/action_tutorial8Fragment_to_tutorialCompleteFragment"
+            app:destination="@id/tutorialCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorialCompleteFragment"
+        android:name="com.example.capstonefrontendoriginal.TutorialCompleteFragment"
+        android:label="fragment_tutorial_complete"
+        tools:layout="@layout/fragment_tutorial_complete" >
+        <action
+            android:id="@+id/action_tutorialCompleteFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
