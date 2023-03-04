@@ -49,7 +49,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="Login"
                 android:textColor="@color/big_word"
-                android:textSize="20dp"
+                android:textSize="22dp"
                 android:textStyle="bold"
                 android:layout_marginBottom="25dp"
                  />
@@ -80,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:text="Stay signed in?"
                 android:textSize="15sp"
-                android:translationX="45dp" />
+                android:layout_gravity="center"
+                />
 
             <Button
                 android:id="@+id/login_button"
@@ -91,7 +92,9 @@
                 android:stateListAnimator="@null"
                 android:elevation="5dp"
                 android:text="Login"
+                android:textSize="18sp"
                 android:textStyle="bold"
+                android:textAllCaps="false"
                 android:layout_marginBottom="25dp"
                 android:layout_marginTop="25dp" />
 
@@ -109,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
-                android:textSize="15sp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"

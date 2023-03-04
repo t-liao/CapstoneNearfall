@@ -60,11 +60,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text=""
+                    android:layout_marginRight="20dp"
+                    android:text="Place Holder"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
                     android:textSize="20sp"
-                    android:layout_marginRight="20dp"/>
+                    android:textStyle="bold" />
 
 <!--                <ImageView-->
 <!--                    android:id="@+id/imageView2"-->
@@ -130,7 +130,7 @@
                         android:text="My Account"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:layout_marginLeft="10dp"/>
 
                     <TextView
@@ -202,7 +202,7 @@
                         android:text="Map Specifications"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:layout_marginLeft="10dp"/>
 
                     <TextView
@@ -274,7 +274,7 @@
                         android:text="Log Out"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:layout_marginLeft="10dp"/>
 
                     <TextView
@@ -346,7 +346,7 @@
                         android:text="Help &amp; Support"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:layout_marginLeft="10dp"/>
 
                 </LinearLayout>
@@ -410,7 +410,7 @@
                         android:text="About App"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:layout_marginLeft="10dp"/>
 
 

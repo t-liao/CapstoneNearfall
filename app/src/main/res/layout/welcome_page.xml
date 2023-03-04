@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:text="Fall Detection \nApplication"
+        android:text="Fall and Near Fall\nDetection Application"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:layout_marginTop="20dp"
@@ -43,29 +43,29 @@
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="220dp"
-        android:layout_height="37dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
         android:layout_weight="0"
         android:backgroundTint="@color/white"
-        android:scaleX="1.3"
-        android:scaleY="1.4"
         android:text="Login"
         android:textColor="@color/button"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:textAllCaps="false"
          />
 
     <Button
         android:id="@+id/create_account_wel_button"
-        android:layout_width="220dp"
-        android:layout_height="37dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
         android:layout_weight="0"
         android:backgroundTint="@color/white"
-        android:scaleX="1.3"
-        android:scaleY="1.4"
         android:layout_marginTop="20dp"
         android:text="Create Account"
         android:textColor="@color/button"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:textAllCaps="false"
          />
 
 

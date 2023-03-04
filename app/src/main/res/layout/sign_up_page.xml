@@ -21,13 +21,16 @@
         android:id="@+id/create_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:elevation="5dp"
         android:text="Create an Account"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:elevation="5dp"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="50dp"
-        android:textStyle="bold"/>
+        android:textSize="22dp"
+        android:textStyle="bold" />
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -58,7 +61,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="Sign up"
                 android:textColor="@color/big_word"
-                android:textSize="20dp"
+                android:textSize="22dp"
                 android:textStyle="bold"
                 android:paddingBottom="25dp"/>
 
@@ -127,7 +130,7 @@
                     android:text="Research"
                     android:background="@drawable/content_box_profile"
                     android:textColor="@color/dark_grey"
-                    android:textSize="15sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_margin="10dp"
                     android:paddingHorizontal="10dp"
@@ -142,7 +145,7 @@
                     android:background="@drawable/content_box_profile"
                     android:text="Personal"
                     android:textColor="@color/dark_grey"
-                    android:textSize="15sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_margin="10dp"
                     android:paddingVertical="0dp"
@@ -158,7 +161,9 @@
                 android:stateListAnimator="@null"
                 android:elevation="5dp"
                 android:text="Create Account"
+                android:textSize="18sp"
                 android:textStyle="bold"
+                android:textAllCaps="false"
                 android:layout_marginTop="25dp"/>
 
         </LinearLayout>
