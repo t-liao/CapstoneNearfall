@@ -71,6 +71,7 @@
                 android:layout_gravity="center_horizontal"
                 android:drawableRight="@drawable/lock"
                 android:ems="10"
+                android:imeOptions="actionDone"
                 android:hint="Password"
                 android:inputType="textPassword" />
 

@@ -130,7 +130,7 @@
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
-        android:layout_marginTop="70dp">
+        android:layout_marginTop="40dp">
 
         <TextView
             android:id="@+id/textView"
@@ -141,7 +141,7 @@
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textAlignment="center"
-            android:text="You can tap the\nresearch or personal button\nto select the mode."
+            android:text="Once you tap the change mode button, you can tap the\nresearch or personal button\nto select the mode."
             android:layout_margin="10dp"/>
         <ImageView
             android:id="@+id/imageView5"
@@ -168,32 +168,32 @@
                 android:id="@+id/research_mode_button_overlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:paddingLeft="40dp"
                 android:paddingRight="40dp"
-                android:translationY="150dp"
-                android:layout_gravity="center_horizontal">
+                android:translationY="150dp">
 
                 <Button
                     android:id="@+id/research_button_overlay"
                     android:layout_width="270dp"
                     android:layout_height="67dp"
+                    android:backgroundTint="@color/big_word"
+                    android:enabled="false"
                     android:text="Research"
                     android:textColor="@color/white"
-                    android:enabled="false"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:backgroundTint="@color/big_word"/>
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/imageButton_research_overlay"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center_vertical"
-                    android:background="@android:color/transparent"
                     android:layout_marginLeft="10dp"
+                    android:background="@android:color/transparent"
 
-                    android:contentDescription="research_info"/>
-<!--                app:srcCompat="@drawable/information"-->
+                    android:contentDescription="research_info" />
+                <!--                app:srcCompat="@drawable/information"-->
 
             </LinearLayout>
 
@@ -201,33 +201,32 @@
                 android:id="@+id/personal_mode_button_overlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:paddingLeft="40dp"
                 android:paddingRight="40dp"
-                android:translationY="250dp"
-                android:layout_gravity="center_horizontal">
+                android:translationY="250dp">
 
                 <Button
                     android:id="@+id/personal_button_overlay"
                     android:layout_width="270dp"
                     android:layout_height="67dp"
+                    android:backgroundTint="@color/big_word"
+                    android:enabled="false"
                     android:text="Personal"
                     android:textColor="@color/white"
-                    android:enabled="false"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:backgroundTint="@color/big_word"
-                    />
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/imageButton_personal_overlay"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@android:color/transparent"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
+                    android:background="@android:color/transparent"
 
-                    android:contentDescription="personal_info"/>
-<!--                app:srcCompat="@drawable/information"-->
+                    android:contentDescription="personal_info" />
+                <!--                app:srcCompat="@drawable/information"-->
 
             </LinearLayout>
 

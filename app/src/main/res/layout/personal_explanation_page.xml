@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:text="This mode is purely used for the purpose of data collection."
+                android:text="This mode has location tracking and notification in addition to\ndata collection."
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
