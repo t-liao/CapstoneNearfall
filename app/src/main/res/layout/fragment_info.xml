@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".InfoFragment">
+    tools:context="com.example.capstonefrontendoriginal.InfoFragment">
     
     <ImageView
         android:layout_alignParentTop="true"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/black"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingLeft="16dp"
         android:id="@+id/InfoTab_Network" />
     
     <TextView
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/black"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingLeft="16dp"
         android:id="@+id/InfoTab_Device"
         android:layout_below="@+id/InfoTab_Network"/>
     
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/black"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingLeft="16dp"
         android:id="@+id/InfoTab_Model"
         android:layout_below="@+id/InfoTab_Device"/>
 </RelativeLayout>

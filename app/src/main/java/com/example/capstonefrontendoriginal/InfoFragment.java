@@ -1,4 +1,4 @@
-package com.example.TestNFD2;
+package com.example.capstonefrontendoriginal;
 
 
 import android.app.Activity;
@@ -14,8 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
 
 import java.util.ArrayList;
 

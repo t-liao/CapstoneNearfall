@@ -20,6 +20,9 @@
     <color name="bottom">#1447D2</color>
     <color name="transparent_grey">#c0000000</color>
     <color name="transparent">#00000000</color>
+    <color name="colorPrimary">#DCE6EB</color>
+    <color name="colorAccent">#029FCF</color>
+    <color name="titleBackground">#fafafa</color>
 
 
 

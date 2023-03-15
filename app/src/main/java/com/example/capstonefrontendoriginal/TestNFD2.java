@@ -1,8 +1,6 @@
-package com.example.TestNFD2;
+package com.example.capstonefrontendoriginal;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
 import android.util.Log;
@@ -10,11 +8,11 @@ import android.util.Log;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+
 import android.content.res.Configuration;
-import androidx.core.app.ActivityCompat;
+
 import androidx.fragment.app.Fragment;
-import androidx.core.content.ContextCompat;
+
 import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +24,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.widget.TextView;
 import java.util.Hashtable;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class TestNFD2 extends AppCompatActivity implements SensorEventListener, OnFragmentInteractionListener {
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -56,21 +53,21 @@ public class TestNFD2 extends AppCompatActivity implements SensorEventListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //Uncomment the following line to specify a custom App Title
         //toolbar.setTitle("My custom Title");
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         // Create a FragmentPagerAdapter that returns individual fragments
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        // mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setOffscreenPageLimit(SectionsPagerAdapter.getNumTabs()-1);
+//        mViewPager = (ViewPager) findViewById(R.id.container);
+//        mViewPager.setAdapter(mSectionsPagerAdapter);
+//        mViewPager.setOffscreenPageLimit(SectionsPagerAdapter.getNumTabs()-1);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
+//        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+//        tabLayout.setupWithViewPager(mViewPager);
 
         // Initiate the SensorManager
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);

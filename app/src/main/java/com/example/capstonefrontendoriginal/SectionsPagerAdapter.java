@@ -1,4 +1,4 @@
-package com.example.TestNFD2;
+package com.example.capstonefrontendoriginal;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

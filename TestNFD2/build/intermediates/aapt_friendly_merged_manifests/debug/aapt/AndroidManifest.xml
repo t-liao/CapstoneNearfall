@@ -20,7 +20,7 @@
 
         <!-- tools:replace="icon, label, theme" -->
         <activity
-            android:name="com.example.TestNFD2.TestNFD2"
+            android:name="com.example.capstonefrontendoriginal.TestNFD2"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:label="@string/app_name"

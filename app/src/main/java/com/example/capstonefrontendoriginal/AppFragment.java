@@ -1,20 +1,13 @@
-package com.example.TestNFD2;
+package com.example.capstonefrontendoriginal;
 
 /* Copyright 2016-2019 The MathWorks, Inc. */
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.concurrent.ThreadLocalRandom;
 
 
 public class AppFragment extends Fragment {
