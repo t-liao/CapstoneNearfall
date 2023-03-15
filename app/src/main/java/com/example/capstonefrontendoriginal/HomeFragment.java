@@ -1,6 +1,7 @@
 package com.example.capstonefrontendoriginal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -14,6 +15,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     public static final String MyPREFERENCES = "MyPrefs" ;
@@ -45,6 +48,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     startStopButton.setText("STOP");
                     startStopButton.setBackgroundResource(R.drawable.content_circle_red);
                     detectionText.setText("Detection On");
+
+                    Intent myIntent = new Intent();
+                    myIntent.setClassName("com.example", "com.example.TestNFD2");
+                    // for ex: your package name can be "com.example"
+                    // your activity name will be "com.example.Contact_Developer"
+                    startActivity(myIntent);
 
                 } else {
                     //Turn detection off

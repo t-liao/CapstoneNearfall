@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/drawable_selected_dot.xml.flat",
+        "source": "com.example.TestNFD2-main-14:/drawable/selected_dot.xml"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/layout_activity_main.xml.flat",
+        "source": "com.example.TestNFD2-main-14:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/drawable-ldpi_ic_launcher.png.flat",
+        "source": "com.example.TestNFD2-main-14:/drawable-ldpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/drawable_shrink.png.flat",
+        "source": "com.example.TestNFD2-main-14:/drawable/shrink.png"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/layout_fragment_log.xml.flat",
+        "source": "com.example.TestNFD2-main-14:/layout/fragment_log.xml"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.TestNFD2-main-14:/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/drawable-hdpi_ic_launcher.png.flat",
+        "source": "com.example.TestNFD2-main-14:/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/drawable_default_dot.xml.flat",
+        "source": "com.example.TestNFD2-main-14:/drawable/default_dot.xml"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/drawable-mdpi_ic_launcher.png.flat",
+        "source": "com.example.TestNFD2-main-14:/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/drawable_expand.png.flat",
+        "source": "com.example.TestNFD2-main-14:/drawable/expand.png"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/layout_auto_generated_widgets.xml.flat",
+        "source": "com.example.TestNFD2-main-14:/layout/auto_generated_widgets.xml"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/drawable_background.png.flat",
+        "source": "com.example.TestNFD2-main-14:/drawable/background.png"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/layout_fragment_app.xml.flat",
+        "source": "com.example.TestNFD2-main-14:/layout/fragment_app.xml"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/layout_fragment_info.xml.flat",
+        "source": "com.example.TestNFD2-main-14:/layout/fragment_info.xml"
+    },
+    {
+        "merged": "com.example.TestNFD2-merged_res-12:/drawable_tab_selector.xml.flat",
+        "source": "com.example.TestNFD2-main-14:/drawable/tab_selector.xml"
+    }
+]

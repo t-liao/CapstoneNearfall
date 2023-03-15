@@ -1,0 +1,15 @@
+com/example/TestNFD2/BuildConfig.java
+ com.example.TestNFD2.BuildConfig
+com/example/TestNFD2/InfoFragment.java
+ com.example.TestNFD2.InfoFragment
+com/example/TestNFD2/OnFragmentInteractionListener.java
+ com.example.TestNFD2.OnFragmentInteractionListener
+com/example/TestNFD2/SectionsPagerAdapter.java
+ com.example.TestNFD2.SectionsPagerAdapter
+com/example/TestNFD2/AppFragment.java
+ com.example.TestNFD2.AppFragment
+com/example/TestNFD2/TestNFD2.java
+ com.example.TestNFD2.TestNFD2
+ com.example.TestNFD2.TestNFD2$1
+ com.example.TestNFD2.TestNFD2$2
+ com.example.TestNFD2.TestNFD2$3

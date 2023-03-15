@@ -1,0 +1,63 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:2:1-27:12
+	package
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:5:5-35
+		INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:4:5-30
+	xmlns:tools
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:6:5-51
+	xmlns:android
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:3:5-28
+application
+ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:7:5-23:19
+	android:label
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:9:9-41
+	android:icon
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:8:9-45
+	android:theme
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:10:9-42
+activity#com.example.TestNFD2.TestNFD2
+ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:13:9-22:20
+	android:label
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:14:13-45
+	android:exported
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:17:13-37
+	android:configChanges
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:16:59-105
+	android:theme
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:16:13-58
+	android:name
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:15:13-36
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:24:4-74
+	android:name
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:24:21-72
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:25:1-62
+	android:name
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:25:18-60
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:26:1-74
+	android:name
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml:26:18-72
+uses-sdk
+INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+		ADDED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ter92\Desktop\Projects\CapstoneFrontendOriginal\TestNFD2\src\main\AndroidManifest.xml
