@@ -21,4 +21,10 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
 
     }
+
+    @Override
+    public void onBackPressed() {
+        // do nothing
+        // disable back button
+    }
 }
