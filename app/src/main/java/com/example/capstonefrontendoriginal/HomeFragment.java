@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class HomeFragment extends Fragment implements View.OnClickListener {
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String Purpose = "purposeKey";
+    public static final String Detection = "detectionKey";
     SharedPreferences sharedpreferences;
 
     @Override
@@ -31,12 +32,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String purpose = sharedpreferences.getString(Purpose,"DEFAULT");
+        String detection = sharedpreferences.getString(Detection,"DEFAULT");
 
         TextView text = (TextView) view.findViewById(R.id.home_mode_text);
         text.setText(purpose + " Mode");
 
         TextView startStopButton = view.findViewById(R.id.start_stop_button);
         TextView detectionText = view.findViewById(R.id.detection_on_off_text);
+
+        if (detection.equals("Off")){
+            // Detection is currently off
+            startStopButton.setText("START");
+            startStopButton.setBackgroundResource(R.drawable.content_circle_green);
+            detectionText.setText("Detection Off");
+        } else if (detection.equals("On")){
+            // Detection is currently on
+            startStopButton.setText("STOP");
+            startStopButton.setBackgroundResource(R.drawable.content_circle_red);
+            detectionText.setText("Detection On");
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), "Detection on/off was not set properly",
+                    Toast.LENGTH_LONG).show();
+        }
+
         startStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,12 +63,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     startStopButton.setText("STOP");
                     startStopButton.setBackgroundResource(R.drawable.content_circle_red);
                     detectionText.setText("Detection On");
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putString(Detection,"On");
+                    editor.commit();
 
                 } else {
                     //Turn detection off
                     startStopButton.setText("START");
                     startStopButton.setBackgroundResource(R.drawable.content_circle_green);
                     detectionText.setText("Detection Off");
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putString(Detection,"Off");
+                    editor.commit();
                 }
             }
         });

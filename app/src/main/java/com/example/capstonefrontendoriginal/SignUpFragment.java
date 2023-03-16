@@ -37,6 +37,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     public static final String Password = "passwordKey";
     public static final String Dob = "dateOfBirthKey";
     public static final String Purpose = "purposeKey";
+    public static final String Detection = "detectionKey";
     SharedPreferences sharedpreferences;
 
     @Override
@@ -120,6 +121,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                     editor.putString(Name, n);
                     editor.putString(Password, p);
                     editor.putString(Dob, d);
+                    editor.putString(Detection,"Off");
                     editor.commit();
 
                     if (researchRadioButton.isChecked()){

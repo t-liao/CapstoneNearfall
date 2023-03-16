@@ -22,6 +22,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String Name = "nameKey";
     public static final String Purpose = "purposeKey";
+    public static final String Detection = "detectionKey";
     SharedPreferences sharedpreferences;
 
     @Override
@@ -38,6 +39,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         String purpose = sharedpreferences.getString(Purpose,"DEFAULT");
         String name = sharedpreferences.getString(Name,"DEFAULT");
 
+
         TextView text = (TextView) view.findViewById(R.id.profile_name_text);
         text.setText(name);
 
@@ -46,6 +48,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_welcomeFragment);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(Detection,"Off");
+                editor.commit();
             }
         });
 
