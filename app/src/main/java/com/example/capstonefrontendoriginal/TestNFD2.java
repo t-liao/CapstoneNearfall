@@ -78,7 +78,8 @@ public class TestNFD2 extends AppCompatActivity implements SensorEventListener, 
     private final Thread BgThread = new Thread() {
     @Override
     public void run() {
-            String argv[] = new String[] {"MainActivity","TestNFD2"};
+            //String argv[] = new String[] {"MainActivity","TestNFD2"};
+        String argv[] = new String[] {"TestNFD2"};
             naMain(argv, thisClass);
         }
     };
