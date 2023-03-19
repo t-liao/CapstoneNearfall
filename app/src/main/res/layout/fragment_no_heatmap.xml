@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".NoHeatmapFragment">
 
+    <!--    include specified xml layout-->
     <include layout="@layout/no_heatmap_page"/>
 
 </FrameLayout>

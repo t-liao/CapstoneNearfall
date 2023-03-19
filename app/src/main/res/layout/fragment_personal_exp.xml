@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".PersonalExpFragment">
 
+    <!--    include specified xml layout-->
     <include layout="@layout/personal_explanation_page"/>
 
 </FrameLayout>

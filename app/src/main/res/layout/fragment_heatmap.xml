@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".HeatmapFragment">
 
+<!--    include specified xml layout-->
     <include layout="@layout/heatmap_page"/>
 
 </FrameLayout>

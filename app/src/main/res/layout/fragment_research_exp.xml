@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".ResearchExpFragment">
 
+    <!--    include specified xml layout-->
     <include layout="@layout/research_explanation_page"/>
 
 </FrameLayout>

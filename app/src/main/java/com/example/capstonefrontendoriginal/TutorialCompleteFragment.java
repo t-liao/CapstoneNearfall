@@ -25,20 +25,23 @@ public class TutorialCompleteFragment extends Fragment implements View.OnClickLi
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Create view from fragment_tutorial_complete.xml
         View view = inflater.inflate(R.layout.fragment_tutorial_complete, container, false);
 
+        //Grab the specified sharedpreference and stored purpose value
         sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String purpose = sharedpreferences.getString(Purpose,"DEFAULT");
 
+        //Set home_mode_text to the correct purpose mode
         TextView text = (TextView) view.findViewById(R.id.home_mode_text);
         text.setText(purpose + " Mode");
 
-
-
+        //When page is clicked
         View page = view.findViewById(R.id.home_page);
         page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Navigate to homeFragment
                 Navigation.findNavController(view).navigate(R.id.action_tutorialCompleteFragment_to_homeFragment);
             }
         });

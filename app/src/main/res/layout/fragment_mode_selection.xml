@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".ModeSelectionFragment">
 
+    <!--    include specified xml layout-->
     <include layout="@layout/mode_selection_page"/>
 
 </FrameLayout>

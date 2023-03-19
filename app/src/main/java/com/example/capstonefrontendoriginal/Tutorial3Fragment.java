@@ -26,20 +26,23 @@ public class Tutorial3Fragment extends Fragment implements View.OnClickListener 
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Create view from fragment_tutorial3.xml
         View view = inflater.inflate(R.layout.fragment_tutorial3, container, false);
 
+        //Grab the specified sharedpreference and stored purpose value
         sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String name = sharedpreferences.getString(Name,"DEFAULT");
 
+        //Set home_mode_text to the correct purpose mode
         TextView text = (TextView) view.findViewById(R.id.name_text);
         text.setText(name);
 
-
-
+        //When page is clicked
         View page = view.findViewById(R.id.home_page);
         page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Navigate to tutorial4Fragment
                 Navigation.findNavController(view).navigate(R.id.action_tutorial3Fragment_to_tutorial4Fragment);
             }
         });
