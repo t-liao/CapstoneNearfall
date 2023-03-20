@@ -6,7 +6,7 @@
     app:startDestination="@id/welcomeFragment">
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.capstonefrontendoriginal.WelcomeFragment"
+        android:name="com.example.nearfall.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.capstonefrontendoriginal.LoginFragment"
+        android:name="com.example.nearfall.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.capstonefrontendoriginal.SignUpFragment"
+        android:name="com.example.nearfall.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/modeSelectionFragment"
-        android:name="com.example.capstonefrontendoriginal.ModeSelectionFragment"
+        android:name="com.example.nearfall.ModeSelectionFragment"
         android:label="fragment_mode_selection"
         tools:layout="@layout/fragment_mode_selection" >
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/personalExpFragment"
-        android:name="com.example.capstonefrontendoriginal.PersonalExpFragment"
+        android:name="com.example.nearfall.PersonalExpFragment"
         android:label="fragment_personal_exp"
         tools:layout="@layout/fragment_personal_exp" >
         <action
@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/researchExpFragment"
-        android:name="com.example.capstonefrontendoriginal.ResearchExpFragment"
+        android:name="com.example.nearfall.ResearchExpFragment"
         android:label="fragment_research_exp"
         tools:layout="@layout/fragment_research_exp" >
         <action
@@ -85,7 +85,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.capstonefrontendoriginal.HomeFragment"
+        android:name="com.example.nearfall.HomeFragment"
         android:label="fragment_research_mode"
         tools:layout="@layout/fragment_home" >
         <action
@@ -103,7 +103,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.capstonefrontendoriginal.ProfileFragment"
+        android:name="com.example.nearfall.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -121,7 +121,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginV2Fragment"
-        android:name="com.example.capstonefrontendoriginal.LoginV2Fragment"
+        android:name="com.example.nearfall.LoginV2Fragment"
         android:label="fragment_login_v2"
         tools:layout="@layout/fragment_login_v2" >
         <action
@@ -130,7 +130,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUp1Fragment"
-        android:name="com.example.capstonefrontendoriginal.SignUp1Fragment"
+        android:name="com.example.nearfall.SignUp1Fragment"
         android:label="fragment_sign_up1"
         tools:layout="@layout/fragment_sign_up1" >
         <action
@@ -142,7 +142,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUp2Fragment"
-        android:name="com.example.capstonefrontendoriginal.SignUp2Fragment"
+        android:name="com.example.nearfall.SignUp2Fragment"
         android:label="fragment_sign_up2"
         tools:layout="@layout/fragment_sign_up2" >
         <action
@@ -154,7 +154,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUp3Fragment"
-        android:name="com.example.capstonefrontendoriginal.SignUp3Fragment"
+        android:name="com.example.nearfall.SignUp3Fragment"
         android:label="fragment_sign_up3"
         tools:layout="@layout/fragment_sign_up3" >
         <action
@@ -166,7 +166,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUp4Fragment"
-        android:name="com.example.capstonefrontendoriginal.SignUp4Fragment"
+        android:name="com.example.nearfall.SignUp4Fragment"
         android:label="fragment_sign_up4"
         tools:layout="@layout/fragment_sign_up4" >
         <action
@@ -178,7 +178,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUp5Fragment"
-        android:name="com.example.capstonefrontendoriginal.SignUp5Fragment"
+        android:name="com.example.nearfall.SignUp5Fragment"
         android:label="fragment_sign_up5"
         tools:layout="@layout/fragment_sign_up5" >
         <action
@@ -187,7 +187,7 @@
     </fragment>
     <fragment
         android:id="@+id/noHeatmapFragment"
-        android:name="com.example.capstonefrontendoriginal.NoHeatmapFragment"
+        android:name="com.example.nearfall.NoHeatmapFragment"
         android:label="fragment_no_heatmap"
         tools:layout="@layout/fragment_no_heatmap" >
         <action
@@ -200,7 +200,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorialOptionFragment"
-        android:name="com.example.capstonefrontendoriginal.TutorialOptionFragment"
+        android:name="com.example.nearfall.TutorialOptionFragment"
         android:label="fragment_tutorial_option"
         tools:layout="@layout/fragment_tutorial_option" >
         <action
@@ -212,7 +212,7 @@
     </fragment>
     <fragment
         android:id="@+id/heatmapFragment"
-        android:name="com.example.capstonefrontendoriginal.HeatmapFragment"
+        android:name="com.example.nearfall.HeatmapFragment"
         android:label="fragment_heatmap"
         tools:layout="@layout/fragment_heatmap" >
         <action
@@ -224,7 +224,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorial1Fragment"
-        android:name="com.example.capstonefrontendoriginal.Tutorial1Fragment"
+        android:name="com.example.nearfall.Tutorial1Fragment"
         android:label="fragment_tutorial1"
         tools:layout="@layout/fragment_tutorial1" >
         <action
@@ -233,7 +233,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorial2Fragment"
-        android:name="com.example.capstonefrontendoriginal.Tutorial2Fragment"
+        android:name="com.example.nearfall.Tutorial2Fragment"
         android:label="fragment_tutorial2"
         tools:layout="@layout/fragment_tutorial2" >
         <action
@@ -242,7 +242,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorial3Fragment"
-        android:name="com.example.capstonefrontendoriginal.Tutorial3Fragment"
+        android:name="com.example.nearfall.Tutorial3Fragment"
         android:label="fragment_tutorial3"
         tools:layout="@layout/fragment_tutorial3" >
         <action
@@ -251,7 +251,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorial4Fragment"
-        android:name="com.example.capstonefrontendoriginal.Tutorial4Fragment"
+        android:name="com.example.nearfall.Tutorial4Fragment"
         android:label="fragment_tutorial4"
         tools:layout="@layout/fragment_tutorial4" >
         <action
@@ -260,7 +260,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorial5Fragment"
-        android:name="com.example.capstonefrontendoriginal.Tutorial5Fragment"
+        android:name="com.example.nearfall.Tutorial5Fragment"
         android:label="fragment_tutorial5"
         tools:layout="@layout/fragment_tutorial5" >
         <action
@@ -269,7 +269,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorial6Fragment"
-        android:name="com.example.capstonefrontendoriginal.Tutorial6Fragment"
+        android:name="com.example.nearfall.Tutorial6Fragment"
         android:label="fragment_tutorial6"
         tools:layout="@layout/fragment_tutorial6" >
         <action
@@ -278,7 +278,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorial7Fragment"
-        android:name="com.example.capstonefrontendoriginal.Tutorial7Fragment"
+        android:name="com.example.nearfall.Tutorial7Fragment"
         android:label="fragment_tutorial7"
         tools:layout="@layout/fragment_tutorial7" >
         <action
@@ -287,7 +287,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorial8Fragment"
-        android:name="com.example.capstonefrontendoriginal.Tutorial8Fragment"
+        android:name="com.example.nearfall.Tutorial8Fragment"
         android:label="fragment_tutorial8"
         tools:layout="@layout/fragment_tutorial8" >
         <action
@@ -296,7 +296,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorialCompleteFragment"
-        android:name="com.example.capstonefrontendoriginal.TutorialCompleteFragment"
+        android:name="com.example.nearfall.TutorialCompleteFragment"
         android:label="fragment_tutorial_complete"
         tools:layout="@layout/fragment_tutorial_complete" >
         <action

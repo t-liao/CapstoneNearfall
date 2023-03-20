@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.capstonefrontendoriginal'
+    namespace 'com.example.nearfall'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.capstonefrontendoriginal"
+        applicationId "com.example.nearfall"
         minSdk 21
         targetSdk 32
         versionCode 1
