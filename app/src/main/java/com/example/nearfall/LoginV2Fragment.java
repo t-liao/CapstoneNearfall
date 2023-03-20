@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.nearfall.Database.User;
+import com.example.nearfall.Database.UserManager;
 
 
 public class LoginV2Fragment extends Fragment implements View.OnClickListener {
@@ -31,6 +32,11 @@ public class LoginV2Fragment extends Fragment implements View.OnClickListener {
 
         email =(EditText)view.findViewById(R.id.email_signupv2);
         password = (EditText)view.findViewById(R.id.password_loginv2);
+        UserManager userManager = MainActivity.getUserManager();
+        User curr_user = userManager.getUser();
+        String savedPassword = curr_user.getHashedPassword();
+        String purpose = curr_user.getPurpose();
+        String savedEmail = curr_user.getEmail();
 
         Button signUp = view.findViewById(R.id.sign_up_button);
         signUp.setOnClickListener(new View.OnClickListener() {
