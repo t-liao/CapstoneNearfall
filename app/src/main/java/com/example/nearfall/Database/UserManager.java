@@ -20,6 +20,7 @@ public class UserManager extends SQLiteOpenHelper {
     private static final String PURPOSE = "purpose";
     private static final String PASSWORD = "password";
     private static final String PW_HASH = "pw_hash";
+    private static final String DETECTION = "detection";
     private static User current_user;
 
 
@@ -37,7 +38,8 @@ public class UserManager extends SQLiteOpenHelper {
                 + USER_EMAIL + " string,"
                 + DATE_OF_BIRTH + " string,"
                 + PASSWORD + " string,"
-                + PW_HASH + " string)";
+                + PW_HASH + " string,"
+                + DETECTION + " string)";
 
         db.execSQL(query);
     }
@@ -50,6 +52,7 @@ public class UserManager extends SQLiteOpenHelper {
         values.put(DATE_OF_BIRTH, String.valueOf(user.getDob()));
         values.put(PASSWORD, user.getHashedPassword());
         values.put(PW_HASH, "rand_hash");
+        values.put(DETECTION, "Off");
 
         long result = db.insert(USER_TABLE_NAME, null, values);
         if (result == -1) {
@@ -89,6 +92,10 @@ public class UserManager extends SQLiteOpenHelper {
 
     public void setEmail(String email) {
         setString(USER_EMAIL, email);
+    }
+
+    public void setDetection(String toggle) {
+        setString(DETECTION, toggle);
     }
 
     public void setPurpose(String purpose) {

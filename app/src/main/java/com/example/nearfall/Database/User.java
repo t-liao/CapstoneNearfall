@@ -7,14 +7,16 @@ import java.util.Date;
 public class User {
     private String username;
     private String email;
+    private String detection;
     private Date dob;
     private String password;
     private String purpose;
     private UserManager userManager;
 
-    public User(String username, String email, Date dob, String password, String purpose){
+    public User(String username, String email, Date dob, String password, String purpose, String detection){
         this.username = username;
         this.email = email;
+        this.detection = detection;
         this.dob = dob;
         this.password = password;
         this.purpose = purpose;
@@ -29,6 +31,10 @@ public class User {
         return this.email;
     }
 
+    public String getDetection() {
+        return this.detection;
+    }
+
     public Date getDob() {
         return this.dob;
     }
@@ -38,7 +44,7 @@ public class User {
     }
 
 
-     public String getHashedPassword() {
+    public String getHashedPassword() {
         return this.password;
      }
 

@@ -146,7 +146,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                     }
 
                     //Create new user
-                    User new_user = new User(n, e, d, p, mode);
+                    User new_user = new User(n, e, d, p, mode, "Off");
                     userManager.addUser(new_user);
                     //Set current user to new created user
                     userManager.setUser(new_user);

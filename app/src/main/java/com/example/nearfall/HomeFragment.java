@@ -13,9 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nearfall.Database.User;
+import com.example.nearfall.Database.UserManager;
+
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Purpose = "purposeKey";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //Create view from fragment_home.xml
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        String purpose = MainActivity.getUserManager().getUser().getPurpose();
+        UserManager userManager = MainActivity.getUserManager();
+        User curr_user = userManager.getUser();
+        //Get purpose and detection mode
+        String purpose = curr_user.getPurpose();
+        String detection = curr_user.getDetection();
+
         TextView text = (TextView) view.findViewById(R.id.home_mode_text);
         text.setText(purpose + " Mode");
 
@@ -72,9 +78,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     detectionText.setText("Detection On");
 
                     //Store current detection status
-                    SharedPreferences.Editor editor = sharedpreferences.edit();
-                    editor.putString(Detection,"On");
-                    editor.commit();
+                    userManager.setDetection("On");
 
                 } else {
                     //Turn detection off
@@ -86,9 +90,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     detectionText.setText("Detection Off");
 
                     //Store current detection status
-                    SharedPreferences.Editor editor = sharedpreferences.edit();
-                    editor.putString(Detection,"Off");
-                    editor.commit();
+                    userManager.setDetection("Off");
                 }
             }
         });
