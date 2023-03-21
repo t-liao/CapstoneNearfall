@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
+<!--    Contains fragments specified by the navGraph
+        specifically the nav_graph.xml found in res/navigation/nav_graph/xml-->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"

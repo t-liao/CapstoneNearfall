@@ -50,8 +50,8 @@
             android:id="@+id/research_mode_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
             android:translationY="150dp"
             android:layout_gravity="center_horizontal">
 
@@ -80,8 +80,8 @@
             android:id="@+id/personal_mode_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
             android:translationY="250dp"
             android:layout_gravity="center_horizontal">
 

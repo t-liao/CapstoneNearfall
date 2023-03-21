@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".WelcomeFragment">
 
+    <!--    include specified xml layout-->
     <include layout="@layout/welcome_page"/>
 
 </LinearLayout>

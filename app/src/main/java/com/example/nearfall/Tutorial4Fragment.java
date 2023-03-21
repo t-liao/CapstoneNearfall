@@ -22,19 +22,22 @@ public class Tutorial4Fragment extends Fragment implements View.OnClickListener 
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Create view from fragment_tutorial4.xml
         View view = inflater.inflate(R.layout.fragment_tutorial4, container, false);
 
+        //Get name
         String name = MainActivity.getUserManager().getUser().getUsername();
 
+        //Set home_mode_text to the correct purpose mode
         TextView text = (TextView) view.findViewById(R.id.name_text);
         text.setText(name);
 
-
-
+        //When page is clicked
         View page = view.findViewById(R.id.home_page);
         page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Navigate to tutorial5Fragment
                 Navigation.findNavController(view).navigate(R.id.action_tutorial4Fragment_to_tutorial5Fragment);
             }
         });

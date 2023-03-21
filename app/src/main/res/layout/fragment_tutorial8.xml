@@ -188,6 +188,36 @@
         android:layout_height="match_parent"
         android:background="@color/transparent_grey"/>
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:translationY="-30dp">
+
+            <TextView
+                android:id="@+id/start_stop_button_overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/content_circle_green"
+                android:gravity="center"
+                android:text="START"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="60sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -219,35 +249,6 @@
             />
 
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:translationY="-30dp">
-
-            <TextView
-                android:id="@+id/start_stop_button_overlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/content_circle_green"
-                android:gravity="center"
-                android:text="START"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="60sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"

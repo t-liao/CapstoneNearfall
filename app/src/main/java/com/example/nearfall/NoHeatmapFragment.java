@@ -24,18 +24,22 @@ public class NoHeatmapFragment extends Fragment implements View.OnClickListener{
 
         String purpose = MainActivity.getUserManager().getUser().getPurpose();
 
+        //When user icon is clicked
         LinearLayout profile = view.findViewById(R.id.user_icon_grey);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Navigate to profileFragment
                 Navigation.findNavController(view).navigate(R.id.action_noHeatmapFragment_to_profileFragment);
             }
         });
 
+        //When home icon is clicked
         LinearLayout home = view.findViewById(R.id.home_icon_grey);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Navigate to homeFragment
                 Navigation.findNavController(view).navigate(R.id.action_noHeatmapFragment_to_homeFragment);
             }
         });

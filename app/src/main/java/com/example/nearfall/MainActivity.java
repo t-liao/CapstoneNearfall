@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set view to activity_main.xml
         setContentView(R.layout.activity_main);
         userManager = new UserManager(MainActivity.this);
     }
