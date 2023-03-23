@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             //Set start stop button to green with start text
             //Set detection text to say detection off
             startStopButton.setText("START");
-            startStopButton.setBackgroundResource(R.drawable.content_circle_green);
+            startStopButton.setBackgroundResource(R.drawable.content_rect_green);
             detectionText.setText("Detection Off");
         } else if (detection.equals("On")){
             // Detection is currently on
@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             //Set start stop button to red with stop text
             //Set detection text to say detection on
             startStopButton.setText("STOP");
-            startStopButton.setBackgroundResource(R.drawable.content_circle_red);
+            startStopButton.setBackgroundResource(R.drawable.content_rect_red);
             detectionText.setText("Detection On");
         } else {
             //if detection value stored in the sharedpreference is not On or Off
@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     //Set start stop button to red with stop text
                     //Set detection text to say detection on
                     startStopButton.setText("STOP");
-                    startStopButton.setBackgroundResource(R.drawable.content_circle_red);
+                    startStopButton.setBackgroundResource(R.drawable.content_rect_red);
                     detectionText.setText("Detection On");
 
                     //Store current detection status
@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     //Set start stop button to green with start text
                     //Set detection text to say detection off
                     startStopButton.setText("START");
-                    startStopButton.setBackgroundResource(R.drawable.content_circle_green);
+                    startStopButton.setBackgroundResource(R.drawable.content_rect_green);
                     detectionText.setText("Detection Off");
 
                     //Store current detection status
@@ -101,6 +101,46 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     editor.putString(Detection,"Off");
                     editor.commit();
                 }
+            }
+        });
+
+        //When fall button is clicked
+        Button fallButton = view.findViewById(R.id.fall_button);
+        fallButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (startStopButton.getText().toString().equals("STOP")) {
+                    //If detection is running
+                    //Record fall
+
+
+                } else {
+                    //If detection is not on
+                    //Print
+                    Toast.makeText(getActivity().getApplicationContext(), "Fall detection is not on.",
+                            Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+        //When near fall button is clicked
+        Button nearFallButton = view.findViewById(R.id.near_fall_button);
+        nearFallButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (startStopButton.getText().toString().equals("STOP")) {
+                    //If detection is still running
+
+                    //Record near fall
+
+                } else {
+                    //If detection is not on
+                    //Print
+                    Toast.makeText(getActivity().getApplicationContext(), "Fall detection is not on.",
+                            Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

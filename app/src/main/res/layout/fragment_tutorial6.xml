@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/content_circle_green"
+                android:background="@drawable/content_rect_green"
                 android:gravity="center"
                 android:text="START"
                 android:textAlignment="center"
@@ -72,9 +72,41 @@
                 android:textSize="60sp"
                 android:textStyle="bold" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/fall_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/content_box_grey"
+                    app:backgroundTint="@color/purple_700"
+                    android:textSize="20dp"
+                    android:textAllCaps="false"
+                    android:text="Fall\nOccurred"/>
+
+                <Button
+                    android:id="@+id/near_fall_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/content_box_grey"
+                    app:backgroundTint="@color/bright_blue"
+                    android:textSize="20dp"
+                    android:textAllCaps="false"
+                    android:text="Near Fall\nOccurred"/>
+
+
+            </LinearLayout>
+
             <Button
                 android:id="@+id/change_mode_button"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="60dp"
                 android:layout_marginTop="30dp"

@@ -10,10 +10,9 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class Tutorial8Fragment extends Fragment implements View.OnClickListener{
+public class Tutorial10Fragment extends Fragment implements View.OnClickListener{
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String Purpose = "purposeKey";
     SharedPreferences sharedpreferences;
@@ -25,8 +24,8 @@ public class Tutorial8Fragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //Create view from fragment_tutorial8.xml
-        View view = inflater.inflate(R.layout.fragment_tutorial8, container, false);
+        //Create view from fragment_tutorial10.xml
+        View view = inflater.inflate(R.layout.fragment_tutorial10, container, false);
 
         //Grab the specified sharedpreference and stored purpose value
         sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -41,8 +40,8 @@ public class Tutorial8Fragment extends Fragment implements View.OnClickListener{
         page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Navigate to tutorial9Fragment
-                Navigation.findNavController(view).navigate(R.id.action_tutorial8Fragment_to_tutorial9Fragment);
+                //Navigate to tutorialCompleteFragment
+                Navigation.findNavController(view).navigate(R.id.action_tutorial10Fragment_to_tutorialCompleteFragment);
             }
         });
 
@@ -53,4 +52,5 @@ public class Tutorial8Fragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
 
     }
+
 }
