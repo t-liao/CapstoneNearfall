@@ -20,6 +20,8 @@ public class User {
         this.dob = dob;
         this.password = password;
         this.purpose = purpose;
+
+        // Session's user manager
         this.userManager = MainActivity.getUserManager();
     }
 
@@ -27,23 +29,26 @@ public class User {
         return this.username;
     }
 
+    // Return user's email
     public String getEmail() {
         return this.email;
     }
 
+    // Return detection
     public String getDetection() {
         return this.detection;
     }
-
+    // Return user's date of birth
     public Date getDob() {
         return this.dob;
     }
 
+    // Return user's purpose
     public String getPurpose() {
         return this.purpose;
     }
 
-
+    // Return hashed password
     public String getHashedPassword() {
         return this.password;
      }
