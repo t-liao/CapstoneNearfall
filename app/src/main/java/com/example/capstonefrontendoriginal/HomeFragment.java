@@ -2,10 +2,6 @@ package com.example.capstonefrontendoriginal;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -19,46 +15,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
 
-public class HomeFragment extends Fragment implements View.OnClickListener, SensorEventListener {
+public class HomeFragment extends Fragment implements View.OnClickListener {
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String Purpose = "purposeKey";
     public static final String Detection = "detectionKey";
     SharedPreferences sharedpreferences;
 
-    private SensorManager mSensorManager;
-    private Sensor accelerometer;
-    private Sensor gyroscope;
-    private float[] mGyroscopeData = { 0.0f, 0.0f, 0.0f };
-    private float[] mAccelerometerData = { 0.0f, 0.0f, 0.0f };
-    private float[] finalAccelerometerData;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mSensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
-        accelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        gyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // register sensors
-        mSensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-        mSensorManager.registerListener(this, gyroscope, SensorManager.SENSOR_DELAY_NORMAL);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // unregister listener
-        mSensorManager.unregisterListener(this);
-    }
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -224,44 +194,4 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Sens
     @Override
     public void onClick(View view) {}
 
-    @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        float [] values = sensorEvent.values;
-
-        // If detection is off, don't do anything
-        String detection = sharedpreferences.getString(Detection,"DEFAULT");
-        if (detection.equals("Off")){
-            return;
-        }
-
-        //Comment out if you want to log the data in logcat
-        //String logMessage = String.format("%d: 0'%g'", sensorEvent.sensor.getType(), values[0]);
-        //Log.d("Sensor Data IN:", logMessage);
-        switch(sensorEvent.sensor.getType()) {
-            case Sensor.TYPE_GYROSCOPE:
-                mGyroscopeData[0] = values[0];
-                mGyroscopeData[1] = values[1];
-                mGyroscopeData[2] = values[2];
-                break;
-            case Sensor.TYPE_ACCELEROMETER:
-                mAccelerometerData[0] = values[0];
-                mAccelerometerData[1] = values[1];
-                mAccelerometerData[2] = values[2];
-                break;
-        }
-
-        // Store data
-        String FILENAME = "sensor_log.csv";
-        String toDisplay = String.format("%f, %f, %f, %f, %f, %f %n", mAccelerometerData[0], mAccelerometerData[1], mAccelerometerData[2], mGyroscopeData[0], mGyroscopeData[1], mGyroscopeData[2]);
-        try{
-            FileOutputStream out = getContext().openFileOutput( FILENAME, Context.MODE_APPEND );
-            out.write( toDisplay.getBytes() );
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {}
 }
