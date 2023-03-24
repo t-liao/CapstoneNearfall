@@ -7,6 +7,7 @@ import com.example.nearfall.Database.UserManager;
 
 public class MainActivity extends AppCompatActivity {
     private static UserManager userManager;
+    public static String detecting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

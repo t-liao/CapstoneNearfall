@@ -127,7 +127,6 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                     String e  = email.getText().toString();
                     String n  = name.getText().toString();
                     String p  = password.getText().toString();
-                    String d  = dateOfBirth.getText().toString();
                     String mode;
 
 
@@ -145,7 +144,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                             return;
                         }
                         //Create new user
-                        User new_user = new User(n, e, d, mode, "Off", new HashedPassword(p));
+                        User new_user = new User(n, e, mode, "Off", new HashedPassword(p));
                         userManager.addUser(new_user);
                         //Set current user to new created user
                         userManager.setUser(new_user);

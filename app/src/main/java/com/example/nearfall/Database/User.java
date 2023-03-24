@@ -5,16 +5,14 @@ import com.example.nearfall.MainActivity;
 public class User {
     private String username;
     private String email;
-    private String detection;
     private String dob;
     private String purpose;
     private HashedPassword passwordData;
     private UserManager userManager;
 
-    public User(String username, String email, String dob, String purpose, String detection, HashedPassword passwordData){
+    public User(String username, String email, String dob, String purpose, HashedPassword passwordData){
         this.username = username;
         this.email = email;
-        this.detection = detection;
         this.dob = dob;
         this.purpose = purpose;
         this.passwordData = passwordData;
@@ -32,10 +30,6 @@ public class User {
         return this.email;
     }
 
-    // Return detection
-    public String getDetection() {
-        return this.detection;
-    }
     // Return user's date of birth
     public String getDob() {
         return this.dob;
@@ -44,6 +38,10 @@ public class User {
     // Return user's purpose
     public String getPurpose() {
         return this.purpose;
+    }
+
+    public String getDetection() {
+        return MainActivity.detecting;
     }
 
     public String getHashedPassword() {

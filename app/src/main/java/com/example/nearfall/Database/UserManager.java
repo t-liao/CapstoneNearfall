@@ -6,11 +6,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import com.example.nearfall.MainActivity;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 import java.util.Objects;
-
 
 public class UserManager extends SQLiteOpenHelper {
     private static final String DB_NAME = "nfdb";
@@ -23,10 +21,7 @@ public class UserManager extends SQLiteOpenHelper {
     private static final String PURPOSE = "purpose";
     private static final String HASHED_PASSWORD = "password";
     private static final String SALT = "salt";
-    private static final String DETECTION = "detection";
     private static User current_user;
-
-
 
     public UserManager(Context context) {
         // Invokes SLLiteOpenHelper constructor for current DB_NAME and version
@@ -43,7 +38,6 @@ public class UserManager extends SQLiteOpenHelper {
                 + DATE_OF_BIRTH + " string,"
                 + HASHED_PASSWORD + " string,"
                 + SALT + " blob,"
-                + DETECTION + " string,"
                 + PURPOSE + " string)";
         // Executes query
         db.execSQL(query);
@@ -60,7 +54,6 @@ public class UserManager extends SQLiteOpenHelper {
         values.put(DATE_OF_BIRTH, user.getDob());
         values.put(HASHED_PASSWORD, user.getHashedPassword());
         values.put(SALT, user.getSalt());
-        values.put(DETECTION, "Off");
         values.put(PURPOSE, user.getPurpose());
 
         // Insert new user by inserting values, returns -1 if failed
@@ -92,17 +85,12 @@ public class UserManager extends SQLiteOpenHelper {
 
     // Set detection mode for current user
     public void setDetection(String toggle) {
-        setString(DETECTION, toggle);
+        MainActivity.detecting = toggle;
     }
 
     // Sets purpose mode for current user
     public void setPurpose(String purpose) {
         setString(PURPOSE, purpose);
-    }
-
-    // Sets password for current suer
-    public void setPassword(String password) {
-        //TODO: Implement hashing algorithm for pw storage
     }
 
     // Updates key in database with new value for current user
@@ -112,13 +100,14 @@ public class UserManager extends SQLiteOpenHelper {
         // Create and add key/val pair to ContentValues
         ContentValues values = new ContentValues();
         values.put(key, value);
-
+        String userEmail = current_user.getEmail();
+        int rowId = getCursorFromEmail(userEmail).getColumnIndex(ID_COL);
         // Inserts values into table, returns -1 if fails
-        long result = db.insert(USER_TABLE_NAME, null, values);
+        long result = db.update(USER_TABLE_NAME, values, ID_COL+"="+rowId,
+                new String[]{String.valueOf(rowId)});
         if (result == -1) {
             // TODO: Add error handling
         }
-        db.close();
     }
 
     public void accountLogout() {
@@ -162,7 +151,6 @@ public class UserManager extends SQLiteOpenHelper {
         String email = cursor.getString(cursor.getColumnIndexOrThrow(USER_EMAIL));
         String dob = cursor.getString(cursor.getColumnIndexOrThrow(DATE_OF_BIRTH));
         String purpose = cursor.getString(cursor.getColumnIndexOrThrow(PURPOSE));
-        String detection = cursor.getString(cursor.getColumnIndexOrThrow(DETECTION));
         String hashedPassword = cursor.getString(cursor.getColumnIndexOrThrow(HASHED_PASSWORD));
         byte[] salt = cursor.getBlob(cursor.getColumnIndexOrThrow(SALT));
         HashedPassword passwordData = null;
@@ -171,7 +159,7 @@ public class UserManager extends SQLiteOpenHelper {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        return new User(name, email, dob, purpose, detection, passwordData);
+        return new User(name, email, dob, purpose, passwordData);
     }
 
     private boolean verifyUserPassword(User user, String attemptedPassword) {
@@ -191,7 +179,6 @@ public class UserManager extends SQLiteOpenHelper {
         return db.rawQuery(
                 "select * from "+USER_TABLE_NAME +" where "+USER_EMAIL +" = ?", new String[]{email});
     }
-
 
     // Upgrade override, drops table if exists and creates new one with updated names
     @Override
