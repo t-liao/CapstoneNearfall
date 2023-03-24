@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.example.nearfall.Database.User;
 import com.example.nearfall.Database.UserManager;
 
+import java.util.Objects;
+
 public class LoginFragment extends Fragment implements View.OnClickListener {
     EditText email, password;
 
@@ -33,12 +35,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         UserManager userManager = MainActivity.getUserManager();
-        User curr_user = userManager.getUser();
-
-        //Grab email, password, and purpose values
-        String savedEmail = curr_user.getEmail();
-        String savedPassword = curr_user.getHashedPassword();
-        String purpose = curr_user.getPurpose();
 
         //Grab from EditText
         email =(EditText)view.findViewById(R.id.email_login);
@@ -67,35 +63,28 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         //When login button is clicked
         Button login = view.findViewById(R.id.login_button);
         login.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                if (email.length()==0){
+                if (email.length()==0) {
                     //if email field is empty
                     email.setError("Enter Email Address");
-                } else if (password.length()==0){
+                    return;
+                }
+                if (password.length()==0) {
                     //if password field is empty
                     password.setError("Enter Password");
-                } else if (password.getText().toString().equals(savedPassword) && email.getText().toString().equals(savedEmail)){
-                    //if password and email matches the saved password
-//else if() Needs to be changed when switched to database storage
-                    //if purpose was stored correctly
-                    if(purpose.equals("Research") || purpose.equals("Personal")){
-                        userManager.setPurpose(purpose);
-                        //Navigate to homeFragment
-                        Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment);
-                    }  else {
-                        //if purpose was stored incorrectly
-
-                        //Print Error
-                        Toast.makeText(getActivity().getApplicationContext(), "Error: Purpose was stored incorrectly",
-                                Toast.LENGTH_LONG).show();
-                    }
-
+                    return;
+                }
+                String typedEmail = email.getText().toString();
+                String typedPassword = password.getText().toString();
+                boolean accountDetailsCorrect = userManager.verifyAccountLogin(typedEmail, typedPassword);
+                if (accountDetailsCorrect) {
+                    userManager.setUser(userManager.getUserByEmail(typedEmail));
+                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment);
                 } else {
-                    // if email or password is not the same as stored
-
-                    //Print error
-                    Toast.makeText(getActivity().getApplicationContext(), "The email or password is incorrect!",
+                    Toast.makeText(requireActivity().getApplicationContext(),
+                            "The email or password is incorrect!",
                             Toast.LENGTH_LONG).show();
                 }
 

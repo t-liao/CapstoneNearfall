@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.SQLException;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -24,27 +25,18 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nearfall.Database.HashedPassword;
 import com.example.nearfall.Database.User;
 import com.example.nearfall.Database.UserManager;
 
-import java.text.DateFormat;
-import java.time.LocalDate;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.Objects;
 
 public class SignUpFragment extends Fragment implements View.OnClickListener {
     EditText name, email, password, p2, dateOfBirth;
 
     private DatePickerDialog dp;
-
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Name = "nameKey";
-    public static final String Email = "emailKey";
-    public static final String Password = "passwordKey";
-    public static final String Dob = "dateOfBirthKey";
-    public static final String Purpose = "purposeKey";
-    public static final String Detection = "detectionKey";
-    SharedPreferences sharedpreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -135,7 +127,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                     String e  = email.getText().toString();
                     String n  = name.getText().toString();
                     String p  = password.getText().toString();
-                    Date d  = new Date(dateOfBirth.getText().toString());
+                    String d  = dateOfBirth.getText().toString();
                     String mode;
 
 
@@ -144,14 +136,27 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                     } else {
                         mode = "Personal";
                     }
-
-                    //Create new user
-                    User new_user = new User(n, e, d, p, mode, "Off");
-                    userManager.addUser(new_user);
-                    //Set current user to new created user
-                    userManager.setUser(new_user);
-                    //Navigate to tutorialOptionFragment
-                    Navigation.findNavController(view).navigate(R.id.action_signUpFragment_to_tutorialOptionFragment);
+                    try {
+                        // Checks if email already used
+                        if (userManager.emailAlreadyInUse(e)) {
+                            Toast.makeText(requireActivity().getApplicationContext(),
+                                    "Email is already in use",
+                                    Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        //Create new user
+                        User new_user = new User(n, e, d, mode, "Off", new HashedPassword(p));
+                        userManager.addUser(new_user);
+                        //Set current user to new created user
+                        userManager.setUser(new_user);
+                        //Navigate to tutorialOptionFragment
+                        Navigation.findNavController(view).navigate(R.id.action_signUpFragment_to_tutorialOptionFragment);
+                    } catch (NoSuchAlgorithmException | SQLException ex) {
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "Error: Something went wrong, please try again",
+                                Toast.LENGTH_LONG).show();
+                        ex.printStackTrace();
+                    }
                 }
             }
 

@@ -3,10 +3,13 @@ package com.example.nearfall.Database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.Objects;
 
 
 public class UserManager extends SQLiteOpenHelper {
@@ -18,8 +21,8 @@ public class UserManager extends SQLiteOpenHelper {
     private static final String USER_EMAIL = "email";
     private static final String DATE_OF_BIRTH = "date_of_birth";
     private static final String PURPOSE = "purpose";
-    private static final String PASSWORD = "password";
-    private static final String PW_HASH = "pw_hash";
+    private static final String HASHED_PASSWORD = "password";
+    private static final String SALT = "salt";
     private static final String DETECTION = "detection";
     private static User current_user;
 
@@ -38,29 +41,32 @@ public class UserManager extends SQLiteOpenHelper {
                 + USERNAME + " string,"
                 + USER_EMAIL + " string,"
                 + DATE_OF_BIRTH + " string,"
-                + PASSWORD + " string,"
-                + PW_HASH + " string,"
-                + DETECTION + " string)";
+                + HASHED_PASSWORD + " string,"
+                + SALT + " blob,"
+                + DETECTION + " string,"
+                + PURPOSE + " string)";
         // Executes query
         db.execSQL(query);
     }
 
-    public void addUser(User user) {
+    // Adds user to database, throws SQLException if failed
+    public void addUser(User user) throws SQLException {
         // Gets database scope
         SQLiteDatabase db = this.getWritableDatabase();
         // Create and put user values (name, email, etc) into new ContentValues var
         ContentValues values = new ContentValues();
         values.put(USERNAME, user.getUsername());
         values.put(USER_EMAIL, user.getEmail());
-        values.put(DATE_OF_BIRTH, String.valueOf(user.getDob()));
-        values.put(PASSWORD, user.getHashedPassword());
-        values.put(PW_HASH, "rand_hash");
+        values.put(DATE_OF_BIRTH, user.getDob());
+        values.put(HASHED_PASSWORD, user.getHashedPassword());
+        values.put(SALT, user.getSalt());
         values.put(DETECTION, "Off");
+        values.put(PURPOSE, user.getPurpose());
 
         // Insert new user by inserting values, returns -1 if failed
         long result = db.insert(USER_TABLE_NAME, null, values);
         if (result == -1) {
-            // TODO: Add error handling
+            throw new SQLException();
         }
     }
 
@@ -72,28 +78,6 @@ public class UserManager extends SQLiteOpenHelper {
     // Returns currently logged in user
     public User getUser() {
         return current_user;
-    }
-
-    // TODO: Implement getUserByColId
-    // Returns type User by searching db for col_id (primary key)
-    private User getUserByColId(int col_id) {
-        return null;
-    }
-
-    // Returns type User by searching database by email
-    public User getUserByEmail(String email) {
-        //Gets database scope
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor email_query = db.query(USER_TABLE_NAME, new String[]{ID_COL, USER_EMAIL},
-                USER_EMAIL+"="+email, null, null,
-                null, null, "1");
-
-        // Get primary key of found row
-        int col_id = email_query.getInt(0);
-        email_query.close();
-
-        // Returns type User by creating User from found values in row
-        return getUserByColId(col_id);
     }
 
     // Sets current users name
@@ -121,7 +105,7 @@ public class UserManager extends SQLiteOpenHelper {
         //TODO: Implement hashing algorithm for pw storage
     }
 
-    // Updates key in database with new value
+    // Updates key in database with new value for current user
     private void setString(String key, String value) {
         // Gets database scope
         SQLiteDatabase db = this.getWritableDatabase();
@@ -136,6 +120,78 @@ public class UserManager extends SQLiteOpenHelper {
         }
         db.close();
     }
+
+    public void accountLogout() {
+        this.setDetection("Off");
+        current_user = null;
+    }
+
+    public boolean verifyAccountLogin(String email, String password) {
+        User attemptedUserLogin = getUserByEmail(email);
+        if (attemptedUserLogin != null && verifyUserPassword(attemptedUserLogin, password))  {
+            return true;
+        }
+        return false;
+    }
+
+    // Returns type User by searching database by email
+    public User getUserByEmail(String email) {
+        //Gets database scope
+        Cursor cursor = getCursorFromEmail(email);
+        User foundUser;
+        if (cursor.moveToFirst() && cursor.getCount() > 0) {
+            // Get type User by creating User from found values in row if cursor is not empty
+            foundUser = getUserFromCursor(cursor);
+        } else {
+            // User not found in database
+            foundUser = null;
+        }
+        cursor.close();
+        return foundUser;
+    }
+
+    public boolean emailAlreadyInUse(String email) {
+        Cursor cursor = getCursorFromEmail(email);
+        return cursor != null && cursor.getCount() > 0;
+    }
+
+    // Private functions
+    // Returns type User by searching db from cursor
+    private User getUserFromCursor(Cursor cursor) {
+        String name = cursor.getString(cursor.getColumnIndexOrThrow(USERNAME));
+        String email = cursor.getString(cursor.getColumnIndexOrThrow(USER_EMAIL));
+        String dob = cursor.getString(cursor.getColumnIndexOrThrow(DATE_OF_BIRTH));
+        String purpose = cursor.getString(cursor.getColumnIndexOrThrow(PURPOSE));
+        String detection = cursor.getString(cursor.getColumnIndexOrThrow(DETECTION));
+        String hashedPassword = cursor.getString(cursor.getColumnIndexOrThrow(HASHED_PASSWORD));
+        byte[] salt = cursor.getBlob(cursor.getColumnIndexOrThrow(SALT));
+        HashedPassword passwordData = null;
+        try {
+            passwordData = new HashedPassword(hashedPassword, salt, true);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return new User(name, email, dob, purpose, detection, passwordData);
+    }
+
+    private boolean verifyUserPassword(User user, String attemptedPassword) {
+        String correctHashedPassword = user.getHashedPassword();
+        HashedPassword hashedPasswordToTest;
+        try {
+            hashedPasswordToTest = new HashedPassword(attemptedPassword, user.getSalt(), false);
+        } catch (NoSuchAlgorithmException e) {
+            return false;
+        }
+        return Objects.equals(correctHashedPassword, hashedPasswordToTest.getHashedPassword());
+    }
+
+    // Returns cursor from email
+    private Cursor getCursorFromEmail(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.rawQuery(
+                "select * from "+USER_TABLE_NAME +" where "+USER_EMAIL +" = ?", new String[]{email});
+    }
+
 
     // Upgrade override, drops table if exists and creates new one with updated names
     @Override

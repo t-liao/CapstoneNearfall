@@ -1,7 +1,5 @@
 package com.example.nearfall;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,12 +12,10 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.nearfall.Database.User;
+import com.example.nearfall.Database.UserManager;
+
 public class ProfileFragment extends Fragment implements View.OnClickListener {
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Name = "nameKey";
-    public static final String Purpose = "purposeKey";
-    public static final String Detection = "detectionKey";
-    SharedPreferences sharedpreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,11 +28,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         //Create view from fragment_profile.xml
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        //Grab the specified sharedpreference
-        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        //Grab purpose and name values from sharedpreference
-        String purpose = sharedpreferences.getString(Purpose,"DEFAULT");
-        String name = sharedpreferences.getString(Name,"DEFAULT");
+        UserManager userManager = MainActivity.getUserManager();
+        User curr_user = userManager.getUser();
+        String purpose = curr_user.getPurpose();
+        String name = curr_user.getUsername();
 
         //Set name_text to the stored name
         TextView text = (TextView) view.findViewById(R.id.profile_name_text);
@@ -47,12 +42,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Turn off detection
-
-                //Store new detection status
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString(Detection,"Off");
-                editor.commit();
+                //Turn off detection by storing new detection status
+                userManager.accountLogout();
                 //Navigate to welcomeFragment
                 Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_welcomeFragment);
             }

@@ -2,24 +2,22 @@ package com.example.nearfall.Database;
 
 import com.example.nearfall.MainActivity;
 
-import java.util.Date;
-
 public class User {
     private String username;
     private String email;
     private String detection;
-    private Date dob;
-    private String password;
+    private String dob;
     private String purpose;
+    private HashedPassword passwordData;
     private UserManager userManager;
 
-    public User(String username, String email, Date dob, String password, String purpose, String detection){
+    public User(String username, String email, String dob, String purpose, String detection, HashedPassword passwordData){
         this.username = username;
         this.email = email;
         this.detection = detection;
         this.dob = dob;
-        this.password = password;
         this.purpose = purpose;
+        this.passwordData = passwordData;
 
         // Session's user manager
         this.userManager = MainActivity.getUserManager();
@@ -39,7 +37,7 @@ public class User {
         return this.detection;
     }
     // Return user's date of birth
-    public Date getDob() {
+    public String getDob() {
         return this.dob;
     }
 
@@ -48,9 +46,11 @@ public class User {
         return this.purpose;
     }
 
-    // Return hashed password
     public String getHashedPassword() {
-        return this.password;
-     }
+        return this.passwordData.getHashedPassword();
+    }
 
+    public byte[] getSalt() {
+        return this.passwordData.getSalt();
+    }
 }
