@@ -1,7 +1,5 @@
 package com.example.nearfall;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,8 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.nearfall.Database.User;
-import com.example.nearfall.Database.UserManager;
+import com.example.nearfall.User.UserManager;
 
 
 public class ModeSelectionFragment extends Fragment implements View.OnClickListener {

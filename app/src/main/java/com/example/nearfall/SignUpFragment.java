@@ -3,7 +3,6 @@ package com.example.nearfall;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.SQLException;
 import android.os.Bundle;
 
@@ -25,13 +24,12 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nearfall.Database.HashedPassword;
-import com.example.nearfall.Database.User;
-import com.example.nearfall.Database.UserManager;
+import com.example.nearfall.User.HashedPassword;
+import com.example.nearfall.User.User;
+import com.example.nearfall.User.UserManager;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
-import java.util.Objects;
 
 public class SignUpFragment extends Fragment implements View.OnClickListener {
     EditText name, email, password, p2, dateOfBirth;

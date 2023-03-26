@@ -16,10 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.nearfall.Database.User;
-import com.example.nearfall.Database.UserManager;
 
-import java.util.Objects;
+import com.example.nearfall.User.UserManager;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
     EditText email, password;

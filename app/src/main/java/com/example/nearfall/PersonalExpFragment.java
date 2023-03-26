@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.nearfall.Database.UserManager;
+import com.example.nearfall.User.UserManager;
 
 public class PersonalExpFragment extends Fragment implements View.OnClickListener{
 

@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nearfall.Database.User;
-import com.example.nearfall.Database.UserManager;
+import com.example.nearfall.User.User;
+import com.example.nearfall.User.UserManager;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 

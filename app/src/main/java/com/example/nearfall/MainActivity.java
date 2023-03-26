@@ -3,10 +3,14 @@ package com.example.nearfall;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.nearfall.Database.UserManager;
+import com.example.nearfall.Location.LocationTracker;
+import com.example.nearfall.MainDatabase.Database;
+import com.example.nearfall.User.UserManager;
 
 public class MainActivity extends AppCompatActivity {
     private static UserManager userManager;
+    private static LocationTracker locationTracker;
+    private static Database database;
     public static String detecting;
 
     @Override
@@ -14,10 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //Set view to activity_main.xml
         setContentView(R.layout.activity_main);
-        userManager = new UserManager(MainActivity.this);
-        // Turns off detection to start
-        //TODO: May be easier to remove from database and just init with a variable here instead
-        userManager.setDetection("Off");
+        database = new Database(MainActivity.this);
+        userManager = new UserManager(database);
+        locationTracker = new LocationTracker(database);
     }
 
     @Override
@@ -28,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
     public static UserManager getUserManager() {
         return userManager;
+    }
+
+    public static LocationTracker getLocationTracker() {
+        return locationTracker;
+    }
+
+    public static Database getDatabase() {
+        return database;
     }
 
 }

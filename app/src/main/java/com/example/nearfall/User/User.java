@@ -1,6 +1,9 @@
-package com.example.nearfall.Database;
+package com.example.nearfall.User;
+
+import android.database.Cursor;
 
 import com.example.nearfall.MainActivity;
+import com.example.nearfall.MainDatabase.Database;
 
 public class User {
     private String username;
@@ -9,6 +12,7 @@ public class User {
     private String purpose;
     private HashedPassword passwordData;
     private UserManager userManager;
+    private int userId;
 
     public User(String username, String email, String dob, String purpose, HashedPassword passwordData){
         this.username = username;
@@ -50,5 +54,10 @@ public class User {
 
     public byte[] getSalt() {
         return this.passwordData.getSalt();
+    }
+
+    public int getId() {
+        Cursor cursor = userManager.getCursorFromEmail(this.email);
+        return cursor.getInt(cursor.getColumnIndexOrThrow(Database.ID_COL));
     }
 }

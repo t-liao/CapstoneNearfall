@@ -1,4 +1,4 @@
-package com.example.nearfall.Database;
+package com.example.nearfall.User;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
