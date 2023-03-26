@@ -229,8 +229,8 @@
         android:label="fragment_tutorial8"
         tools:layout="@layout/fragment_tutorial8" >
         <action
-            android:id="@+id/action_tutorial8Fragment_to_tutorialCompleteFragment"
-            app:destination="@id/tutorialCompleteFragment" />
+            android:id="@+id/action_tutorial8Fragment_to_tutorial9Fragment"
+            app:destination="@id/tutorial9Fragment" />
     </fragment>
     <fragment
         android:id="@+id/tutorialCompleteFragment"
@@ -240,5 +240,23 @@
         <action
             android:id="@+id/action_tutorialCompleteFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorial9Fragment"
+        android:name="com.example.capstonefrontendoriginal.Tutorial9Fragment"
+        android:label="fragment_tutorial9"
+        tools:layout="@layout/fragment_tutorial9" >
+        <action
+            android:id="@+id/action_tutorial9Fragment_to_tutorial10Fragment"
+            app:destination="@id/tutorial10Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorial10Fragment"
+        android:name="com.example.capstonefrontendoriginal.Tutorial10Fragment"
+        android:label="fragment_tutorial10"
+        tools:layout="@layout/fragment_tutorial10" >
+        <action
+            android:id="@+id/action_tutorial10Fragment_to_tutorialCompleteFragment"
+            app:destination="@id/tutorialCompleteFragment" />
     </fragment>
 </navigation>
