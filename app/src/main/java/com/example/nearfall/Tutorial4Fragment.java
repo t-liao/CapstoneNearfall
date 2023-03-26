@@ -1,19 +1,14 @@
 package com.example.nearfall;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class Tutorial4Fragment extends Fragment implements View.OnClickListener {
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

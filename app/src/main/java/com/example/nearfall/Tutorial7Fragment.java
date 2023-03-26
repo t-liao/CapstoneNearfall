@@ -1,21 +1,14 @@
 package com.example.nearfall;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class Tutorial7Fragment extends Fragment  implements View.OnClickListener{
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Purpose = "purposeKey";
-    SharedPreferences sharedpreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

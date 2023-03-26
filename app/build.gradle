@@ -4,15 +4,14 @@ plugins {
 
 android {
     namespace 'com.example.nearfall'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.nearfall"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -33,7 +32,7 @@ android {
 
 dependencies {
     implementation 'com.google.android.gms:play-services:11.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'

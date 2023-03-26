@@ -1,7 +1,5 @@
-package com.example.capstonefrontendoriginal;
+package com.example.nearfall;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,9 +11,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class Tutorial10Fragment extends Fragment implements View.OnClickListener{
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Purpose = "purposeKey";
-    SharedPreferences sharedpreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,9 +22,9 @@ public class Tutorial10Fragment extends Fragment implements View.OnClickListener
         //Create view from fragment_tutorial10.xml
         View view = inflater.inflate(R.layout.fragment_tutorial10, container, false);
 
-        //Grab the specified sharedpreference and stored purpose value
-        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String purpose = sharedpreferences.getString(Purpose,"DEFAULT");
+        // Get purpose from user manager
+        String purpose = MainActivity.getUserManager().getUser().getPurpose();
+
 
         //Set home_mode_text to the correct purpose mode
         TextView text = (TextView) view.findViewById(R.id.home_mode_text);
