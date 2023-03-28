@@ -170,7 +170,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 if (purpose.equals("Research")){
                     //If purpose is research navigate to noHeatmapFragment
                     Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_noHeatmapFragment);
-                } else if (purpose.equals("Personal")) {
+                } else {
                     //If purpose is personal navigate to heatmapFragment
                     Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_heatmapFragment);
                 }
