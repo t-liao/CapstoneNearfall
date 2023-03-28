@@ -32,18 +32,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         database = new Database(MainActivity.this);
-        userManager = new UserManager(database);
-        locationTracker = new LocationTracker(database);
+        userManager = new UserManager();
+        locationTracker = new LocationTracker();
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         gyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        detecting = "Off";
 
     }
 
     @Override
     public void onStart() {
         super.onStart();
-
         // register sensors
         mSensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         mSensorManager.registerListener(this, gyroscope, SensorManager.SENSOR_DELAY_NORMAL);

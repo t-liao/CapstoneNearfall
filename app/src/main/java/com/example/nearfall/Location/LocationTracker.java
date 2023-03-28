@@ -27,10 +27,10 @@ import com.google.android.gms.location.LocationServices;
 public class LocationTracker extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
     private GoogleApiClient googleApiClient;
     private LocationManager locationManager;
-    private Database database;
 
-    public LocationTracker(Database db) {
-        database = db;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         GoogleApiClient googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -38,6 +38,7 @@ public class LocationTracker extends AppCompatActivity implements GoogleApiClien
                 .build();
         locationManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
         checkLocation(); //check whether location service is enable or not in your  phone
+        googleApiClient.connect();
     }
     @Override
     public void onConnected(Bundle bundle) {
@@ -143,7 +144,7 @@ public class LocationTracker extends AppCompatActivity implements GoogleApiClien
     }
 
     public void addLocation(Double lat, Double lon, int userId) {
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = MainActivity.getDatabase().getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Database.LATITUDE_COL, lat);
         values.put(Database.LONGITUDE_COL, lon);

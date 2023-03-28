@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.os.UserManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,6 @@ public class Tutorial10Fragment extends Fragment implements View.OnClickListener
 
         // Get purpose from user manager
         String purpose = MainActivity.getUserManager().getUser().getPurpose();
-
 
         //Set home_mode_text to the correct purpose mode
         TextView text = (TextView) view.findViewById(R.id.home_mode_text);

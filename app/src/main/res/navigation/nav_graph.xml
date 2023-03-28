@@ -243,7 +243,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorial9Fragment"
-        android:name="com.example.capstonefrontendoriginal.Tutorial9Fragment"
+        android:name="com.example.nearfall.Tutorial9Fragment"
         android:label="fragment_tutorial9"
         tools:layout="@layout/fragment_tutorial9" >
         <action
@@ -252,7 +252,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorial10Fragment"
-        android:name="com.example.capstonefrontendoriginal.Tutorial10Fragment"
+        android:name="com.example.nearfall.Tutorial10Fragment"
         android:label="fragment_tutorial10"
         tools:layout="@layout/fragment_tutorial10" >
         <action

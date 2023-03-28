@@ -11,16 +11,11 @@ import com.example.nearfall.MainDatabase.Database;
 
 public class UserManager {
     private static User current_user;
-    private static Database database;
 
-    public UserManager(Database db) {
-        // Allows access of non-static Db from static context
-        database = db;
-    }
     // Adds user to database, throws SQLException if failed
     public void addUser(User user) throws SQLException {
         // Gets database scope
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = MainActivity.getDatabase().getWritableDatabase();
         // Create and put user values (name, email, etc) into new ContentValues var
         ContentValues values = new ContentValues();
         values.put(Database.USERNAME, user.getUsername());
@@ -70,7 +65,7 @@ public class UserManager {
     // Updates key in database with new value for current user
     private void setString(String key, String value) {
         // Gets database scope
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = MainActivity.getDatabase().getWritableDatabase();
         // Create and add key/val pair to ContentValues
         ContentValues values = new ContentValues();
         values.put(key, value);
@@ -120,7 +115,7 @@ public class UserManager {
 
     // Returns cursor from email
     public Cursor getCursorFromEmail(String email) {
-        SQLiteDatabase db = database.getWritableDatabase();
+        SQLiteDatabase db = MainActivity.getDatabase().getWritableDatabase();
         return db.rawQuery(
                 "select * from " + Database.USER_TABLE_NAME + " where " + Database.USER_EMAIL +
                         " = ?", new String[]{email});
