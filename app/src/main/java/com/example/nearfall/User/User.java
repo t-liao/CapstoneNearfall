@@ -14,15 +14,13 @@ public class User {
     private UserManager userManager;
     private int userId;
 
-    public User(String username, String email, String dob, String purpose, HashedPassword passwordData){
-        this.username = username;
-        this.email = email;
-        this.dob = dob;
-        this.purpose = purpose;
-        this.passwordData = passwordData;
+    public User(String username, String email, String dob, String purpose, HashedPassword passwordData, int id) {
+        setData(username, email, dob, purpose, passwordData);
+        this.userId = id;
+    }
 
-        // Session's user manager
-        this.userManager = MainActivity.getUserManager();
+    public User(String username, String email, String dob, String purpose, HashedPassword passwordData) {
+        setData(username, email, dob, purpose, passwordData);
     }
 
     public String getUsername() {
@@ -57,7 +55,34 @@ public class User {
     }
 
     public int getId() {
-        Cursor cursor = userManager.getCursorFromEmail(this.email);
-        return cursor.getInt(cursor.getColumnIndexOrThrow(Database.ID_COL));
+        return this.userId;
     }
-}
+
+    public void setId(int id) {
+        this.userId = id;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
+
+    public void setUsername(String name) {
+        this.username = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
+    private void setData(String username, String email, String dob, String purpose, HashedPassword passwordData) {
+        // Set object data
+        this.username = username;
+        this.email = email;
+        this.dob = dob;
+        this.purpose = purpose;
+        this.passwordData = passwordData;
+        // Session's user manager
+        this.userManager = MainActivity.getUserManager();
+    }
+ }

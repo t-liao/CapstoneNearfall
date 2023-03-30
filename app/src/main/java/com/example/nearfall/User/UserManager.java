@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
+
 import com.example.nearfall.MainActivity;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
@@ -13,7 +15,7 @@ public class UserManager {
     private static User current_user;
 
     // Adds user to database, throws SQLException if failed
-    public void addUser(User user) throws SQLException {
+    public int addUser(User user) throws SQLException {
         // Gets database scope
         SQLiteDatabase db = MainActivity.getDatabase().getWritableDatabase();
         // Create and put user values (name, email, etc) into new ContentValues var
@@ -30,6 +32,8 @@ public class UserManager {
         if (result == -1) {
             throw new SQLException();
         }
+        // Cast to int, not accurate over 2<<31 but not likely to have more than this
+        return (int) result;
     }
 
     // Set currently logged in user to param user
@@ -45,11 +49,13 @@ public class UserManager {
     // Sets current users name
     public void setUserName(String name) {
         setString(Database.USERNAME, name);
+        current_user.setUsername(name);
     }
 
     // Sets current users email
     public void setEmail(String email) {
         setString(Database.USER_EMAIL, email);
+        current_user.setEmail(email);
     }
 
     // Set detection mode for current user
@@ -60,6 +66,8 @@ public class UserManager {
     // Sets purpose mode for current user
     public void setPurpose(String purpose) {
         setString(Database.PURPOSE, purpose);
+        current_user.setPurpose(purpose);
+
     }
 
     // Updates key in database with new value for current user
@@ -69,15 +77,10 @@ public class UserManager {
         // Create and add key/val pair to ContentValues
         ContentValues values = new ContentValues();
         values.put(key, value);
-        String userEmail = current_user.getEmail();
-        String rowId = String.valueOf(getCursorFromEmail(userEmail).getColumnIndex(Database.ID_COL));
-        String whereClause = Database.ID_COL + "=?";
+        int rowId = current_user.getId();
         // Inserts values into table, returns -1 if fails
-        long result = db.updateWithOnConflict(Database.USER_TABLE_NAME, values, whereClause,
-                new String[]{rowId}, SQLiteDatabase.CONFLICT_IGNORE);
-        if (result == -1) {
-            // TODO: Add error handling
-        }
+        db.update(Database.USER_TABLE_NAME, values,
+                Database.ID_COL+"="+ rowId, null);
     }
 
     public void accountLogout() {
@@ -95,7 +98,7 @@ public class UserManager {
 
     // Returns type User by searching database by email
     public User getUserByEmail(String email) {
-        //Gets database scope
+        //Gets cursor by email
         Cursor cursor = getCursorFromEmail(email);
         User foundUser;
         if (cursor.moveToFirst() && cursor.getCount() > 0) {
@@ -130,6 +133,7 @@ public class UserManager {
         String dob = cursor.getString(cursor.getColumnIndexOrThrow(Database.DATE_OF_BIRTH));
         String purpose = cursor.getString(cursor.getColumnIndexOrThrow(Database.PURPOSE));
         String hashedPassword = cursor.getString(cursor.getColumnIndexOrThrow(Database.HASHED_PASSWORD));
+        int userId = cursor.getInt(cursor.getColumnIndexOrThrow(Database.ID_COL));
         byte[] salt = cursor.getBlob(cursor.getColumnIndexOrThrow(Database.SALT));
         HashedPassword passwordData = null;
         try {
@@ -137,7 +141,7 @@ public class UserManager {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        return new User(name, email, dob, purpose, passwordData);
+        return new User(name, email, dob, purpose, passwordData, userId);
     }
 
     private boolean verifyUserPassword(User user, String attemptedPassword) {
