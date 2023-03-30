@@ -19,6 +19,7 @@ public class Database  extends SQLiteOpenHelper {
     public static final String LATITUDE_COL = "latitude";
     public static final String LONGITUDE_COL = "longitude";
     public static final String USER_ID = "user_id";
+    public static final String TIMESTAMP = "timestamp";
 
     public Database(Context context) {
         // Invokes SLLiteOpenHelper constructor for current DB_NAME and version
@@ -45,6 +46,7 @@ public class Database  extends SQLiteOpenHelper {
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + LATITUDE_COL + " DOUBLE,"
                 + LONGITUDE_COL + " DOUBLE,"
+                + TIMESTAMP + "DATETIME,"
                 + USER_ID + " INTEGER)";
         // Executes query
         db.execSQL(createLocationTable);
