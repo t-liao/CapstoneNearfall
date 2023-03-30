@@ -70,10 +70,11 @@ public class UserManager {
         ContentValues values = new ContentValues();
         values.put(key, value);
         String userEmail = current_user.getEmail();
-        int rowId = getCursorFromEmail(userEmail).getColumnIndex(Database.ID_COL);
+        String rowId = String.valueOf(getCursorFromEmail(userEmail).getColumnIndex(Database.ID_COL));
+        String whereClause = Database.ID_COL + "=?";
         // Inserts values into table, returns -1 if fails
-        long result = db.update(Database.USER_TABLE_NAME, values, Database.ID_COL + "=" + rowId,
-                new String[]{String.valueOf(rowId)});
+        long result = db.updateWithOnConflict(Database.USER_TABLE_NAME, values, whereClause,
+                new String[]{rowId}, SQLiteDatabase.CONFLICT_IGNORE);
         if (result == -1) {
             // TODO: Add error handling
         }
