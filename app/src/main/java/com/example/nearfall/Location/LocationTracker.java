@@ -2,6 +2,8 @@ package com.example.nearfall.Location;
 
 import com.example.nearfall.MainActivity;
 import com.example.nearfall.MainDatabase.Database;
+
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,26 +24,33 @@ import com.example.nearfall.User.User;
 import com.example.nearfall.User.UserManager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-
-import java.time.LocalDateTime;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class LocationTracker extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
+    private static final long UPDATE_INTERVAL = 2000;
+    private static final long FASTEST_INTERVAL = 2000;
     private GoogleApiClient googleApiClient;
     private LocationManager locationManager;
+    private FusedLocationProviderClient fusedLocationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        GoogleApiClient googleApiClient = new GoogleApiClient.Builder(this)
+        googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
-        locationManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
         checkLocation(); //check whether location service is enable or not in your  phone
         googleApiClient.connect();
     }
+
     @Override
     public void onConnected(Bundle bundle) {
         Double lat;
@@ -49,23 +58,20 @@ public class LocationTracker extends AppCompatActivity implements GoogleApiClien
         int userId;
         UserManager userManager = MainActivity.getUserManager();
         User curr_user = userManager.getUser();
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: ADD PERM HANDLER
-            return;
-        }
+        checkLocation();
         startLocationUpdates();
-        Location locationServices = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
-        if(locationServices == null){
-            startLocationUpdates();
-        }
-        if (locationServices != null) {
-            lat = locationServices.getLatitude();
-            lon = locationServices.getLongitude();
-            userId = curr_user.getId();
-            addLocation(lat, lon, userId);
-        } else {
-            Toast.makeText(this, "Location not Detected", Toast.LENGTH_SHORT).show();
-        }
+
+//        if (locationServices == null) {
+//            startLocationUpdates();
+//        }
+//        if (locationServices != null) {
+//            lat = locationServices.getLatitude();
+//            lon = locationServices.getLongitude();
+//            userId = curr_user.getId();
+//            addLocation(lat, lon, userId);
+//        } else {
+//            Toast.makeText(this, "Location not Detected", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     @Override
@@ -96,16 +102,15 @@ public class LocationTracker extends AppCompatActivity implements GoogleApiClien
     }
 
     protected void startLocationUpdates() {
-//        mLocationRequest = LocationRequest.create()
-//                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-//                .setInterval(UPDATE_INTERVAL)
-//                .setFastestInterval(FASTEST_INTERVAL);
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            return;
-//        }
-//        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
-//                mLocationRequest, this);
-//        Log.d("reque", "--->>>>");
+        isLocationEnabled();
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        LocationRequest locationRequest = new LocationRequest();
+        // I suppressed the missing-permission warning because this wouldn't be executed in my
+        // case without location services being enabled
+//        @SuppressLint("MissingPermission") android.location.Location lastKnownLocation = locationManager.getCurrentLocation();
+//        double userLat = lastKnownLocation.getLatitude();
+//        double userLong = lastKnownLocation.getLongitude();
+
     }
 
     @Override
@@ -141,8 +146,9 @@ public class LocationTracker extends AppCompatActivity implements GoogleApiClien
 
     private boolean isLocationEnabled() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+        boolean providerPerms = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
                 locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        return providerPerms;
     }
 
     public void addLocation(Double lat, Double lon, int userId) {
