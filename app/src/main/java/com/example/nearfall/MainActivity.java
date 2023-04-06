@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private static UserManager userManager;
     private static LocationTracker locationTracker;
     private static Database database;
-    public static String detecting;
+    public static String detecting = "Off";
     private SensorManager mSensorManager;
     private Sensor accelerometer;
     private Sensor gyroscope;
@@ -34,13 +34,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //Set view to activity_main.xml
         setContentView(R.layout.activity_main);
 
-        database = new Database(MainActivity.this);
+        database = new Database(this);
         userManager = new UserManager();
-        locationTracker = new LocationTracker();
+        locationTracker = new LocationTracker(this);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         gyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-        detecting = "Off";
 
     }
 
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         //Comment out if you want to log the data in logcat
         String logMessage = String.format("%d: 0'%g'", sensorEvent.sensor.getType(), values[0]);
-        Log.d("Sensor Data IN:", logMessage);
+//        Log.d("Sensor Data IN:", logMessage);
         switch(sensorEvent.sensor.getType()) {
             case Sensor.TYPE_GYROSCOPE:
                 mGyroscopeData[0] = values[0];

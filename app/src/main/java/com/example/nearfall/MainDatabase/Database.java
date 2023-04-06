@@ -46,7 +46,7 @@ public class Database  extends SQLiteOpenHelper {
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + LATITUDE_COL + " DOUBLE,"
                 + LONGITUDE_COL + " DOUBLE,"
-                + TIMESTAMP + "DATETIME,"
+                + TIMESTAMP + " INTEGER,"
                 + USER_ID + " INTEGER)";
         // Executes query
         db.execSQL(createLocationTable);
