@@ -13,6 +13,7 @@ import com.example.nearfall.MainDatabase.Database;
 import com.example.nearfall.User.UserManager;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private static UserManager userManager;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         // Store data
         String FILENAME = "sensor_log.csv";
-        String toDisplay = String.format("%f, %f, %f, %f, %f, %f %n", mAccelerometerData[0], mAccelerometerData[1], mAccelerometerData[2], mGyroscopeData[0], mGyroscopeData[1], mGyroscopeData[2]);
+        String toDisplay = String.format(new Date().getTime() + ", %f, %f, %f, %f, %f, %f %n", mAccelerometerData[0], mAccelerometerData[1], mAccelerometerData[2], mGyroscopeData[0], mGyroscopeData[1], mGyroscopeData[2]);
         try{
             FileOutputStream out = openFileOutput( FILENAME, Context.MODE_APPEND );
             out.write( toDisplay.getBytes() );
