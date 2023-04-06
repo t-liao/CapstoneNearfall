@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nearfall.Location.LocationTracker;
 import com.example.nearfall.User.User;
 import com.example.nearfall.User.UserManager;
 
@@ -37,6 +38,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         String purpose = curr_user.getPurpose();
         String detection = curr_user.getDetection();
 
+        // Get location tracker instance
+        LocationTracker locationTracker = MainActivity.getLocationTracker();
         TextView text = (TextView) view.findViewById(R.id.home_mode_text);
         text.setText(purpose + " Mode");
 
@@ -80,6 +83,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                     //Store current detection status
                     userManager.setDetection("On");
+                    locationTracker.resumeLocationDetection();
 
                 } else {
                     //Set start stop button to green with start text
@@ -90,6 +94,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                     //Store current detection status
                     userManager.setDetection("Off");
+                    locationTracker.pauseLocationDetection();
                 }
             }
         });
