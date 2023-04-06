@@ -71,11 +71,11 @@ public class LocationTracker extends MainActivity {
 
         @Override
         public void onLocationResult(LocationResult locationResult) {
-            if (locationResult == null) {
+            User currUser = MainActivity.getUserManager().getUser();
+            if (locationResult == null || currUser == null) {
                 return;
             }
             Location lastLocation = locationResult.getLastLocation();
-            User currUser = MainActivity.getUserManager().getUser();
             int userId = currUser.getId();
             Double lat = lastLocation.getLatitude();
             Double lon = lastLocation.getLongitude();
