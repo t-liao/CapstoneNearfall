@@ -7,8 +7,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.example.nearfall.Location.LocationTracker;
 import com.example.nearfall.MainDatabase.Database;
@@ -26,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Sensor gyroscope;
     private float[] mGyroscopeData = { 0.0f, 0.0f, 0.0f };
     private float[] mAccelerometerData = { 0.0f, 0.0f, 0.0f };
-    private float[] finalAccelerometerData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,22 +46,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         // register sensors
         mSensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         mSensorManager.registerListener(this, gyroscope, SensorManager.SENSOR_DELAY_NORMAL);
-        // Toast.makeText(this, "Sensor registered", Toast.LENGTH_LONG).show();
     }
-
-    @Override
-    /*public void onStop() {
-        super.onStop();
-
-        // unregister listener
-        mSensorManager.unregisterListener(this);
-        Toast.makeText(this, "Sensor unregistered", Toast.LENGTH_LONG).show();
-    }*/
 
     public void onDestroy() {
         super.onDestroy();
-        Toast.makeText(this, "Service Destroyed", Toast.LENGTH_LONG).show();
-        Log.d("Service Destroyed", "Service Destroyed");
+        // Only unregister sensors when the app is terminated, so that it runs in the background
+        // Toast.makeText(this, "Service Destroyed", Toast.LENGTH_LONG).show();
+        // Log.d("Service Destroyed", "Service Destroyed");
         mSensorManager.unregisterListener(this);
     }
 
@@ -78,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
 
         //Comment out if you want to log the data in logcat
-        String logMessage = String.format("%d: 0'%g'", sensorEvent.sensor.getType(), values[0]);
-//        Log.d("Sensor Data IN:", logMessage);
+        // String logMessage = String.format("%d: 0'%g'", sensorEvent.sensor.getType(), values[0]);
+        // Log.d("Sensor Data IN:", logMessage);
         switch(sensorEvent.sensor.getType()) {
             case Sensor.TYPE_GYROSCOPE:
                 mGyroscopeData[0] = values[0];
