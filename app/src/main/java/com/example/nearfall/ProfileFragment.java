@@ -75,6 +75,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 contentValues.put(MediaStore.Downloads.MIME_TYPE, "text/csv");
                 contentValues.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
 
+                //Ensure that phone has API level 29 or higher that is required
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
 
                     try {
@@ -85,7 +86,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                         //For grabbing csv file from app file
                         FileInputStream inputStream = getActivity().openFileInput(FILENAME);
 
-                        // Read the contents of the file into a byte array
+                        // Read the contents of the inputStream into a byte array
+                        // and write to outputstream
                         byte[] buffer = new byte[inputStream.available()];
                         int bytesRead;
                         while ((bytesRead = inputStream.read(buffer)) != -1) {
