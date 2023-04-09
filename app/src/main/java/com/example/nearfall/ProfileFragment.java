@@ -1,19 +1,32 @@
 package com.example.nearfall;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nearfall.User.User;
 import com.example.nearfall.User.UserManager;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
@@ -46,6 +59,54 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 userManager.accountLogout();
                 //Navigate to welcomeFragment
                 Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_welcomeFragment);
+            }
+        });
+
+        //When Export Sensor Data is clicked
+        FrameLayout exportSensorData = view.findViewById(R.id.export_sensor_data);
+        exportSensorData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String FILENAME = "sensor_log.csv";
+                // Use the MediaStore API to write the file to the Downloads directory
+                ContentResolver resolver = getActivity().getContentResolver();
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(MediaStore.Downloads.DISPLAY_NAME, FILENAME);
+                contentValues.put(MediaStore.Downloads.MIME_TYPE, "text/csv");
+                contentValues.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+
+                    try {
+                        Uri uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues);
+
+                        //For writing to download directory
+                        OutputStream outputStream = resolver.openOutputStream(uri);
+                        //For grabbing csv file from app file
+                        FileInputStream inputStream = getActivity().openFileInput(FILENAME);
+
+                        // Read the contents of the file into a byte array
+                        byte[] buffer = new byte[inputStream.available()];
+                        int bytesRead;
+                        while ((bytesRead = inputStream.read(buffer)) != -1) {
+                            outputStream.write(buffer, 0, bytesRead);
+                        }
+
+                        inputStream.close();
+                        outputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(requireActivity().getApplicationContext(),
+                            "File is exported!",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(requireActivity().getApplicationContext(),
+                            "Phone API level needs to be 29 or higher",
+                            Toast.LENGTH_LONG).show();
+                }
+
+
             }
         });
 
