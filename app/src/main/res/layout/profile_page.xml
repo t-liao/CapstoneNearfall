@@ -167,6 +167,7 @@
                 android:layout_marginHorizontal="5dp"/>
 
             <FrameLayout
+                android:id="@+id/tutorial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -197,10 +198,10 @@
                     android:elevation="5dp">
 
                     <TextView
-                        android:id="@+id/map_specification_text"
+                        android:id="@+id/tutorial_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Map Specifications"
+                        android:text="Tutorial"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp"
@@ -210,7 +211,7 @@
                         android:id="@+id/map_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Customize map settings"
+                        android:text="Go through the tutorial"
                         android:textSize="16sp"
                         android:layout_marginLeft="10dp"/>
                 </LinearLayout>

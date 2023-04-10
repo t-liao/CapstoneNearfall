@@ -51,6 +51,24 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         TextView text = (TextView) view.findViewById(R.id.profile_name_text);
         text.setText(name);
 
+        //When tutorial is clicked
+        FrameLayout tutorial = view.findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String detection = curr_user.getDetection();
+                if (detection.equals("On")) {
+                    //If detection is still running
+                    //Print message
+                    Toast.makeText(getActivity().getApplicationContext(), "Please stop fall detection \nbefore going through the tutorial.",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    //Navigate to tutorial1Fragment
+                    Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_tutorial1Fragment);
+                }
+            }
+        });
+
         //When logout is clicked
         FrameLayout Logout = view.findViewById(R.id.Logout);
         Logout.setOnClickListener(new View.OnClickListener() {
