@@ -1,5 +1,6 @@
 package com.example.nearfall;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,10 @@ import android.widget.Toast;
 import com.example.nearfall.Location.LocationTracker;
 import com.example.nearfall.User.User;
 import com.example.nearfall.User.UserManager;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
@@ -98,6 +103,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        //grab user email before @ symbol
+        String email = curr_user.getEmail();
+        int index = email.indexOf("@");
+        String username = email.substring(0, index);
+
+        String FILENAME = "fall_log_" + username + ".csv";
+
         //When fall button is clicked
         Button fallButton = view.findViewById(R.id.fall_button);
         fallButton.setOnClickListener(new View.OnClickListener() {
@@ -106,8 +118,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 if (startStopButton.getText().toString().equals("STOP")) {
                     //If detection is running
                     //Record fall
+                    String toDisplay;
 
+                    //Record fall
+                    if (purpose.equals("Research")){
+                        //if purpose is research
+                        toDisplay = String.format(new Date().getTime() + ", Fall %n");
+                    } else {
+                        //if purpose is personal add lat and long values
+                        toDisplay = String.format(new Date().getTime() + ", Fall, %f, %f %n");
+                    }
 
+                    try{
+                        FileOutputStream out = getActivity().openFileOutput( FILENAME, Context.MODE_APPEND );
+                        out.write( toDisplay.getBytes() );
+                        out.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Toast.makeText(getActivity().getApplicationContext(), "Fall recorded!",
+                            Toast.LENGTH_LONG).show();
                 } else {
                     //If detection is not on
                     //Print
@@ -126,8 +157,28 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 if (startStopButton.getText().toString().equals("STOP")) {
                     //If detection is still running
 
-                    //Record near fall
+                    String toDisplay;
 
+                    //Record near fall
+                    if (purpose.equals("Research")){
+                        //if purpose is research
+                        toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
+                    } else {
+                        //if purpose is personal add lat and long values
+                        toDisplay = String.format(new Date().getTime() + ", Near Fall, %f, %f %n");
+                    }
+
+
+                    try{
+                        FileOutputStream out = getActivity().openFileOutput( FILENAME, Context.MODE_APPEND );
+                        out.write( toDisplay.getBytes() );
+                        out.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Toast.makeText(getActivity().getApplicationContext(), "Near fall recorded!",
+                            Toast.LENGTH_LONG).show();
                 } else {
                     //If detection is not on
                     //Print
