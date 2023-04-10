@@ -72,6 +72,19 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         String SENSORFILENAME = "sensor_log_" + username + ".csv";
         String FALLFILENAME = "fall_log_" + username + ".csv";
 
+        // Use the MediaStore API to write sensor log to the Downloads directory
+        ContentResolver resolver = getActivity().getContentResolver();
+        ContentValues contentValuesSensor = new ContentValues();
+        contentValuesSensor.put(MediaStore.Downloads.DISPLAY_NAME, SENSORFILENAME);
+        contentValuesSensor.put(MediaStore.Downloads.MIME_TYPE, "text/csv");
+        contentValuesSensor.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+
+        // Use the MediaStore API to write fall log to the Downloads directory
+        ContentValues contentValuesFall = new ContentValues();
+        contentValuesFall.put(MediaStore.Downloads.DISPLAY_NAME, FALLFILENAME);
+        contentValuesFall.put(MediaStore.Downloads.MIME_TYPE, "text/csv");
+        contentValuesFall.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+
         //When Download Sensor Data is clicked
         FrameLayout downloadSensorData = view.findViewById(R.id.download_sensor_data);
         downloadSensorData.setOnClickListener(new View.OnClickListener() {
@@ -79,42 +92,89 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             public void onClick(View view) {
 
 
-                //Specify location
-                File externalDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                //Ensure that phone has API level 29 or higher that is required
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
 
+                    try {
+                        //For grabbing csv file from app file
+                        FileInputStream inputStreamSensor = getActivity().openFileInput(SENSORFILENAME);
 
-                try {
+                        //For exporting sensor log csv
+                        Uri uriSensor = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValuesSensor);
+                        //For writing to download directory
+                        OutputStream outputStreamSensor = resolver.openOutputStream(uriSensor);
 
-                    //For reading sensor log csv file from app file
-                    FileInputStream inputStreamSensor = getActivity().openFileInput(SENSORFILENAME);
+                        // Read the contents of the inputStream into a byte array
+                        // and write to outputstream
+                        byte[] buffer = new byte[inputStreamSensor.available()];
+                        int bytesRead;
+                        while ((bytesRead = inputStreamSensor.read(buffer)) != -1) {
+                            outputStreamSensor.write(buffer, 0, bytesRead);
+                        }
 
-                    //Create an output stream to write the file to external storage
-                    File outputFileSensor = new File(externalDir, SENSORFILENAME);
-                    FileOutputStream outputStreamSensor = new FileOutputStream(outputFileSensor);
+                        inputStreamSensor.close();
+                        outputStreamSensor.close();
 
-                    // Read the contents of the inputStream into a byte array
-                    // and write to outputstream
-                    byte[] buffer = new byte[inputStreamSensor.available()];
-                    int bytesRead;
-                    while ((bytesRead = inputStreamSensor.read(buffer)) != -1) {
-                        outputStreamSensor.write(buffer, 0, bytesRead);
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "File downloaded successfully!",
+                                Toast.LENGTH_LONG).show();
 
+                    } catch (FileNotFoundException e) {
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "No sensor log file exist.",
+                                Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
                     }
 
-                    //Close streams
-                    inputStreamSensor.close();
-                    outputStreamSensor.close();
+                } else {
+                    //For phones with API level lower than 29
 
-                    Toast.makeText(requireActivity().getApplicationContext(),
-                            "File downloaded successfully!",
-                            Toast.LENGTH_LONG).show();
+                    //Specify location
+                    File externalDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(requireActivity().getApplicationContext(),
-                            e.getMessage(),
-                            Toast.LENGTH_LONG).show();
+                    try {
+
+                        //For reading sensor log csv file from app file
+                        FileInputStream inputStreamSensor = getActivity().openFileInput(SENSORFILENAME);
+
+                        //Create an output stream to write the file to external storage
+                        File outputFileSensor = new File(externalDir, SENSORFILENAME);
+                        FileOutputStream outputStreamSensor = new FileOutputStream(outputFileSensor);
+
+                        // Read the contents of the inputStream into a byte array
+                        // and write to outputstream
+                        byte[] buffer = new byte[inputStreamSensor.available()];
+                        int bytesRead;
+                        while ((bytesRead = inputStreamSensor.read(buffer)) != -1) {
+                            outputStreamSensor.write(buffer, 0, bytesRead);
+
+                        }
+
+                        //Close streams
+                        inputStreamSensor.close();
+                        outputStreamSensor.close();
+
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "File downloaded successfully!",
+                                Toast.LENGTH_LONG).show();
+
+                    } catch (FileNotFoundException e) {
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "No sensor log file exist.",
+                                Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
+
+
 
             }
 
@@ -125,39 +185,88 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         downloadFallData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Specify location
-                File externalDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-                try {
-                    //For reading fall log csv file from app file
-                    FileInputStream inputStreamFall = getActivity().openFileInput(FALLFILENAME);
+                //Ensure that phone has API level 29 or higher that is required
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
 
-                    //Create an output stream to write the file to external storage
-                    File outputFileFall = new File(externalDir, FALLFILENAME);
-                    FileOutputStream outputStreamFall = new FileOutputStream(outputFileFall);
+                    try {
+                        //For grabbing csv file from app file
+                        FileInputStream inputStreamFall = getActivity().openFileInput(FALLFILENAME);
 
-                    // Read the contents of the inputStream into a byte array
-                    // and write to outputstream
-                    byte[] bufferFall = new byte[inputStreamFall.available()];
-                    int bytesReadFall;
-                    while ((bytesReadFall = inputStreamFall.read(bufferFall)) != -1) {
-                        outputStreamFall.write(bufferFall, 0, bytesReadFall);
+                        //For exporting fall log csv
+                        Uri uriFall = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValuesFall);
+                        //For writing to download directory
+                        OutputStream outputStreamFall = resolver.openOutputStream(uriFall);
+
+                        // Read the contents of the inputStream into a byte array
+                        // and write to outputstream
+                        byte[] bufferFall = new byte[inputStreamFall.available()];
+                        int bytesReadFall;
+                        while ((bytesReadFall = inputStreamFall.read(bufferFall)) != -1) {
+                            outputStreamFall.write(bufferFall, 0, bytesReadFall);
+                        }
+
+                        inputStreamFall.close();
+                        outputStreamFall.close();
+
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "File downloaded successfully!",
+                                Toast.LENGTH_LONG).show();
+
+                    } catch (FileNotFoundException e) {
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "No fall log file exist.",
+                                Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
                     }
 
-                    //Close streams
-                    inputStreamFall.close();
-                    outputStreamFall.close();
+                } else {
+                    //For phones with API level lower than 29
 
-                    Toast.makeText(requireActivity().getApplicationContext(),
-                            "File downloaded successfully!",
-                            Toast.LENGTH_LONG).show();
+                    //Specify location
+                    File externalDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(requireActivity().getApplicationContext(),
-                            e.getMessage(),
-                            Toast.LENGTH_LONG).show();
+                    try {
+                        //For reading fall log csv file from app file
+                        FileInputStream inputStreamFall = getActivity().openFileInput(FALLFILENAME);
+
+                        //Create an output stream to write the file to external storage
+                        File outputFileFall = new File(externalDir, FALLFILENAME);
+                        FileOutputStream outputStreamFall = new FileOutputStream(outputFileFall);
+
+                        // Read the contents of the inputStream into a byte array
+                        // and write to outputstream
+                        byte[] bufferFall = new byte[inputStreamFall.available()];
+                        int bytesReadFall;
+                        while ((bytesReadFall = inputStreamFall.read(bufferFall)) != -1) {
+                            outputStreamFall.write(bufferFall, 0, bytesReadFall);
+                        }
+
+                        //Close streams
+                        inputStreamFall.close();
+                        outputStreamFall.close();
+
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "File downloaded successfully!",
+                                Toast.LENGTH_LONG).show();
+
+                    } catch (FileNotFoundException e) {
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "No fall log file exist.",
+                                Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
+
+
 
             }
 
