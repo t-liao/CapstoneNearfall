@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import com.example.nearfall.Location.LocationTracker;
 import com.example.nearfall.MainDatabase.Database;
+import com.example.nearfall.User.User;
 import com.example.nearfall.User.UserManager;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -82,8 +83,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 break;
         }
 
+        //grab user email before @ symbol
+        UserManager userManager = MainActivity.getUserManager();
+        User curr_user = userManager.getUser();
+        String email = curr_user.getEmail();
+        int index = email.indexOf("@");
+        String username = email.substring(0, index);
+
         // Store data
-        String FILENAME = "sensor_log.csv";
+        String FILENAME = "sensor_log_" + username + ".csv";
         String toDisplay = String.format(new Date().getTime() + ", %f, %f, %f, %f, %f, %f %n", mAccelerometerData[0], mAccelerometerData[1], mAccelerometerData[2], mGyroscopeData[0], mGyroscopeData[1], mGyroscopeData[2]);
         try{
             FileOutputStream out = openFileOutput( FILENAME, Context.MODE_APPEND );
