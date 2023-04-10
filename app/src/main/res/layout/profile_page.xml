@@ -302,13 +302,13 @@
 
 
             <ImageView
-                android:id="@+id/help_icon"
+                android:id="@+id/download_icon1"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:layout_weight="1"
                 android:scaleY="1.2"
-                app:srcCompat="@drawable/bell" />
+                app:srcCompat="@drawable/download" />
 
             <FrameLayout
                 android:id="@+id/download_fall_data"
@@ -368,12 +368,13 @@
 
 
             <ImageView
-                android:id="@+id/about_icon"
+                android:id="@+id/download_icon2"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/heart" />
+                android:scaleY="1.2"
+                app:srcCompat="@drawable/download" />
 
             <FrameLayout
                 android:id="@+id/download_sensor_data"
