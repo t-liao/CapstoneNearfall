@@ -311,6 +311,7 @@
                 app:srcCompat="@drawable/bell" />
 
             <FrameLayout
+                android:id="@+id/download_fall_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -324,7 +325,7 @@
                     />
 
                 <ImageView
-                    android:id="@+id/next_help"
+                    android:id="@+id/next_download_fall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:elevation="5dp"
@@ -341,10 +342,10 @@
                     android:elevation="5dp">
 
                     <TextView
-                        android:id="@+id/help_text"
+                        android:id="@+id/download_fall_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Help &amp; Support"
+                        android:text="Download Fall Data"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp"
@@ -375,7 +376,7 @@
                 app:srcCompat="@drawable/heart" />
 
             <FrameLayout
-                android:id="@+id/export_sensor_data"
+                android:id="@+id/download_sensor_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -389,7 +390,7 @@
                     />
 
                 <ImageView
-                    android:id="@+id/next_about"
+                    android:id="@+id/next_download_sensor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:elevation="5dp"
@@ -406,10 +407,10 @@
                     android:elevation="5dp">
 
                     <TextView
-                        android:id="@+id/export_text"
+                        android:id="@+id/download_sensor_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Export Sensor Data"
+                        android:text="Download Sensor Data"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp"
