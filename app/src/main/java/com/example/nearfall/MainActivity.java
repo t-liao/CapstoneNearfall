@@ -7,7 +7,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-
+import android.util.Log;
+import android.widget.Toast;
 import com.example.nearfall.Location.LocationTracker;
 import com.example.nearfall.MainDatabase.Database;
 import com.example.nearfall.User.User;
