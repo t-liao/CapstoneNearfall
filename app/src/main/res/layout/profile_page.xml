@@ -375,6 +375,7 @@
                 app:srcCompat="@drawable/heart" />
 
             <FrameLayout
+                android:id="@+id/export_sensor_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -405,10 +406,10 @@
                     android:elevation="5dp">
 
                     <TextView
-                        android:id="@+id/about_app_text"
+                        android:id="@+id/export_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="About App"
+                        android:text="Export Sensor Data"
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textSize="20sp"
