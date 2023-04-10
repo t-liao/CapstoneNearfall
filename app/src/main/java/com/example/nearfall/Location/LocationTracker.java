@@ -8,14 +8,9 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
-import android.os.Bundle;
 import android.os.Looper;
-import android.util.Log;
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import com.example.nearfall.MainActivity;
 import com.example.nearfall.MainDatabase.Database;
 import com.example.nearfall.User.User;
@@ -26,22 +21,21 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.SettingsClient;
-
 import java.util.Date;
 
 public class LocationTracker extends MainActivity {
     private static final int PERMISSION_ID = 44;
     private final long UPDATE_INTERVAL = 5 * 1000;
-    private final long FASTEST_INTERVAL = 10 * 1000;
+    private final long FASTEST_INTERVAL = 5 * 1000;
     private FusedLocationProviderClient fusedLocationClient;
     private LocationRequest locationRequest;
+    private Location lastSavedLocation;
     private Context parent;
-    protected static final int REQUEST_CHECK_SETTINGS = 0x1;
 
     public LocationTracker(Context context) {
         parent = context;
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(parent);
-        startLocationUpdates();
+        lastSavedLocation = null;
     }
 
     @SuppressLint("MissingPermission")
@@ -75,10 +69,10 @@ public class LocationTracker extends MainActivity {
             if (locationResult == null || currUser == null) {
                 return;
             }
-            Location lastLocation = locationResult.getLastLocation();
+            lastSavedLocation = locationResult.getLastLocation();
             int userId = currUser.getId();
-            Double lat = lastLocation.getLatitude();
-            Double lon = lastLocation.getLongitude();
+            Double lat = lastSavedLocation.getLatitude();
+            Double lon = lastSavedLocation.getLongitude();
             addLocation(lat, lon, userId);
         }
     };
@@ -130,5 +124,9 @@ public class LocationTracker extends MainActivity {
 
     public void pauseLocationDetection() {
         fusedLocationClient.removeLocationUpdates(locationCallback);
+    }
+
+    public Location getLastSavedLocation() {
+        return lastSavedLocation;
     }
 }
