@@ -2,7 +2,7 @@ package com.example.nearfall;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Context;
+
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -25,8 +25,11 @@ import com.example.nearfall.User.UserManager;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
@@ -50,6 +53,24 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         TextView text = (TextView) view.findViewById(R.id.profile_name_text);
         text.setText(name);
 
+        //When tutorial is clicked
+        FrameLayout tutorial = view.findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String detection = curr_user.getDetection();
+                if (detection.equals("On")) {
+                    //If detection is still running
+                    //Print message
+                    Toast.makeText(getActivity().getApplicationContext(), "Please stop fall detection \nbefore going through the tutorial.",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    //Navigate to tutorial1Fragment
+                    Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_tutorial1Fragment);
+                }
+            }
+        });
+
         //When logout is clicked
         FrameLayout Logout = view.findViewById(R.id.Logout);
         Logout.setOnClickListener(new View.OnClickListener() {
@@ -62,42 +83,53 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        //When Export Sensor Data is clicked
-        FrameLayout exportSensorData = view.findViewById(R.id.export_sensor_data);
-        exportSensorData.setOnClickListener(new View.OnClickListener() {
+        //grab user email before @ symbol
+        String email = curr_user.getEmail();
+        int index = email.indexOf("@");
+        String username = email.substring(0, index);
+
+        //When Download Sensor Data is clicked
+        FrameLayout downloadSensorData = view.findViewById(R.id.download_sensor_data);
+        downloadSensorData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //grab user email before @ symbol
-                String email = curr_user.getEmail();
-                int index = email.indexOf("@");
-                String username = email.substring(0, index);
+                //get time when clicked
+                long timestamp = new Date().getTime();
 
+                SimpleDateFormat dateFormat = new SimpleDateFormat("_yyyyMMdd_HHmmss");
+                String formattedDate = dateFormat.format(new Date(timestamp));
 
-                String SENSORFILENAME = "sensor_log_" + username + ".csv";
-                String FALLFILENAME = "fall_log_" + username + ".csv";
-                // Use the MediaStore API to write the file to the Downloads directory
-                ContentResolver resolver = getActivity().getContentResolver();
+                String SENSORFILENAMEOUT = username + formattedDate + "_sensor_log" + ".csv";
+                String SENSORFILENAMEIN = "sensor_log_" + username + ".csv";
+
+                // Use the MediaStore API to write sensor log to the Downloads directory
                 ContentValues contentValuesSensor = new ContentValues();
-                contentValuesSensor.put(MediaStore.Downloads.DISPLAY_NAME, SENSORFILENAME);
+                contentValuesSensor.put(MediaStore.Downloads.DISPLAY_NAME, SENSORFILENAMEOUT);
                 contentValuesSensor.put(MediaStore.Downloads.MIME_TYPE, "text/csv");
                 contentValuesSensor.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
 
-                ContentValues contentValuesFall = new ContentValues();
-                contentValuesFall.put(MediaStore.Downloads.DISPLAY_NAME, FALLFILENAME);
-                contentValuesFall.put(MediaStore.Downloads.MIME_TYPE, "text/csv");
-                contentValuesFall.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
 
                 //Ensure that phone has API level 29 or higher that is required
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
 
                     try {
+                        //For grabbing csv file from app file
+                        FileInputStream inputStreamSensor = getActivity().openFileInput(SENSORFILENAMEIN);
+
                         //For exporting sensor log csv
-                        Uri uriSensor = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValuesSensor);
+                        ContentResolver resolverSensor = getActivity().getContentResolver();
+                        Uri uriSensor = resolverSensor.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValuesSensor);
+
+                        //If the uri is null, show a Toast message and return
+                        if (uriSensor == null) {
+                            Toast.makeText(getActivity(),
+                                    "Unable to obtain URI to write sensor log",
+                                    Toast.LENGTH_SHORT).show();
+                            return;
+                        }
 
                         //For writing to download directory
-                        OutputStream outputStreamSensor = resolver.openOutputStream(uriSensor);
-                        //For grabbing csv file from app file
-                        FileInputStream inputStreamSensor = getActivity().openFileInput(SENSORFILENAME);
+                        OutputStream outputStreamSensor = resolverSensor.openOutputStream(uriSensor);
 
                         // Read the contents of the inputStream into a byte array
                         // and write to outputstream
@@ -110,13 +142,109 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                         inputStreamSensor.close();
                         outputStreamSensor.close();
 
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "Sensor data downloaded successfully!",
+                                Toast.LENGTH_LONG).show();
+
+                    } catch (FileNotFoundException e) {
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "No sensor log file exist.",
+                                Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+
+
+                } else {
+                    //For phones with API level lower than 29
+
+                    //Specify location
+                    File externalDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
+                    try {
+
+                        //For reading sensor log csv file from app file
+                        FileInputStream inputStreamSensor = getActivity().openFileInput(SENSORFILENAMEIN);
+
+                        //Create an output stream to write the file to external storage
+                        File outputFileSensor = new File(externalDir, SENSORFILENAMEOUT);
+                        FileOutputStream outputStreamSensor = new FileOutputStream(outputFileSensor);
+
+                        // Read the contents of the inputStream into a byte array
+                        // and write to outputstream
+                        byte[] buffer = new byte[inputStreamSensor.available()];
+                        int bytesRead;
+                        while ((bytesRead = inputStreamSensor.read(buffer)) != -1) {
+                            outputStreamSensor.write(buffer, 0, bytesRead);
+
+                        }
+
+                        //Close streams
+                        inputStreamSensor.close();
+                        outputStreamSensor.close();
+
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "Sensor data downloaded successfully!",
+                                Toast.LENGTH_LONG).show();
+
+                    } catch (FileNotFoundException e) {
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "No sensor log file exist.",
+                                Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+
+            }
+
+        });
+
+        //When Download Fall Data is clicked
+        FrameLayout downloadFallData = view.findViewById(R.id.download_fall_data);
+        downloadFallData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //get time when clicked
+                long timestamp = new Date().getTime();
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("_yyyyMMdd_HHmmss");
+                String formattedDate = dateFormat.format(new Date(timestamp));
+
+                String FALLFILENAMEOUT = username + formattedDate + "_fall_log"  + ".csv";
+                String FALLFILENAMEIN = "fall_log_" + username + ".csv";
+
+                // Use the MediaStore API to write fall log to the Downloads directory
+                ContentValues contentValuesFall = new ContentValues();
+                contentValuesFall.put(MediaStore.Downloads.DISPLAY_NAME, FALLFILENAMEOUT);
+                contentValuesFall.put(MediaStore.Downloads.MIME_TYPE, "text/csv");
+                contentValuesFall.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+
+                //Ensure that phone has API level 29 or higher that is required
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+
+                    try {
+                        //For grabbing csv file from app file
+                        FileInputStream inputStreamFall = getActivity().openFileInput(FALLFILENAMEIN);
+
                         //For exporting fall log csv
-                        Uri uriFall = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValuesFall);
+                        ContentResolver resolverFall = getActivity().getContentResolver();
+                        Uri uriFall = resolverFall.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValuesFall);
+
+                        //If the uri is null, show a Toast message and return
+                        if (uriFall == null) {
+                            Toast.makeText(getActivity(), "Unable to obtain URI to write fall log", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
 
                         //For writing to download directory
-                        OutputStream outputStreamFall = resolver.openOutputStream(uriFall);
-                        //For grabbing csv file from app file
-                        FileInputStream inputStreamFall = getActivity().openFileInput(FALLFILENAME);
+                        OutputStream outputStreamFall = resolverFall.openOutputStream(uriFall);
 
                         // Read the contents of the inputStream into a byte array
                         // and write to outputstream
@@ -129,20 +257,65 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                         inputStreamFall.close();
                         outputStreamFall.close();
 
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "Fall data downloaded successfully!",
+                                Toast.LENGTH_LONG).show();
+
+                    } catch (FileNotFoundException e) {
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "No fall log file exist.",
+                                Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
                     }
-                    Toast.makeText(requireActivity().getApplicationContext(),
-                            "File is exported!",
-                            Toast.LENGTH_LONG).show();
+
                 } else {
-                    Toast.makeText(requireActivity().getApplicationContext(),
-                            "Phone API level needs to be 29 or higher",
-                            Toast.LENGTH_LONG).show();
+                    //For phones with API level lower than 29
+
+                    //Specify location
+                    File externalDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
+                    try {
+                        //For reading fall log csv file from app file
+                        FileInputStream inputStreamFall = getActivity().openFileInput(FALLFILENAMEIN);
+
+                        //Create an output stream to write the file to external storage
+                        File outputFileFall = new File(externalDir, FALLFILENAMEOUT);
+                        FileOutputStream outputStreamFall = new FileOutputStream(outputFileFall);
+
+                        // Read the contents of the inputStream into a byte array
+                        // and write to outputstream
+                        byte[] bufferFall = new byte[inputStreamFall.available()];
+                        int bytesReadFall;
+                        while ((bytesReadFall = inputStreamFall.read(bufferFall)) != -1) {
+                            outputStreamFall.write(bufferFall, 0, bytesReadFall);
+                        }
+
+                        //Close streams
+                        inputStreamFall.close();
+                        outputStreamFall.close();
+
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "Fall data downloaded successfully!",
+                                Toast.LENGTH_LONG).show();
+
+                    } catch (FileNotFoundException e) {
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "No fall log file exist.",
+                                Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
 
-
             }
+
         });
 
         //When home icon is clicked

@@ -121,6 +121,9 @@
         <action
             android:id="@+id/action_profileFragment_to_heatmapFragment"
             app:destination="@id/heatmapFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_tutorial1Fragment"
+            app:destination="@id/tutorial1Fragment" />
     </fragment>
 
     <fragment

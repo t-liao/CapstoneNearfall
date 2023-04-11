@@ -125,8 +125,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         //if purpose is research
                         toDisplay = String.format(new Date().getTime() + ", Fall %n");
                     } else {
+
+                        toDisplay = String.format(new Date().getTime() + ", Fall %n");
+
+                        //TODO: Write code to add current lat and long values
                         //if purpose is personal add lat and long values
-                        toDisplay = String.format(new Date().getTime() + ", Fall, %f, %f %n");
+//                        toDisplay = String.format(new Date().getTime() + ", Fall, %f, %f %n");
                     }
 
                     try{
@@ -164,8 +168,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         //if purpose is research
                         toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
                     } else {
+                        toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
+                        //TODO: Write code to add current lat and long values
                         //if purpose is personal add lat and long values
-                        toDisplay = String.format(new Date().getTime() + ", Near Fall, %f, %f %n");
+//                        toDisplay = String.format(new Date().getTime() + ", Near Fall, %f, %f %n");
                     }
 
 
