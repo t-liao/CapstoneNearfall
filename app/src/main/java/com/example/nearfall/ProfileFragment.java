@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -94,6 +97,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         downloadSensorData.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
+              boolean perms = checkPermissions();
+              if (!perms) {
+                  Toast.makeText(requireActivity().getApplicationContext(),
+                          "Permission error!",
+                          Toast.LENGTH_LONG).show();
+                  return;
+              }
               //get time when clicked
               SimpleDateFormat dateFormat = new SimpleDateFormat("_yyyyMMdd_HHmmss");
               String formattedDate = dateFormat.format(new Date().getTime());
@@ -123,6 +133,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         downloadFallData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                boolean perms = checkPermissions();
+                if (!perms) {
+                    Toast.makeText(requireActivity().getApplicationContext(),
+                            "Permission error!",
+                            Toast.LENGTH_LONG).show();
+                    return;
+                }
                 //get time when clicked
                 long timestamp = new Date().getTime();
 
@@ -200,5 +217,21 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 }
             }
         }
+    }
+
+    private boolean checkPermissions() {
+        boolean writeTo = ContextCompat.checkSelfPermission(getContext(),
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        if (writeTo) {
+            return true;
+        }
+        requestPermissions();
+        return false;
+    }
+
+    // method to request for permissions
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(getActivity(), new String[]{
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 44);
     }
 }
