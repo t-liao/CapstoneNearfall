@@ -1,6 +1,7 @@
 package com.example.nearfall;
 
 import android.content.Context;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -87,7 +88,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                     //Store current detection status
                     userManager.setDetection("On");
-                    locationTracker.resumeLocationDetection();
+                    if (purpose.equals("Personal")){
+                        locationTracker.resumeLocationDetection();
+                    }
 
                 } else {
                     //Set start stop button to green with start text
@@ -98,7 +101,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                     //Store current detection status
                     userManager.setDetection("Off");
-                    locationTracker.pauseLocationDetection();
+                    if (purpose.equals("Personal")){
+                        locationTracker.pauseLocationDetection();
+                    }
                 }
             }
         });
@@ -125,24 +130,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         //if purpose is research
                         toDisplay = String.format(new Date().getTime() + ", Fall %n");
                     } else {
-
                         toDisplay = String.format(new Date().getTime() + ", Fall %n");
 
-                        //TODO: Write code to add current lat and long values
-                        //if purpose is personal add lat and long values
-//                        toDisplay = String.format(new Date().getTime() + ", Fall, %f, %f %n");
+//                        //if purpose is personal add lat and long values
+//                        Location loc = locationTracker.getLastSavedLocation();
+//                        toDisplay = String.format(new Date().getTime() + ", Fall, %f, %f %n", loc.getLatitude(), loc.getLongitude());
                     }
 
                     try{
                         FileOutputStream out = getActivity().openFileOutput( FILENAME, Context.MODE_APPEND );
                         out.write( toDisplay.getBytes() );
                         out.close();
+
+                        Toast.makeText(getActivity().getApplicationContext(), "Fall recorded!",
+                                Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
                     }
 
-                    Toast.makeText(getActivity().getApplicationContext(), "Fall recorded!",
-                            Toast.LENGTH_LONG).show();
                 } else {
                     //If detection is not on
                     //Print
@@ -169,9 +177,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
                     } else {
                         toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
-                        //TODO: Write code to add current lat and long values
-                        //if purpose is personal add lat and long values
-//                        toDisplay = String.format(new Date().getTime() + ", Near Fall, %f, %f %n");
+
+//                        //if purpose is personal add lat and long values
+//                        Location loc = locationTracker.getLastSavedLocation();
+//                        toDisplay = String.format(new Date().getTime() + ", Near Fall, %f, %f %n", loc.getLatitude(), loc.getLongitude());
                     }
 
 
@@ -179,12 +188,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         FileOutputStream out = getActivity().openFileOutput( FILENAME, Context.MODE_APPEND );
                         out.write( toDisplay.getBytes() );
                         out.close();
+
+                        Toast.makeText(getActivity().getApplicationContext(), "Near fall recorded!",
+                                Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
                     }
 
-                    Toast.makeText(getActivity().getApplicationContext(), "Near fall recorded!",
-                            Toast.LENGTH_LONG).show();
+
                 } else {
                     //If detection is not on
                     //Print

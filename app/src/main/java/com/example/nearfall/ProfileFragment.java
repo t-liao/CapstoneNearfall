@@ -284,6 +284,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
                         //Create an output stream to write the file to external storage
                         File outputFileFall = new File(externalDir, FALLFILENAMEOUT);
+                        outputFileFall.createNewFile();
                         FileOutputStream outputStreamFall = new FileOutputStream(outputFileFall);
 
                         // Read the contents of the inputStream into a byte array
