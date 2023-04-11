@@ -58,6 +58,11 @@ public class User {
         return this.userId;
     }
 
+    public String getUsernameWithoutSpaces() {
+        return username.replace(" ", "_");
+    }
+
+
     public void setId(int id) {
         this.userId = id;
     }
@@ -73,7 +78,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     private void setData(String username, String email, String dob, String purpose, HashedPassword passwordData) {
         // Set object data

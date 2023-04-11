@@ -1,6 +1,7 @@
 package com.example.nearfall;
 
 import android.content.Context;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -103,10 +104,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        //grab user email before @ symbol
-        String email = curr_user.getEmail();
-        int index = email.indexOf("@");
-        String username = email.substring(0, index);
+        // Grab user name with no spaces
+        String username = curr_user.getUsernameWithoutSpaces();
 
         String FILENAME = "fall_log_" + username + ".csv";
 
@@ -131,6 +130,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         //TODO: Write code to add current lat and long values
                         //if purpose is personal add lat and long values
 //                        toDisplay = String.format(new Date().getTime() + ", Fall, %f, %f %n");
+                        Location randLoc = locationTracker.getLastSavedLocation();
+                        System.out.println(randLoc);
+
                     }
 
                     try{

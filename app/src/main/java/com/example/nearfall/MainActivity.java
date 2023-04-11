@@ -87,9 +87,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //grab user email before @ symbol
         UserManager userManager = MainActivity.getUserManager();
         User curr_user = userManager.getUser();
-        String email = curr_user.getEmail();
-        int index = email.indexOf("@");
-        String username = email.substring(0, index);
+        String username = curr_user.getUsernameWithoutSpaces();
 
         // Store data
         String FILENAME = "sensor_log_" + username + ".csv";
