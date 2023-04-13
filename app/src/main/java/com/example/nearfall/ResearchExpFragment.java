@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.nearfall.User.UserManager;
+
 public class ResearchExpFragment extends Fragment implements View.OnClickListener{
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String Purpose = "purposeKey";
@@ -25,10 +27,9 @@ public class ResearchExpFragment extends Fragment implements View.OnClickListene
         //Create view from fragment_research_exp.xml
         View view = inflater.inflate(R.layout.fragment_research_exp, container, false);
 
-        //Grab the specified sharedpreference
-        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        UserManager userManager = MainActivity.getUserManager();
         //Grab stored name value
-        String name = sharedpreferences.getString(Name,"DEFAULT");
+        String name = userManager.getUser().getUsername();
 
         //Set name_text to the stored name
         TextView text = (TextView) view.findViewById(R.id.name_text);
