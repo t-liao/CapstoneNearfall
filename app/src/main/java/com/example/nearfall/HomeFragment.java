@@ -88,7 +88,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                     //Store current detection status
                     userManager.setDetection("On");
-                    locationTracker.resumeLocationDetection();
+                    if (purpose.equals("Personal")){
+                        locationTracker.resumeLocationDetection();
+                    }
 
                 } else {
                     //Set start stop button to green with start text
@@ -99,7 +101,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                     //Store current detection status
                     userManager.setDetection("Off");
-                    locationTracker.pauseLocationDetection();
+                    if (purpose.equals("Personal")) {
+                        locationTracker.pauseLocationDetection();
+                    }
                 }
             }
         });
