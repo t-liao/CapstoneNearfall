@@ -124,14 +124,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         //if purpose is research
                         toDisplay = String.format(new Date().getTime() + ", Fall %n");
                     } else {
+                        //toDisplay = String.format(new Date().getTime() + ", Fall %n");
 
-                        toDisplay = String.format(new Date().getTime() + ", Fall %n");
-
-                        //TODO: Write code to add current lat and long values
                         //if purpose is personal add lat and long values
-//                        toDisplay = String.format(new Date().getTime() + ", Fall, %f, %f %n");
-                        Location randLoc = locationTracker.getLastSavedLocation();
-                        System.out.println(randLoc);
+                        Location loc = locationTracker.getLastSavedLocation();
+                        toDisplay = String.format(new Date().getTime() + ", Fall, %f, %f %n", loc.getLatitude(), loc.getLongitude());
+
 
                     }
 
@@ -139,12 +137,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         FileOutputStream out = getActivity().openFileOutput( FILENAME, Context.MODE_APPEND );
                         out.write( toDisplay.getBytes() );
                         out.close();
+                        Toast.makeText(getActivity().getApplicationContext(), "Fall recorded!",
+                                Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
                     }
 
-                    Toast.makeText(getActivity().getApplicationContext(), "Fall recorded!",
-                            Toast.LENGTH_LONG).show();
+
                 } else {
                     //If detection is not on
                     //Print
@@ -170,10 +172,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         //if purpose is research
                         toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
                     } else {
-                        toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
-                        //TODO: Write code to add current lat and long values
+                        //toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
+
                         //if purpose is personal add lat and long values
-//                        toDisplay = String.format(new Date().getTime() + ", Near Fall, %f, %f %n");
+                        Location loc = locationTracker.getLastSavedLocation();
+                        toDisplay = String.format(new Date().getTime() + ", Near Fall, %f, %f %n", loc.getLatitude(), loc.getLongitude());
                     }
 
 
@@ -181,12 +184,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         FileOutputStream out = getActivity().openFileOutput( FILENAME, Context.MODE_APPEND );
                         out.write( toDisplay.getBytes() );
                         out.close();
+                        Toast.makeText(getActivity().getApplicationContext(), "Near fall recorded!",
+                                Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
                     }
 
-                    Toast.makeText(getActivity().getApplicationContext(), "Near fall recorded!",
-                            Toast.LENGTH_LONG).show();
                 } else {
                     //If detection is not on
                     //Print
