@@ -1,7 +1,5 @@
 package com.example.nearfall;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,10 +15,6 @@ import android.widget.TextView;
 import com.example.nearfall.User.UserManager;
 
 public class ResearchExpFragment extends Fragment implements View.OnClickListener{
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Purpose = "purposeKey";
-    public static final String Name = "nameKey";
-    SharedPreferences sharedpreferences;
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,9 +45,7 @@ public class ResearchExpFragment extends Fragment implements View.OnClickListene
             @Override
             public void onClick(View view) {
                 //Store new purpose mode
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString(Purpose, "Research");
-                editor.commit();
+                userManager.setPurpose("Research");
                 //Navigate to homeFragment
                 Navigation.findNavController(view).navigate(R.id.action_researchExpFragment_to_homeFragment);
             }
