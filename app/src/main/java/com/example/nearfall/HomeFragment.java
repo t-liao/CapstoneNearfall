@@ -128,11 +128,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         //if purpose is research
                         toDisplay = String.format(new Date().getTime() + ", Fall %n");
                     } else {
-                        //toDisplay = String.format(new Date().getTime() + ", Fall %n");
+                        toDisplay = String.format(new Date().getTime() + ", Fall %n");
 
                         //if purpose is personal add lat and long values
-                        Location loc = locationTracker.getLastSavedLocation();
-                        toDisplay = String.format(new Date().getTime() + ", Fall, %f, %f %n", loc.getLatitude(), loc.getLongitude());
+                        //Location loc = locationTracker.getLastSavedLocation();
+                        //toDisplay = String.format(new Date().getTime() + ", Fall, %f, %f %n", loc.getLatitude(), loc.getLongitude());
 
 
                     }
@@ -176,11 +176,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         //if purpose is research
                         toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
                     } else {
-                        //toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
+                        toDisplay = String.format(new Date().getTime() + ", Near Fall %n");
 
                         //if purpose is personal add lat and long values
-                        Location loc = locationTracker.getLastSavedLocation();
-                        toDisplay = String.format(new Date().getTime() + ", Near Fall, %f, %f %n", loc.getLatitude(), loc.getLongitude());
+                        //Location loc = locationTracker.getLastSavedLocation();
+                        //toDisplay = String.format(new Date().getTime() + ", Near Fall, %f, %f %n", loc.getLatitude(), loc.getLongitude());
                     }
 
 
