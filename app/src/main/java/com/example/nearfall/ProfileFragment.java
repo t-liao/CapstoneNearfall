@@ -97,34 +97,88 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         downloadSensorData.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              boolean perms = checkPermissions();
-              if (!perms) {
-                  Toast.makeText(requireActivity().getApplicationContext(),
-                          "Permission error!",
-                          Toast.LENGTH_LONG).show();
-                  return;
-              }
               //get time when clicked
               SimpleDateFormat dateFormat = new SimpleDateFormat("_yyyyMMdd_HHmmss");
               String formattedDate = dateFormat.format(new Date().getTime());
 
               String SENSORFILENAMEOUT = username + formattedDate + "_sensor_log" + ".csv";
               String SENSORFILENAMEIN = "sensor_log_" + username + ".csv";
-              File outputDest = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), SENSORFILENAMEOUT);
-              File sensorFile = new File (getContext().getFilesDir(), SENSORFILENAMEIN);
-              try {
-                  copyFile(sensorFile, outputDest);
-              } catch (IOException ex) {
-                  ex.printStackTrace();
-                  Toast.makeText(requireActivity().getApplicationContext(),
-                          ex.getMessage(),
-                          Toast.LENGTH_LONG).show();
-                  return;
+
+              if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                  // Use the MediaStore API to write sensor log to the Downloads directory
+                  ContentValues contentValuesSensor = new ContentValues();
+                  contentValuesSensor.put(MediaStore.Downloads.DISPLAY_NAME, SENSORFILENAMEOUT);
+                  contentValuesSensor.put(MediaStore.Downloads.MIME_TYPE, "text/csv");
+                  contentValuesSensor.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+
+                  try {
+                      //For grabbing csv file from app file
+                      FileInputStream inputStreamSensor = getActivity().openFileInput(SENSORFILENAMEIN);
+
+                      //For exporting sensor log csv
+                      ContentResolver resolverSensor = getActivity().getContentResolver();
+                      Uri uriSensor = resolverSensor.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValuesSensor);
+
+                      //If the uri is null, show a Toast message and return
+                      if (uriSensor == null) {
+                          Toast.makeText(getActivity(),
+                                  "Unable to obtain URI to write sensor log",
+                                  Toast.LENGTH_SHORT).show();
+                          return;
+                      }
+
+                      //For writing to download directory
+                      OutputStream outputStreamSensor = resolverSensor.openOutputStream(uriSensor);
+
+                      // Read the contents of the inputStream into a byte array
+                      // and write to outputstream
+                      byte[] buffer = new byte[inputStreamSensor.available()];
+                      int bytesRead;
+                      while ((bytesRead = inputStreamSensor.read(buffer)) != -1) {
+                          outputStreamSensor.write(buffer, 0, bytesRead);
+                      }
+
+                      inputStreamSensor.close();
+                      outputStreamSensor.close();
+
+                      Toast.makeText(requireActivity().getApplicationContext(),
+                              "Sensor data downloaded successfully!",
+                              Toast.LENGTH_LONG).show();
+
+                  } catch (IOException e) {
+                      e.printStackTrace();
+                      Toast.makeText(requireActivity().getApplicationContext(),
+                              e.getMessage(),
+                              Toast.LENGTH_LONG).show();
+                  }
+
+              } else {
+                  boolean perms = checkPermissions();
+                  if (!perms) {
+                      Toast.makeText(requireActivity().getApplicationContext(),
+                              "Permission error!",
+                              Toast.LENGTH_LONG).show();
+                      return;
+                  }
+
+                  File outputDest = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), SENSORFILENAMEOUT);
+                  File sensorFile = new File (getContext().getFilesDir(), SENSORFILENAMEIN);
+                  try {
+                      copyFile(sensorFile, outputDest);
+                      Toast.makeText(requireActivity().getApplicationContext(),
+                              "Sensor data downloaded successfully!",
+                              Toast.LENGTH_LONG).show();
+                  } catch (IOException ex) {
+                      ex.printStackTrace();
+                      Toast.makeText(requireActivity().getApplicationContext(),
+                              ex.getMessage(),
+                              Toast.LENGTH_LONG).show();
+                      return;
+                  }
               }
 
-              Toast.makeText(requireActivity().getApplicationContext(),
-                      "Sensor data downloaded successfully!",
-                      Toast.LENGTH_LONG).show();
+
+
           }
       });
 
@@ -133,37 +187,90 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         downloadFallData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean perms = checkPermissions();
-                if (!perms) {
-                    Toast.makeText(requireActivity().getApplicationContext(),
-                            "Permission error!",
-                            Toast.LENGTH_LONG).show();
-                    return;
-                }
                 //get time when clicked
-                long timestamp = new Date().getTime();
-
                 SimpleDateFormat dateFormat = new SimpleDateFormat("_yyyyMMdd_HHmmss");
-                String formattedDate = dateFormat.format(new Date(timestamp));
+                String formattedDate = dateFormat.format(new Date().getTime());
 
                 String FALLFILENAMEOUT = username + formattedDate + "_fall_log"  + ".csv";
                 String FALLFILENAMEIN = "fall_log_" + username + ".csv";
-                File fallOutputDest = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), FALLFILENAMEOUT);
-                File fallData = new File (getContext().getFilesDir(), FALLFILENAMEIN);
 
-                try {
-                    copyFile(fallData, fallOutputDest);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    Toast.makeText(requireActivity().getApplicationContext(),
-                            ex.getMessage(),
-                            Toast.LENGTH_LONG).show();
-                    return;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                    //For phone with API level 29 or higher
+
+                    // Use the MediaStore API to write fall log to the Downloads directory
+                    ContentValues contentValuesFall = new ContentValues();
+                    contentValuesFall.put(MediaStore.Downloads.DISPLAY_NAME, FALLFILENAMEOUT);
+                    contentValuesFall.put(MediaStore.Downloads.MIME_TYPE, "text/csv");
+                    contentValuesFall.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+
+                    try {
+                        //For grabbing csv file from app file
+                        FileInputStream inputStreamFall = getActivity().openFileInput(FALLFILENAMEIN);
+
+                        //For exporting fall log csv
+                        ContentResolver resolverFall = getActivity().getContentResolver();
+                        Uri uriFall = resolverFall.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValuesFall);
+
+                        //If the uri is null, show a Toast message and return
+                        if (uriFall == null) {
+                            Toast.makeText(getActivity(),
+                                    "Unable to obtain URI to write fall log",
+                                    Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        //For writing to download directory
+                        OutputStream outputStreamFall = resolverFall.openOutputStream(uriFall);
+
+                        // Read the contents of the inputStream into a byte array
+                        // and write to outputstream
+                        byte[] bufferFall = new byte[inputStreamFall.available()];
+                        int bytesReadFall;
+                        while ((bytesReadFall = inputStreamFall.read(bufferFall)) != -1) {
+                            outputStreamFall.write(bufferFall, 0, bytesReadFall);
+                        }
+
+                        inputStreamFall.close();
+                        outputStreamFall.close();
+
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "Fall data downloaded successfully!",
+                                Toast.LENGTH_LONG).show();
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                e.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    //for phone with API level lower than 29
+
+                    boolean perms = checkPermissions();
+                    if (!perms) {
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "Permission error!",
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    File fallOutputDest = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), FALLFILENAMEOUT);
+                    File fallData = new File (getContext().getFilesDir(), FALLFILENAMEIN);
+
+                    try {
+                        copyFile(fallData, fallOutputDest);
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                "Fall data downloaded successfully!",
+                                Toast.LENGTH_LONG).show();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                        Toast.makeText(requireActivity().getApplicationContext(),
+                                ex.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
                 }
 
-                Toast.makeText(requireActivity().getApplicationContext(),
-                        "Fall data downloaded successfully!",
-                        Toast.LENGTH_LONG).show();
             }
         });
 
@@ -222,7 +329,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private boolean checkPermissions() {
         boolean writeTo = ContextCompat.checkSelfPermission(getContext(),
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-        if (writeTo) {
+        boolean readFrom = ContextCompat.checkSelfPermission(getContext(),
+                android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        if (writeTo && readFrom) {
             return true;
         }
         requestPermissions();
@@ -232,6 +341,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     // method to request for permissions
     private void requestPermissions() {
         ActivityCompat.requestPermissions(getActivity(), new String[]{
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 44);
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE}, 44);
     }
 }
