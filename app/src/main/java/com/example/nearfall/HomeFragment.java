@@ -1,7 +1,6 @@
 package com.example.nearfall;
 
 import android.content.Context;
-import android.location.Location;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -109,7 +108,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
 
         // Grab user name with no spaces
-        String username = curr_user.getUsernameWithoutSpaces();
+        String username = curr_user.getUsernameWithoutSpecialCharacters();
 
         String FILENAME = "fall_log_" + username + ".csv";
 

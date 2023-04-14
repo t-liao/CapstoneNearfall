@@ -1,6 +1,5 @@
 package com.example.nearfall;
 
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 
@@ -30,12 +29,10 @@ import com.example.nearfall.User.UserManager;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -99,7 +96,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         });
 
         // Grab username with no spaces
-        String username = curr_user.getUsernameWithoutSpaces();
+        String username = curr_user.getUsernameWithoutSpecialCharacters();
 
         //When Download Sensor Data is clicked
         FrameLayout downloadSensorData = view.findViewById(R.id.download_sensor_data);

@@ -7,8 +7,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
+
 import com.example.nearfall.Location.LocationTracker;
 import com.example.nearfall.MainDatabase.Database;
 import com.example.nearfall.User.User;
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //grab user email before @ symbol
         UserManager userManager = MainActivity.getUserManager();
         User curr_user = userManager.getUser();
-        String username = curr_user.getUsernameWithoutSpaces();
+        String username = curr_user.getUsernameWithoutSpecialCharacters();
 
         // Store data
         String FILENAME = "sensor_log_" + username + ".csv";

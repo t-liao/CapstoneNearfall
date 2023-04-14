@@ -1,9 +1,6 @@
 package com.example.nearfall.User;
 
-import android.database.Cursor;
-
 import com.example.nearfall.MainActivity;
-import com.example.nearfall.MainDatabase.Database;
 
 public class User {
     private String username;
@@ -58,8 +55,8 @@ public class User {
         return this.userId;
     }
 
-    public String getUsernameWithoutSpaces() {
-        return username.replace(" ", "_");
+    public String getUsernameWithoutSpecialCharacters() {
+        return username.replaceAll("[^a-zA-Z0-9]", "");
     }
 
 
