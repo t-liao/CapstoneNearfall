@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -82,6 +84,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Clear stored data for keeping users logged in
+                SharedPreferences sharedPref = getActivity().getSharedPreferences(
+                        "CurrUser", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.clear();
+                editor.commit();
+
                 //Turn off detection by storing new detection status
                 userManager.accountLogout();
                 //Navigate to welcomeFragment

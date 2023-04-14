@@ -1,6 +1,8 @@
 package com.example.nearfall;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,12 +17,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.nearfall.User.UserManager;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
     EditText email, password;
+    CheckBox stay_in;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         //Grab from EditText
         email =(EditText)view.findViewById(R.id.email_login);
         password = (EditText)view.findViewById(R.id.password_login);
+
+        //Grab from CheckBox
+        stay_in = (CheckBox)view.findViewById(R.id.stayin_checkBox);
 
         //When back button is pressed
         ImageButton backButton = view.findViewById(R.id.back_button_login);
@@ -76,8 +83,19 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 }
                 String typedEmail = email.getText().toString();
                 String typedPassword = password.getText().toString();
+
                 boolean accountDetailsCorrect = userManager.verifyAccountLogin(typedEmail, typedPassword);
                 if (accountDetailsCorrect) {
+                    //Check if stay signed in checkbox is checked
+                    if (stay_in.isChecked()){
+                        //Save user email which will set User
+                        SharedPreferences sharedPref = getActivity().getSharedPreferences(
+                                "CurrUser", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("User", typedEmail);
+                        editor.commit();
+                    }
+
                     userManager.setUser(userManager.getUserByEmail(typedEmail));
                     Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment);
                 } else {
