@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        // Grab user name with no spaces
+        // Grab user name with no special characters
         String username = curr_user.getUsernameWithoutSpecialCharacters();
 
         String FILENAME = "fall_log_" + username + ".csv";

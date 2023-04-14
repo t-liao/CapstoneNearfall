@@ -95,7 +95,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        // Grab username with no spaces
+        // Grab username with no special characters
         String username = curr_user.getUsernameWithoutSpecialCharacters();
 
         //When Download Sensor Data is clicked

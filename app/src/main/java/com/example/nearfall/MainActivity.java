@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 break;
         }
 
-        //grab user email before @ symbol
+        // Grab username with no special characters
         UserManager userManager = MainActivity.getUserManager();
         User curr_user = userManager.getUser();
         String username = curr_user.getUsernameWithoutSpecialCharacters();
