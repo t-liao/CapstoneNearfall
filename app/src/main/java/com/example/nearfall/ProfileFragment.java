@@ -162,7 +162,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                   boolean perms = checkPermissions();
                   if (!perms) {
                       Toast.makeText(requireActivity().getApplicationContext(),
-                              "Permission error!",
+                              "Waiting for permission",
                               Toast.LENGTH_LONG).show();
                       return;
                   }
@@ -255,7 +255,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     boolean perms = checkPermissions();
                     if (!perms) {
                         Toast.makeText(requireActivity().getApplicationContext(),
-                                "Permission error!",
+                                "Waiting for permission",
                                 Toast.LENGTH_LONG).show();
                         return;
                     }
